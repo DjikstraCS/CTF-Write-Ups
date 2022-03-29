@@ -18,9 +18,11 @@ Looks like we need to download the flag file and open it in order to extract the
 ### **Solution:**
 
 **Step 1**
+
 Download the flag file using your browser.
 
 **Step 2**
+
 Open a terminal and navigate to the Downloads folder, using `cd`.
 
 Use `ll` to view the content of the folder.
@@ -28,6 +30,7 @@ Use `ll` to view the content of the folder.
 ![](./attachments/Pasted%20image%2020220329130407.png)
 
 **Step 3**
+
 Use `cat` bash command to show the content of the file:
 
 `cat flag`
@@ -40,4 +43,3 @@ And there it is.
 
 
 ---
-Tags: [[PicoCTF]] [[kali]] [[bash]] [[cat]] [[cd]] [[ll]]
