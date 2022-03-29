@@ -2,6 +2,7 @@
 * Link: [PicoCTF.org](https://picoctf.org/)
 * Challenge: Python Wrangling
 * Category: General Skills
+* Points: 10
 * Date: 29-03-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
