@@ -10,7 +10,7 @@ Date: 29-03-2022
 ### **Problem:**
 Looks like we need to download the flag file and open it in order to extract the flag.
 
-![](Pasted%20image%2020220329124831.png)
+![](../attachments/Pasted%20image%2020220329124831.png)
 
 ---
 
