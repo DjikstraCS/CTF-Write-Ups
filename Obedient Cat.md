@@ -8,16 +8,10 @@
 
 ---
 
-### **Reqirements:**
-* A linux distro, preferably Kali Linux.
-
----
-
 ### **Problem:**
 Looks like we need to download the flag file and open it in order to extract the flag.
 
 ![](./attachments/Pasted%20image%2020220329124831.png)
-
 
 ---
 
