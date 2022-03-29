@@ -1,8 +1,8 @@
 # **Obedient Cat**
-* Host: PicoCTF 
+* Source: PicoCTF 
+* Link: [PicoCTF.org](https://picoctf.org/)
 * Challenge:  Obedient Cat
 * Category: General Skills
-* Link: [PicoCTF.org](https://picoctf.org/)
 * Date: 29-03-2022
 * Author: [# DjikstraCS](https://github.com/DjikstraCS)
 
