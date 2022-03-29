@@ -4,7 +4,7 @@
 * Challenge:  Obedient Cat
 * Category: General Skills
 * Date: 29-03-2022
-* Author: [# DjikstraCS](https://github.com/DjikstraCS)
+* Author: [DjikstraCS](https://github.com/DjikstraCS)
 
 ---
 
