@@ -7,7 +7,7 @@
 
 ---
 
-### **Problem:**
+## **Problem:**
 
 We need to run a Python script to decrypt the flag using a seperate password file.
 
@@ -18,7 +18,7 @@ Let's do this via the terminal.
 
 ---
 
-### **Solution:**
+## **Solution:**
 
 **Step 1**
 
