@@ -41,7 +41,7 @@ Now let's try to run the Python script.
 
 ![](./attachments/Pasted%20image%2020220330000720.png)
 
-use the `-d` flag to specify decryptio and provide the encrypted flag.
+Use the `-d` flag to specify decryptio and provide the encrypted flag.
 
 Type in the password.
 
