@@ -43,6 +43,8 @@ Now let's try to run the Python script.
 
 use the `-d` flag to specify decryptio and provide the encrypted flag.
 
+Type in the password.
+
 ![](./attachments/Pasted%20image%2020220330001443.png)
 
 The flag is decrypted!
