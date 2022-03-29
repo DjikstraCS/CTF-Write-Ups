@@ -12,6 +12,7 @@ Looks like we need to download the flag file and open it in order to extract the
 
 ![](./attachments/Pasted%20image%2020220329124831.png)
 
+
 ---
 
 ### **Solution:**
@@ -24,18 +25,19 @@ Open a terminal and navigate to the Downloads folder, using `cd`.
 
 Use `ll` to view the content of the folder.
 
-![[Pasted image 20220329130407.png]]
+![](./attachments/Pasted%20image%2020220329130407.png)
 
 **Step 3**
 Use `cat` bash command to show the content of the file:
 
 `cat flag`
 
-![[Pasted image 20220329130444.png]]
+![](./attachments/Pasted%20image%2020220329130444.png)
 
 And there it is.
 
 **Flag: picoCTF{s4n1ty_v3r1f13d_1a94e0f9}**
+
 
 ---
 Tags: [[PicoCTF]] [[kali]] [[bash]] [[cat]] [[cd]] [[ll]]
