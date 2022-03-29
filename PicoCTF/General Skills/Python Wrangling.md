@@ -41,6 +41,7 @@ Great, looks like a password.
 
 **Step 3**
 Now let's try to run the Python script.
+
 ![](./attachments/Pasted%20image%2020220330000720.png)
 
 
