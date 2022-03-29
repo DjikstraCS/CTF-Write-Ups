@@ -20,8 +20,6 @@ Let's do this via the terminal.
 
 ## **Solution:**
 
-**Step 1**
-
 Use `cd` to navigate to a suitable directory.
 Then, for each of the three links do a `wget <URL>` to download the files.
 
@@ -31,20 +29,16 @@ We should now be able to see the files with `ll`:
 
 ![](./attachments/Pasted%20image%2020220329142014.png)
 
-**Step 2**
 Let't have a look a the `pw.txt` file:
 
 ![](./attachments/Pasted%20image%2020220330000430.png)
 
 Great, looks like a password.
 
-**Step 3**
 Now let's try to run the Python script.
 
 ![](./attachments/Pasted%20image%2020220330000720.png)
 
-
-**Step 4**
 use the `-d` flag to specify decryptio and provide the encrypted flag.
 
 ![](./attachments/Pasted%20image%2020220330001443.png)
