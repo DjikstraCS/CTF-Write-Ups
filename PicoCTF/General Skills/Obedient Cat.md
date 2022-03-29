@@ -1,5 +1,5 @@
 # **Obedient Cat**
-* Host: PicoCTF 
+* Source: PicoCTF 
 * Link: [PicoCTF.org](https://picoctf.org/)
 * Challenge:  Obedient Cat
 * Category: General Skills
