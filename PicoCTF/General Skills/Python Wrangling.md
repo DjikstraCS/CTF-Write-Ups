@@ -1,8 +1,7 @@
 # **Python Wrangling**
-* Host: PicoCTF
+* Link: [PicoCTF.org](https://picoctf.org/)
 * Challenge: Python Wrangling
 * Category: General Skills
-* Link: [PicoCTF.org](https://picoctf.org/)
 * Date: 29-03-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
