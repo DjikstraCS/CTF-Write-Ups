@@ -45,7 +45,7 @@ Using [CyberChef](https://gchq.github.io/CyberChef/) to bake the hex values give
 
 ---
 ## Alternate solution:
-The flag is visible in clear text in the static file so in stead of using the BASH script to disassmble the binary and baking the hex values, we can just get it directly from there.
+The flag is visible in clear text in the static file so instead of using the BASH script to disassmble the binary and baking the hex values, we can just get it directly from there.
 
 Using `cat` to output the content of the file, `|` to pipe the output to grep and finally `grep -a` in order to search for the string 'pico'.
 
