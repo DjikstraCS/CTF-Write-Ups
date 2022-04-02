@@ -26,4 +26,3 @@ We can use the `strings` BASH command to exstract all strings in a file. Here we
 **Flag:** `picoCTF{5tRIng5_1T_827aee91}`
 
 ---
-**Tags:** [[PicoCTF]] [[strings]] [[bash]] [[grep]] [[|]]

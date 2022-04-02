@@ -32,7 +32,7 @@ That's better, we got the flag.
 **Flag:** `picoCTF{l3arn_th3_r0p35}`
 
 ---
-## Alternate solution/Exstra:
+## Alternate solution:
  [CyberChef](https://gchq.github.io/CyberChef/) can also quickly solve this problem.
  
 ![](./attachments/Pasted%20image%2020220330171501.png)
@@ -40,4 +40,3 @@ That's better, we got the flag.
 **Flag:** `picoCTF{l3arn_th3_r0p35}`
 
 ---
-**Tags:** [[PicoCTF]] [[Base64]] [[Base32]] [[echo]] [[bash]] [[|]]

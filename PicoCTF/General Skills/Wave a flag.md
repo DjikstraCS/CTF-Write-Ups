@@ -9,12 +9,14 @@
 
 ---
 ## Problem:
+
 We need to invoke the help `-h` or `--help` function of the given program.
 
 ![](./attachments/Pasted%20image%2020220330064136.png)
 
 ---
 ## Solution:
+
 Download the file, open a terminal and navigate to the Downloads folder.
 
 `ll` command should give us a file called `warm`.

@@ -31,4 +31,3 @@ And that is our flag value!
 **Flag:** `picoCTF{61}`
 
 ---
-**Tags:** [[PicoCTF]] [[Python]] [[hex]] [[decimal]]

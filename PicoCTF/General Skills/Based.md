@@ -66,4 +66,3 @@ And got our flag!
 **Flag:** `picoCTF{learning_about_converting_values_00a975ff}`
 
 ---
-**Tags:** [[PicoCTF]]

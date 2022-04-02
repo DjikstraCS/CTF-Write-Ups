@@ -29,4 +29,3 @@ We got the flag!
 **Flag:** `picoCTF{101010}`
 
 ---
-**Tags:** [[PicoCTF]] [[Python]] [[binary]] [[decimal]]

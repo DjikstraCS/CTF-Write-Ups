@@ -28,7 +28,7 @@ First we need to unzip the compressed folders.
 
 We need to open the file to see it's content.
 
-There is a lot of ways to do this, the shortest I found using basic BASH commands is the following combination which requires luck to hit:
+There is a lot of ways to do this, the shortest I found using basic Bash commands is the following combination which requires luck to hit:
 
 `'c'` + `'a'` + `'t'` + `SPACE` +`'A'` + `Tab(HOLD)` + `ENTER` + `Tab(HOLD)` + `ENTER` = 7 clicks
 

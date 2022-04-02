@@ -1,4 +1,4 @@
-# **Obedient Cat**
+# Obedient Cat
 * Source: PicoCTF 
 * Link: [PicoCTF.org](https://picoctf.org/)
 * Challenge:  Obedient Cat
@@ -8,15 +8,14 @@
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
 ---
+## Problem:
 
-### **Problem:**
 Looks like we need to download the flag file and open it in order to extract the flag.
 
 ![](./attachments/Pasted%20image%2020220329124831.png)
 
 ---
-
-### **Solution:**
+## Solution:
 
 Download the flag file using your browser.
 
@@ -26,9 +25,7 @@ Use `ll` to view the content of the folder.
 
 ![](./attachments/Pasted%20image%2020220329130407.png)
 
-Use `cat` bash command to show the content of the file:
-
-`cat flag`
+Use `cat` to show the content of the file:
 
 ![](./attachments/Pasted%20image%2020220329130444.png)
 

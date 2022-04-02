@@ -9,6 +9,7 @@
 
 ---
 ## Problem:
+
 We need to connecto to a service using netcat.
 
 ![](./attachments/Pasted%20image%2020220330071828.png)
@@ -16,7 +17,7 @@ We need to connecto to a service using netcat.
 ---
 ## Solution:
 
-Connecting to a service using netcat is super simple.
+Connecting to a service using `nc` (netcat) is super simple.
 
 Open Terminal and use the command:
 

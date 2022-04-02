@@ -1,4 +1,4 @@
-# **Python Wrangling**
+# Python Wrangling
 * Source: PicoCTF
 * Link: [PicoCTF.org](https://picoctf.org/)
 * Challenge: Python Wrangling
@@ -8,19 +8,16 @@
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
 ---
-
-## **Problem:**
+## Problem:
 
 We need to run a Python script to decrypt the flag using a seperate password file.
 
 ![](./attachments/Pasted%20image%2020220329134632.png)
 
-
 Let's do this via the terminal.
 
 ---
-
-## **Solution:**
+## Solution:
 
 Use `cd` to navigate to a suitable directory.
 Then, for each of the three links do a `wget <URL>` to download the files.

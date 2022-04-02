@@ -26,4 +26,3 @@ The string we are looking for can be found by `grep`. But first we need to parse
 **Flag:** `picoCTF{grep_is_good_to_find_things_dba08a45}`
 
 ---
-**Tags:** [[PicoCTF]] [[grep]] [[bash]] [[cat]] [[|]]
