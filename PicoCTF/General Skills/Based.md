@@ -39,17 +39,21 @@ Python script:
 >#!/usr/bin/python3
 >
 >#Binary to Unicode
->input_list = input("Binary: ").split(' ')
->print(''.join(map(chr,[int(i,2) for i in input_list])))
 >
+>binary_input = input("Binary: ").split(' ')
+>
+>print(''.join(map(chr,[int(i,2) for i in binary_input])))
 >
 >#Octal to Unicode
->input_list = input("Octal: ").split(' ')
->print(''.join(map(chr,[int(i,8) for i in input_list])))
 >
+>octal_input = input("Octal: ").split(' ')
+>
+>print(''.join(map(chr,[int(i,8) for i in octal_input])))
 >
 >#Hex to Unicode
+>
 >hex_input = input("Hex: ")
+>
 >print(bytes.fromhex(hex_input).decode('utf-8'))
 
 The output of the script after pasting the values from the program:
