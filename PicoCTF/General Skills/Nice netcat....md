@@ -36,3 +36,4 @@ Success! We have the flag.
 **Flag: picoCTF{g00d_k1tty!_n1c3_k1tty!_f2d7cafa}**
 
 ---
+**Tags:** [[PicoCTF]] [[CyberChef]] [[Unicode]] [[ASCII]] [[netcat]]

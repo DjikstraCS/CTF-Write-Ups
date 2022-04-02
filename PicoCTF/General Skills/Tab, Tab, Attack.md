@@ -45,3 +45,4 @@ If you ever encounter unmanageable file structures `tree` is a really useful too
 ![](./attachments/Pasted%20image%2020220330151715.png)
 
 ---
+**Tags:** [[PicoCTF]] [[unzip]] [[bash]] [[tree]]

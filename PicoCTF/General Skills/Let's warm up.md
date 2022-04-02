@@ -26,3 +26,4 @@ And that is our flag value!
 **Flag: picoCTF{p}**
 
 ---
+**Tags:** [[PicoCTF]] [[Python]] [[ASCII]] [[Hex]]

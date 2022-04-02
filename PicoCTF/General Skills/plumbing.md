@@ -36,3 +36,4 @@ Let's `|` the output to `grep` so we can search for the flag.
 **Flag:** `picoCTF{digital_plumb3r_06e9d954}`
 
 ---
+**Tags:** [[PicoCTF]] [[|]] [[grep]] [[netcat]]

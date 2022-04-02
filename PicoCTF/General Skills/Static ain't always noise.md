@@ -55,6 +55,7 @@ Using `cat` to output the content of the file, `|` to pipe the output to grep an
 
 ![](./attachments/Pasted%20image%2020220330100715.png)
 
-**Flag: picoCTF{d15a5m_t34s3r_f5aeda17}**
+**Flag:** `picoCTF{d15a5m_t34s3r_f5aeda17}`
 
 ---
+**Tags:** [[PicoCTF]] [[bash]] [[CyberChef]] [[disassemby]] [[|]]  [[grep]] [[strings]] [[hex]]  [[cat]]
