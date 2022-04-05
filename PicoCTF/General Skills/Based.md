@@ -32,7 +32,7 @@ Ok, we need to convert some binary values into Unicode.
 
 Let's make a Python script like the hints suggest.
 
-During testing of the script it was revealed that we also need to convert Octal and Hex into Unicode. For that reson I've added two extra steps to the script, taking care of those conversions.
+During testing of the script, it was revealed that we also need to convert Octal and Hex into Unicode. For that reason, I've added two extra steps to the script, taking care of those conversions.
 
 Python script:
 

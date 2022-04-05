@@ -10,7 +10,7 @@
 ---
 ## Problem:
 
-We need to run a Python script to decrypt the flag using a seperate password file.
+We need to run a Python script to decrypt the flag using a separate password file.
 
 ![](./attachments/Pasted%20image%2020220329134632.png)
 
@@ -20,7 +20,7 @@ Let's do this via the terminal.
 ## Solution:
 
 Use `cd` to navigate to a suitable directory.
-Then, for each of the three links do a `wget <URL>` to download the files.
+Then, for each of the three links, do a `wget <URL>` to download the files.
 
 ![](./attachments/Pasted%20image%2020220329142042.png)
 
@@ -28,7 +28,7 @@ We should now be able to see the files with `ll`:
 
 ![](./attachments/Pasted%20image%2020220329142014.png)
 
-Let't have a look a the `pw.txt` file:
+Let't have a look at the `pw.txt` file:
 
 ![](./attachments/Pasted%20image%2020220330000430.png)
 

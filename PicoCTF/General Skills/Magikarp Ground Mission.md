@@ -10,13 +10,13 @@
 ---
 ## Problem:
 
-We have to connect to a remote instance and browse it's dictionary for the flag.
+We have to connect to a remote instance and browse its dictionary for the flag.
 
 ![](./attachments/Pasted%20image%2020220330152605.png)
 
 ---
 ## Hints:
-1. Finding a cheatsheet for bash would be really helpful!
+1. Finding a cheat sheet for bash would be really helpful!
 
 ---
 ## Solution:
@@ -26,23 +26,23 @@ Type 'yes' to continue connection and type in the password.
 
 ![](./attachments/Pasted%20image%2020220330153031.png)
 
-Now let's have a look around, `ll` is usually the fastet way to get an overview over a folder but is not supported by all systems. A more basic command is `ls` often seen with some flags following it e.g. `ls -lah`.
+Now let's have a look around, `ll` is usually the fastest way to get an overview over a folder but is not supported by all systems. A more basic command is `ls` often seen with some flags following it e.g. `ls -lah`.
 
 Using `cat` we can view the content of any files we find.
 
 ![](./attachments/Pasted%20image%2020220330153935.png)
 
-Great! we got part of the flag. 
+Great! We got part of the flag. 
 
 The instruction file tells us to go to the root directory (/).
 
-In order do change directory we use `cd` followed by the path we want to go to.
+In order to change directory, we use `cd` followed by the path we want to go to.
 
 ![](./attachments/Pasted%20image%2020220330154408.png)
 
 Nice, we got the second part of the flag.
 
-Further instructions tells us to go to to the home directory of the user (~).
+Further instructions tell us to go to the home directory of the user (~).
 
 ![](./attachments/Pasted%20image%2020220330154938.png)
 

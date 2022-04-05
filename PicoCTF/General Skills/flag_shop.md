@@ -13,7 +13,7 @@
 
 ---
 ## Hints:
-1. Two's compliment can do some weird things when numbers get really big!
+1. Two's complement can do some weird things when numbers get really big!
 
 ---
 ## Solution:
@@ -31,13 +31,13 @@ Returns balance, currently `1100`.
 
 ![](./attachments/Pasted%20image%2020220331005529.png)
 
-Two flags for sale. Sadly the 1337 flag is too expensive.
+Two flags for sale. Sadly, the 1337 flag is too expensive.
 
-let's look at the other flag.
+Let's look at the other flag.
 
 ![](./attachments/Pasted%20image%2020220331005715.png)
 
-Having the hints in mind, we mighe be able to break this with a really big number.
+Having the hints in mind, we might be able to break this with a really big number.
 
 ![](./attachments/Pasted%20image%2020220331010227.png)
 

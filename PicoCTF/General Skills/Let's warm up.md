@@ -17,13 +17,13 @@ Note the hint that we need to construct the flag ourselves this time.
 
 ---
 ## Solution:
-Unicode is ASCII compatible so this is easily solved with the `chr()` function in pyton.
+Unicode is ASCII compatible, so this is easily solved with the `chr()` function in Python.
 
 ![](./attachments/Pasted%20image%2020220330074257.png)
 
 And that is our flag value!
 
-**Flag: picoCTF{p}**
+**Flag:** `picoCTF{p}`
 
 ---
 **Tags:** [[PicoCTF]] [[Python]] [[ASCII]] [[Hex]]

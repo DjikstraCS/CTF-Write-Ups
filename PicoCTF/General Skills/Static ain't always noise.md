@@ -17,13 +17,13 @@ We've been given a BASH script to help us.
 
 ---
 ## Solution:
-First let's look at the BASH script.
+First, let's look at the BASH script.
 
 ![](./attachments/Pasted%20image%2020220330085850.png)
 
 Looks like the script disassembles the binary and prints the ".text" section of it.
 
-Now that we know the syntax of the script we can try it out.
+Now that we know the syntax of the script, we can try it out.
 
 ![](./attachments/Pasted%20image%2020220330090714.png)
 
@@ -35,17 +35,17 @@ The `-j .text` argument limits the output to only ".text" section of the binary.
 
 ![](./attachments/Pasted%20image%2020220330094515.png)
 
-Looking at the output we can see that we have a section called `<flag>`. Let's see if anything is hiding in those hex values.
+Looking at the output, we can see that we have a section called `<flag>`. Let's see if anything is hiding in those hex values.
 
 Using [CyberChef](https://gchq.github.io/CyberChef/) to bake the hex values gives us the flag!
 
 ![](./attachments/Pasted%20image%2020220330094550.png)
 
-**Flag: picoCTF{d15a5m_t34s3r_f5aeda17}**
+**Flag:** `picoCTF{d15a5m_t34s3r_f5aeda17}`
 
 ---
 ## Alternate solution:
-The flag is visible in clear text in the static file so instead of using the BASH script to disassmble the binary and baking the hex values, we can just get it directly from there.
+The flag is visible in clear text in the static file, so instead of using the BASH script to disassemble the binary and baking the hex values, we can just get it directly from there.
 
 Using `cat` to output the content of the file, `|` to pipe the output to grep and finally `grep -a` in order to search for the string 'pico'.
 

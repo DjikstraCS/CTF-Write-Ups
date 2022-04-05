@@ -15,7 +15,7 @@
 ---
 ## Hints:
 1. Remember the flag format is picoCTF{XXXX}
-2. What's a pipe? No not that kind of pipe... [This kind](http://www.linfo.org/pipes.html)
+2. What's a pipe? No, not that kind of pipe... [This kind](http://www.linfo.org/pipes.html)
 
 ---
 ## Solution:

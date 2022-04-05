@@ -31,7 +31,7 @@ Use `cat` to show the content of the file:
 
 And there it is.
 
-**Flag: picoCTF{s4n1ty_v3r1f13d_1a94e0f9}**
+**Flag:** `picoCTF{s4n1ty_v3r1f13d_1a94e0f9}`
 
 
 ---

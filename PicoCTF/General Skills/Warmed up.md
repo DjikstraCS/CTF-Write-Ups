@@ -22,7 +22,7 @@ Note the hint that we need to construct the flag ourselves this time.
 ---
 
 ## Solution:
-A hex (base 16) value can easily be converted into a int (base 10) in Python with `int(hex, 16)`. 
+A hex (base 16) value can easily be converted into an int (base 10) in Python with `int(hex, 16)`. 
 
 ![](./attachments/Pasted%20image%2020220330160805.png)
 

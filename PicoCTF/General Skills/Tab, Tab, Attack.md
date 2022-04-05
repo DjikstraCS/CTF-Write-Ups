@@ -9,7 +9,7 @@
 
 ---
 ## Problem:
-We need to find a flag that is burried in folders.
+We need to find a flag that is buried in folders.
 
 Using 'Tab' to auto-complete is going to be crucial if we don't want to waste our life away.
 
@@ -22,7 +22,7 @@ Using 'Tab' to auto-complete is going to be crucial if we don't want to waste ou
 ---
 ## Solution:
 
-First we need to unzip the compressed folders.
+First, we need to unzip the compressed folders.
 
 ![](./attachments/Pasted%20image%2020220330104431.png)
 
@@ -36,11 +36,11 @@ There is a lot of ways to do this, the shortest I found using basic Bash command
 
 And there is the flag.
 
-**Flag: picoCTF{l3v3l_up!_t4k3_4_r35t!_6f332f10}**
+**Flag:** `picoCTF{l3v3l_up!_t4k3_4_r35t!_6f332f10}`
 
 ---
 ## Extra:
-If you ever encounter unmanageable file structures `tree` is a really useful tool.
+If you ever encounter unmanageable file structures, `tree` is a really useful tool.
 
 ![](./attachments/Pasted%20image%2020220330151715.png)
 

@@ -19,7 +19,7 @@ We need to find the flag in a file without running it.
 
 ---
 ## Solution:
-We can use the `strings` BASH command to exstract all strings in a file. Here we are looking for a specific string, so we need to parse se output of `strings` on to `grep` so we can search for that specific string. In order to parse or pipe det output we use `|`.
+We can use the `strings` BASH command to extract all strings in a file. Here we are looking for a specific string, so we need to parse see output of `strings` on to `grep` so we can search for that specific string. In order to parse or pipe the output, we use `|`.
 
 ![](./attachments/Pasted%20image%2020220330164418.png)
 

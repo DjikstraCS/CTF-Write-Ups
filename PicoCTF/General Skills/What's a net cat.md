@@ -10,7 +10,7 @@
 ---
 ## Problem:
 
-We need to connecto to a service using netcat.
+We need to connect to a service using netcat.
 
 ![](./attachments/Pasted%20image%2020220330071828.png)
 
@@ -25,7 +25,7 @@ Open Terminal and use the command:
 
 And the flag is ours!
 
-**Flag: picoCTF{nEtCat_Mast3ry_284be8f7}**
+**Flag:** `picoCTF{nEtCat_Mast3ry_284be8f7}`
 
 ---
 **Tags:** [[PicoCTF]] [[netcat]]
