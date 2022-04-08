@@ -23,7 +23,7 @@ This is the content of the message:
 
 We can decrypt it manually by pushing all letters in the massage by one place in the alphabet until we find something that makes sense.
 
-Alternatively, we can use [dcode](https://www.dcode.fr/) to help us.
+Alternatively, we can use [dCode](https://www.dcode.fr/) to help us.
 
 ![](./attachments/Pasted%20image%2020220408203845.png)
 
@@ -32,4 +32,4 @@ Alternatively, we can use [dcode](https://www.dcode.fr/) to help us.
 **Flag:** `picoCTF{crossingtherubiconzaqjsscr}`
 
 ---
-**Tags:** [[PicoCTF]] [[Caesar]] [[dcode]]
+**Tags:** [[PicoCTF]] [[Caesar]] [[dCode]]
