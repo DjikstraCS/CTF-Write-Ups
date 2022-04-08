@@ -31,8 +31,11 @@ On [Wikipedia](https://en.wikipedia.org/wiki/One-time_pad#Example), we can see h
 In our case, the calculations look like this:
 
 26mod(`U = 20` - `S = 18`) = `C = 2` 
+
 26mod(`F = 20` - `O = 14`) = `R = 17` 
+
 26mod(`J = 9` - `L = 11`) = `Y = 24` 
+
 (...)
 
 Because we are lazy, we can use [dCode](https://www.dcode.fr/) or [CyberChef](https://gchq.github.io/CyberChef/) to solve the rest.
