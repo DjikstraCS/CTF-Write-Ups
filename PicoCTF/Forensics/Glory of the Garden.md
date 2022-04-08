@@ -9,7 +9,7 @@
 
 ---
 ## Problem:
-![](Pasted%20image%2020220408222710.png)
+![](./attachments/Pasted%20image%2020220408222710.png)
 
 ---
 ## Hints:
@@ -19,11 +19,11 @@
 ## Solution:
 We need to find the flag in this image: 
 
-![](Pasted%20image%2020220408222922.png)
+![](./attachments/Pasted%20image%2020220408222922.png)
 
 A simple `cat garden.jpg | grep -a pico` gives us the flag!
 
-![](Pasted%20image%2020220408223232.png)
+![](./attachments/Pasted%20image%2020220408223232.png)
 
 **Flag:** `picoCTF{more_than_m33ts_the_3y3657BaB2C}`
 
