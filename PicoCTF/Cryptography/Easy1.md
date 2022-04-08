@@ -38,7 +38,7 @@ In our case, the calculations look like this:
 
 (...)
 
-Because we are lazy, we can use [dCode](https://www.dcode.fr/) or [CyberChef](https://gchq.github.io/CyberChef/) to solve the rest.
+Because we are lazy, we use [dCode](https://www.dcode.fr/) or [CyberChef](https://gchq.github.io/CyberChef/) to solve the rest.
 
 ![](./attachments/Pasted%20image%2020220408221029.png)
 
