@@ -9,7 +9,7 @@
 
 ---
 ## Problem:
-![](Pasted%20image%2020220408204942.png)
+![](./attachments/Pasted%20image%2020220408204942.png)
 
 ---
 ## Hints:
@@ -26,7 +26,7 @@ Key: `SOLVECRYPTO`
 
 On [Wikipedia](https://en.wikipedia.org/wiki/One-time_pad#Example), we can see how to decrypt a one time pad using [modular addition](https://en.wikipedia.org/wiki/Modular_arithmetic). It's essentially the same as a standard [Vigenère cipher](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher).
 
-![](Pasted%20image%2020220408220014.png)
+![](./attachments/Pasted%20image%2020220408220014.png)
 
 In our case, the calculations look like this:
 
@@ -37,9 +37,9 @@ In our case, the calculations look like this:
 
 Because we are lazy, we can use [dCode](https://www.dcode.fr/) or [CyberChef](https://gchq.github.io/CyberChef/) to solve the rest.
 
-![](Pasted%20image%2020220408221029.png)
+![](./attachments/Pasted%20image%2020220408221029.png)
 
-![](Pasted%20image%2020220408221216.png)
+![](./attachments/Pasted%20image%2020220408221216.png)
 
 I have no idea what the table is for, if you know, please let me know.
 
