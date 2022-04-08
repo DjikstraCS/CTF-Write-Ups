@@ -28,4 +28,4 @@ A simple `cat garden.jpg | grep -a pico` gives us the flag!
 **Flag:** `picoCTF{more_than_m33ts_the_3y3657BaB2C}`
 
 ---
-**Tags:** [[PicoCTF]]
+**Tags:** [[PicoCTF]] [[bash]] [[cat]] [[|]] [[grep]]
