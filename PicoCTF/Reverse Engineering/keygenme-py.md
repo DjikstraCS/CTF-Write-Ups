@@ -32,7 +32,7 @@ key_part_static2_trial = "}"
 key_full_template_trial = key_part_static1_trial + key_part_dynamic1_trial + key_part_static2_trial
 ```
 
-Further down, we can see how the authentication methods `enter_license()` and `check_key()` work.
+Further down, we can see how the authentication methods `enter_license()` and `check_key()` works.
 
 ```py
 def enter_license():
@@ -122,7 +122,7 @@ In the first section of the `check_key()` method, the program is simply checking
 				i += 1
 ```
 
-In the second section of the `check_key()` method, the program is using SHA-2 to hash the hard-coded username `SCHOFIELD`, picking out seemingly random hard-coded values from it and comparing it to the rest of the license.
+In the second section of the `check_key()` method, the program is using SHA-2 to hash the hard-coded username `SCHOFIELD`, picking out seemingly random hard-coded values from it and comparing it to the last part of the license.
 
 ```py        
 	if key[i] != hashlib.sha256(username_trial).hexdigest()[4]:
