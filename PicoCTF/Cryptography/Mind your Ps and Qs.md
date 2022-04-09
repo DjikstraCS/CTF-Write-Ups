@@ -19,13 +19,14 @@
 ## Solution:
 The values given:
 
-![](./attachments/Pasted%20image%2020220409114333.png)
-
-c: `964354128913912393938480857590969826308054462950561875638492039363373779803642185`
-
-n: `1584586296183412107468474423529992275940096154074798537916936609523894209759157543`
-
-e: `65537`
+```console
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cat values
+Decrypt my super sick RSA:
+c: 964354128913912393938480857590969826308054462950561875638492039363373779803642185
+n: 1584586296183412107468474423529992275940096154074798537916936609523894209759157543
+e: 65537  
+```
 
 If we go to [Wikipedia](https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Decryption), we can find the decryption function of RSA:
 
@@ -51,15 +52,22 @@ Although the values are too big for [WolframAlpha](https://www.wolframalpha.com)
 
 ![](./attachments/Pasted%20image%2020220409142841.png)
 
-p: `2434792384523484381583634042478415057961`
-
-q: `650809615742055581459820253356987396346063`
-
 Great! Now we have all the values we need to make the final decoding using Python.
 
-![](./attachments/Pasted%20image%2020220409164327.png)
+```py
+import math
+p = 2434792384523484381583634042478415057961
+q = 650809615742055581459820253356987396346063
+c = 964354128913912393938480857590969826308054462950561875638492039363373779803642185
+n = 1584586296183412107468474423529992275940096154074798537916936609523894209759157543
+e = 65537
+phi = math.lcm(p-1,q-1) # Same as phi = (p-1)*(q-1)
+d = pow(e,-1,phi) # Inverse pow
+m = pow(c,d,n) # Same as m = c^d % n
+bytes.fromhex(hex(m)[2:]) # Convert message to bytes
 
-And we got the flag!
+b'picoCTF{sma11_N_n0_g0od_73918962}' # Flag!
+```
 
 **Flag:** `picoCTF{sma11_N_n0_g0od_73918962}`
 

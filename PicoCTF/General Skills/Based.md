@@ -35,26 +35,22 @@ Let's make a Python script like the hints suggest.
 During testing of the script, it was revealed that we also need to convert Octal and Hex into Unicode. For that reason, I've added two extra steps to the script, taking care of those conversions.
 
 Python script:
+```py
+#Binary to Unicode
 
->#!/usr/bin/python3
->
->#Binary to Unicode
->
->binary_input = input("Binary: ").split(' ')
->
->print(''.join(map(chr,[int(i,2) for i in binary_input])))
->
->#Octal to Unicode
->
->octal_input = input("Octal: ").split(' ')
->
->print(''.join(map(chr,[int(i,8) for i in octal_input])))
->
->#Hex to Unicode
->
->hex_input = input("Hex: ")
->
->print(bytes.fromhex(hex_input).decode('utf-8'))
+binary_input = input("Binary: ").split(' ')
+print(''.join(map(chr,[int(i,2) for i in binary_input])))
+
+#Octal to Unicode
+
+octal_input = input("Octal: ").split(' ')
+print(''.join(map(chr,[int(i,8) for i in octal_input])))
+
+#Hex to Unicode
+
+hex_input = input("Hex: ")
+print(bytes.fromhex(hex_input).decode('utf-8'))
+```
 
 The output of the script after pasting the values from the program:
 
