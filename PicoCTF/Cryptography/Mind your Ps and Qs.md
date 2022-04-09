@@ -38,13 +38,11 @@ Again, [Wikipedia](https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Decryption) 
 
 ![](./attachments/Pasted%20image%2020220409114758.png)
 
-`1 = (e * x) mod λ(n), solve for x`
-
-We could find `d` by solving this equation using [WolframAlpha](https://www.wolframalpha.com), but the values we are dealing with are too big. Let's have a closer look at how to decrypt RSA.
+We could find it by solving `1 = (e * d) mod λ(n)` for `d` using [WolframAlpha](https://www.wolframalpha.com), but the values we are dealing with are too big. Let's have a closer look at how to decrypt RSA.
 
 ![](./attachments/Pasted%20image%2020220409145855.png)
 
-We need to find the value of `λ(n)`, also known as `phi` in order to calculate `d`. The only way to do so is to find `p` and `q` and calculate `λ(n)` based on them.
+We need to find the value of `λ(n)`, also known as `phi` in order to calculate `d`. The only way to do this is to find `p` and `q` and calculate `λ(n)` based on them.
 
 Although the values are too big for [WolframAlpha](https://www.wolframalpha.com), they are still pretty small. We can either use [Aplertron's Integer factorization calculator](https://www.alpertron.com.ar/ECM.HTM) to factorize `p` and `q`, or we can look in a database like [factordb](http://factordb.com/) to see if someone else has already factorized it.
 
