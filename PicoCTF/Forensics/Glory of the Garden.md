@@ -21,9 +21,11 @@ We need to find the flag in this image:
 
 ![](./attachments/Pasted%20image%2020220408222922.png)
 
-A simple `cat garden.jpg | grep -a pico` gives us the flag!
+A simple `cat garden.jpg | grep -a pico` gives us the flag.
 
 ![](./attachments/Pasted%20image%2020220408223232.png)
+
+Easy!
 
 **Flag:** `picoCTF{more_than_m33ts_the_3y3657BaB2C}`
 

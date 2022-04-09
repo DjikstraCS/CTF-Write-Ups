@@ -17,7 +17,7 @@
 
 ---
 ## Solution:
-The flag is encrypted with ROT13, see [13](https://github.com/DjikstraCS/CTF-Write-Ups/blob/main/PicoCTF/Web%20Exploitation/13.md) for more information about decoding it.
+The flag is encrypted with ROT13, see [13](https://github.com/DjikstraCS/CTF-Write-Ups/blob/main/PicoCTF/Web%20Exploitation/13.md) for more detailed information about decoding it.
 
 Encrypted flag: `cvpbPGS{arkg_gvzr_V'yy_gel_2_ebhaqf_bs_ebg13_jdJBFOXJ}`
 
