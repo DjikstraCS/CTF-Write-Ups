@@ -44,9 +44,9 @@ We could find `d` by solving this equation using [WolframAlpha](https://www.wolf
 
 ![](./attachments/Pasted%20image%2020220409145855.png)
 
-We need to find the value of `λ(n)`, also known as 'phi'.  Since it is too much for [WolframAlpha](https://www.wolframalpha.com), the only way to do so is to find `p` and `q` and calculate it based on them.
+We need to find the value of `λ(n)`, also known as `phi` in order to calculate `d`. The only way to do so is to find `p` and `q` and calculate `λ(n)` based on them.
 
-Although the values are too big for [WolframAlpha](https://www.wolframalpha.com), they are still pretty small. We can either use [Aplertron's](https://www.alpertron.com.ar/ECM.HTM) Integer factorization calculator to factorize `p` and `q`, or we can look in a database like [factordb](http://factordb.com/) to see if someone else has already factorized it.
+Although the values are too big for [WolframAlpha](https://www.wolframalpha.com), they are still pretty small. We can either use [Aplertron's Integer factorization calculator](https://www.alpertron.com.ar/ECM.HTM) to factorize `p` and `q`, or we can look in a database like [factordb](http://factordb.com/) to see if someone else has already factorized it.
 
 ![](./attachments/Pasted%20image%2020220409142802.png)
 
@@ -55,19 +55,22 @@ Although the values are too big for [WolframAlpha](https://www.wolframalpha.com)
 Great! Now we have all the values we need to make the final decoding using Python.
 
 ```py
-import math
-p = 2434792384523484381583634042478415057961
-q = 650809615742055581459820253356987396346063
-c = 964354128913912393938480857590969826308054462950561875638492039363373779803642185
-n = 1584586296183412107468474423529992275940096154074798537916936609523894209759157543
-e = 65537
-phi = math.lcm(p-1,q-1) # Same as phi = (p-1)*(q-1)
-d = pow(e,-1,phi) # Inverse pow
-m = pow(c,d,n) # Same as m = c^d % n
-bytes.fromhex(hex(m)[2:]) # Convert message to bytes
+Python 3.9.10
+>>> import math
+>>> p = 2434792384523484381583634042478415057961
+>>> q = 650809615742055581459820253356987396346063
+>>> c = 964354128913912393938480857590969826308054462950561875638492039363373779803642185
+>>> n = 1584586296183412107468474423529992275940096154074798537916936609523894209759157543
+>>> e = 65537
+>>> phi = math.lcm(p-1,q-1) # Same as phi = (p-1)*(q-1)
+>>> d = pow(e,-1,phi) # Inverse pow
+>>> m = pow(c,d,n) # Same as m = c^d % n
+>>> bytes.fromhex(hex(m)[2:]) # Convert message to bytes
 
 b'picoCTF{sma11_N_n0_g0od_73918962}' # Flag!
 ```
+
+And there we have it, the decrypted message containing our flag.
 
 **Flag:** `picoCTF{sma11_N_n0_g0od_73918962}`
 
