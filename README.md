@@ -14,7 +14,7 @@ Does this by adding the full file path of **pasted** images.
 
 ---
 ## CTF Quality Tools:
-My personal collection of great CTF tools.
+My personal collection of useful CTF tools.
 
 ### 1. Cryptography:
 [dCode](https://www.dcode.fr/)
@@ -36,11 +36,11 @@ Factorization:
 [WolframAlpha](https://www.wolframalpha.com)
 
 ### 4. Reverse Engineering:
-[Universal Cyrillic decoder](https://2cyr.com/decode/?lang=en)
-
 [Ghidra](https://ghidra-sre.org/)
 
 [radare2](https://rada.re/n/radare2.html)
+
+[Universal Cyrillic decoder](https://2cyr.com/decode/?lang=en)
 
 ### 5. Web Exploitation:
 [Burp Suite](https://portswigger.net/burp)
