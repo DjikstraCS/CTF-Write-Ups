@@ -1,6 +1,8 @@
 # CTF Write-Ups
 A collection of write-ups for CTF challenges I've solved.
 
+The Python script is giving Obsidian Markdown files GitHub compatibility by fixing image paths.
+
 ---
 ## CTF Quality Tools:
 My personal collection of great CTF tools.
