@@ -9,15 +9,19 @@ My personal collection of great CTF tools.
 [dCode](https://www.dcode.fr/)
 
 Factorization:
+
 [Aplertron's Integer factorization calculator](https://www.alpertron.com.ar/ECM.HTM)
+
 [factordb](http://factordb.com/)
 
 ### 2. Forensics:
 [hexed](https://hexed.it/)
+
 [StegSolve](https://github.com/zardus/ctf-tools/blob/master/stegsolve/install)
 
 ### 3. General skills:
 [CyberChef](https://gchq.github.io/CyberChef/)
+
 [WolframAlpha](https://www.wolframalpha.com)
 
 ### 4. Reverse Engineering:
@@ -25,4 +29,5 @@ Factorization:
 
 ### 5. Web Exploitation:
 [Burp Suite](https://portswigger.net/burp)
+
 [jsnice](http://www.jsnice.org/)
