@@ -15,13 +15,13 @@
 ## Solution:
  Let's open the file with `less` and have a look around.
  
- ![](Pasted%20image%2020220410151849.png)
+![](./attachments/Pasted%20image%2020220410151849.png)
  
  We can see the file contains what appears to be .png header.
  
  If we open the file as an image, we get an error.
  
- ![](Pasted%20image%2020220410152534.png)
+![](./attachments/Pasted%20image%2020220410152534.png)
  
  Looks like the file is corrupted. We need to open it in a hex editor and compare in to another PNG file. The syntax of the header need to comply with the official [PNG header](https://github.com/corkami/formats/blob/master/image/png.md) scheme. 
  
