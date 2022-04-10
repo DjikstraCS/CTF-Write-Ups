@@ -37,7 +37,9 @@ Factorization:
 
 ### 4. Reverse Engineering:
 [Universal Cyrillic decoder](https://2cyr.com/decode/?lang=en)
+
 [Ghidra](https://ghidra-sre.org/)
+
 [radare2](https://rada.re/n/radare2.html)
 
 ### 5. Web Exploitation:
