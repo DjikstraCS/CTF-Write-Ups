@@ -9,7 +9,7 @@
 
 ---
 ## Problem:
-![](Pasted%20image%2020220410141312.png)
+![](./attachments/Pasted%20image%2020220410141312.png)
 
 ---
 ## Solution:
@@ -27,17 +27,17 @@
  
  Something is wrong. We need to edit a few values in order to repair the PNG header.
  
-![](Pasted%20image%2020220410160048.png)
+![](./attachments/Pasted%20image%2020220410160048.png)
 
 Great! Now we can actually open the image and see what it contains.
 
-![](Pasted%20image%2020220410160604.png)
+![](./attachments/Pasted%20image%2020220410160604.png)
 
 Just red. We need to dig deeper. 
 
 Maybe someone used [steganography](https://en.wikipedia.org/wiki/Steganography) to hide a message in the image. To find out, we can use a neat little program called [StegSolve](https://github.com/zardus/ctf-tools/blob/master/stegsolve/install). After testing a few settings, we get:
 
-![](Pasted%20image%2020220410164328.png)
+![](./attachments/Pasted%20image%2020220410164328.png)
 
 Nice!
  
