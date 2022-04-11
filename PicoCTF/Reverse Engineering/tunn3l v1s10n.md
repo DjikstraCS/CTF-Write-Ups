@@ -9,7 +9,7 @@
 
 ---
 ## Problem:
-![](Pasted%20image%2020220411201450.png)
+![](./attachments/Pasted%20image%2020220411201450.png)
 
 ---
 ## Hints:

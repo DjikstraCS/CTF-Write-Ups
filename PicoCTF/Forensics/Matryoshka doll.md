@@ -9,7 +9,7 @@
 
 ---
 ## Problem:
-![](Pasted%20image%2020220411191207.png)
+![](./attachments/Pasted%20image%2020220411191207.png)
 
 ---
 ## Hints:
@@ -20,7 +20,7 @@
 ## Solution:
 The image:
 
-![](Pasted%20image%2020220411191850.png)
+![](./attachments/Pasted%20image%2020220411191850.png)
 
 First we will try the standard stuff, `cat | grep`and `strings | grep` but it gives us nothing. `file` and `identify -verbose` likewise doesn't return anything useful. Everything looks normal.
 

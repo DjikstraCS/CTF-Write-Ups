@@ -9,7 +9,7 @@
 
 ---
 ## Problem:
-![](Pasted%20image%2020220411200258.png)
+![](./attachments/Pasted%20image%2020220411200258.png)
 
 ---
 ## Solution:
@@ -64,7 +64,7 @@ This one is going to be easy, everything we need to decrypt is already here. We 
 
 `print(decode_secret(bezos_cc_secret))`
 
-![](Pasted%20image%2020220411200939.png)
+![](./attachments/Pasted%20image%2020220411200939.png)
 
 Now if we run it:
 

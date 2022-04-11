@@ -9,33 +9,33 @@
 
 ---
 ## Problem:
-![](Pasted%20image%2020220411215934.png)
+![](./attachments/Pasted%20image%2020220411215934.png)
 
 ---
 ## Solution:
 The file in Wireshark:
 
-![](Pasted%20image%2020220411220148.png)
+![](./attachments/Pasted%20image%2020220411220148.png)
 
 987 packets to look through... Let's make this a bit easier by grouping the packets into individual streams, it will be much easier to see what is important because we get the context of every connection.
 
-![](Pasted%20image%2020220411220341.png)
+![](./attachments/Pasted%20image%2020220411220341.png)
 
 Here we can see the first stream, nothing interesting though.
 
-![](Pasted%20image%2020220411221030.png)
+![](./attachments/Pasted%20image%2020220411221030.png)
 
 When we get to stream 5 we find something. Someone made a GET request and got an answer. It looks like an encrypted flag.
 
-![](Pasted%20image%2020220411221207.png)
+![](./attachments/Pasted%20image%2020220411221207.png)
 
 [Dcode](https://www.dcode.fr/cipher-identifier) can help us identify the cipher used.
 
-![](Pasted%20image%2020220411222533.png)
+![](./attachments/Pasted%20image%2020220411222533.png)
 
 It must be ROT-13.
 
-![](Pasted%20image%2020220411222641.png)
+![](./attachments/Pasted%20image%2020220411222641.png)
 
 Correct! We got the flag.
 
