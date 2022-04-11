@@ -17,7 +17,7 @@ Does this by adding the full file path of **pasted** images.
 My personal collection of useful CTF tools.
 
 ### 1. Cryptography:
-[dCode](https://www.dcode.fr/en)
+[dCode](https://www.dcode.fr/cipher-identifier)
 
 [quipquip](https://www.quipqiup.com/)
 
