@@ -9,7 +9,7 @@
 
 ---
 ## Problem:
-![](Pasted%20image%2020220411230507.png)
+![](./attachments/Pasted%20image%2020220411230507.png)
 
 ---
 ## Hints:
@@ -81,11 +81,11 @@ shout Pico
 
 Let's find out what this is about. After a bit of searching, I found this, Rockstar is a programming language made to "(...) give the programmer an unprecedented degree of poetic license when it comes to the composition and structure of their programs."
 
-![](Pasted%20image%2020220411230900.png)
+![](./attachments/Pasted%20image%2020220411230900.png)
 
 We could look in the docs for more information about syntax and then revers engender it all from scratch. Luckily we dont have to, because there is an online interpreter on the site if we click on "try it". All we need to do now is paste the song into the interpreter and click "Rock!".
 
-![](Pasted%20image%2020220411231533.png)
+![](./attachments/Pasted%20image%2020220411231533.png)
 
 We get some numbers in return, looks like they might be ASCII.
 
@@ -93,7 +93,7 @@ We get some numbers in return, looks like they might be ASCII.
 
 [CyberChef](https://gchq.github.io/CyberChef) can help us out!
 
-![](Pasted%20image%2020220411232312.png)
+![](./attachments/Pasted%20image%2020220411232312.png)
 
 We got it the flag.
 
