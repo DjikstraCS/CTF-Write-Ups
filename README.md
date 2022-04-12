@@ -10,6 +10,7 @@ The Python script is recursively converting all .md files in Obsidian to GitHub 
 
 Does this by adding the full file path of **pasted** images.
 
+### Install:
 'Default location for new attachments' needs to be 'in sub folder under current folder'.
 
 Obsidian Settings -> Files and links -> Default location for new attachments -> In sub folder under current folder -> Subfolder name -> '*attachments*'.
@@ -20,4 +21,3 @@ Obsidian Settings -> Files and links -> Default location for new attachments -> 
 3. Execute directly from Obsidian and watch the magic happen.
 
 ---
-
