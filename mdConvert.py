@@ -16,4 +16,6 @@ for path, dirs, files in os.walk('..\\'):
             if file_edit:          
                 with open(os.path.join(path, filename), 'w', encoding='utf8') as f: 
                     f.writelines(lines)
-                print('File converted: ' + path.strip('.') + '\\' + filename)
+                print('\nFile converted: ' + path.strip('.') + '\\' + filename)
+if input('\nPress Enter to exit'):
+    exit(0)
