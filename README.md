@@ -6,7 +6,7 @@ A collection of write-ups for CTF challenges I've solved.
 
 ---
 ## Python script:
-The Python script is recursively converting all .md files in Obsidian to GitHub compatible Markdown.
+The Python script is converting all .md files in Obsidian to GitHub compatible Markdown.
 
 Does this by adding the full file path to **PASTED** images.
 
