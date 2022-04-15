@@ -56,7 +56,7 @@ Nmap done: 1 IP address (1 host up) scanned in 9.94 seconds
 
 It's a simple web sever hosting HTTP on port 80.
 
-![](Pasted%20image%2020220415165113.png)
+![](./attachments/Pasted%20image%2020220415165113.png)
 
 Just a page confirming that the web server was installed correctly, so no interaction.
 
@@ -95,13 +95,13 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 
 Like the name indicates, this is an admin login page.
 
-![](Pasted%20image%2020220415170642.png)
+![](./attachments/Pasted%20image%2020220415170642.png)
 
 This is probably not very secure, we can try the most common login credential:
 
 user:pass `admin:admin`
 
-![](Pasted%20image%2020220415171032.png)
+![](./attachments/Pasted%20image%2020220415171032.png)
 
 We got the flag!
 

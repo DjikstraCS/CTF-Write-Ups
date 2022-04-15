@@ -106,7 +106,7 @@ A new window appears. We've connected to a computer running Windows Server 2019.
 
 The flag is visible on the desktop.
 
-![](Pasted%20image%2020220415162356.png)
+![](./attachments/Pasted%20image%2020220415162356.png)
 
 **Flag:** `951fa96d7830c451b536be5a6be008a0`
 

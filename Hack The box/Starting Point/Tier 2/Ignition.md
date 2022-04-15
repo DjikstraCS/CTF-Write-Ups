@@ -45,7 +45,7 @@ It's a simple web sever hosting HTTP on port 80. When we visit it, we get an err
 
 We typed in the IP, and we are being redirected to a domain name like expected, but it can't be found.
 
-![](Pasted%20image%2020220415173436.png)
+![](./attachments/Pasted%20image%2020220415173436.png)
 
 This is a sign that 'Virtual Hosting' technology is being used. 
 
@@ -107,7 +107,7 @@ ff02::2 ip6-allrouters
 
 The line has been added. Now we should be able to access the site.
 
-![](Pasted%20image%2020220415182317.png)
+![](./attachments/Pasted%20image%2020220415182317.png)
 
 A simple site without much interaction. Let's use gobuster to enumerate the directories, so we can see if there are any other interesting URLs we can visit.
 
@@ -142,7 +142,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 
 We found `/admin`, it's probably a login page for the administration portal.
 
-![](Pasted%20image%2020220415183636.png)
+![](./attachments/Pasted%20image%2020220415183636.png)
 
 A Magento site. We can't brute force it, since Magento has anti-bruteforce measures implemented.
 
