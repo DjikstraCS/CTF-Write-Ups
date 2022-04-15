@@ -65,7 +65,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 17.06 seconds
 ```
 
-We can see that ftp is hosted on port 21, also it os open and we can see two files in plain sight. We will use `ftp` to connect `get` to download the files to our local machine
+We can see that ftp is hosted on port 21, also it os open and we can see two files in plain sight. We will use `ftp` to connect and `get` to download the files to our local machine
 
 Type `exit` to gracefully close the connection afterwards.
 

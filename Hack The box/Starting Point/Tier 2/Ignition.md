@@ -23,7 +23,7 @@
 
 ---
 ## Flag:
-nmap:
+Nmap:
 
 ```console
 ┌──(kali㉿kali)-[~]
