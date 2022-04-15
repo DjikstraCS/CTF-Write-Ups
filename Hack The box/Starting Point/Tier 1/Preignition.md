@@ -66,11 +66,11 @@ Command:
 
 `gobuster dir \ 10.129.92.154 --wordlist /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -x php,html`
 
-`dir`: That we want to enumerate directories, not DNS ex.
+`dir`: Enumerate directories, not DNS ex.
 
-`--wordlist`: List of common directory names.
+`--wordlist`: Use this list (list of common directory names).
 
-`-x`: We want to find files in .php and .html format.
+`-x`: Find files in .php and .html format.
 
 ```console
 ┌──(kali㉿kali)-[~]

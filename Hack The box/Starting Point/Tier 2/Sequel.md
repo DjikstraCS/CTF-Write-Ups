@@ -37,7 +37,9 @@ Server version: 10.3.27-MariaDB-0+deb10u1 Debian 10
 Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+```
 
+```
 MariaDB [(none)]> show databases;
 
 +--------------------+
@@ -49,14 +51,18 @@ MariaDB [(none)]> show databases;
 | performance_schema |
 +--------------------+
 4 rows in set (0.067 sec)
+```
 
+```
 MariaDB [(none)]> use htb;
 
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
 
 Database changed
+```
 
+```
 MariaDB [htb]> show tables;
 
 +---------------+
@@ -66,7 +72,9 @@ MariaDB [htb]> show tables;
 | users         |
 +---------------+
 2 rows in set (0.064 sec)
+```
 
+```
 MariaDB [htb]> select * from config;
 
 +----+-----------------------+----------------------------------+

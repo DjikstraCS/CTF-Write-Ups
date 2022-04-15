@@ -47,43 +47,51 @@ We typed in the IP, and we are being redirected to a domain name like expected, 
 
 ![](./attachments/Pasted%20image%2020220415173436.png)
 
-This is a sign that 'Virtual Hosting' technology is being used. 
+This is a sign that 'Virtual Hosting' technology is being used. If we type the domain name of the page provided into the URL, we get the same error. The host must be isolated, which means there are no larger DNS servers referring to it.
 
-If we type the domain name of the page provided into the URL, we get the same error. 
+What the browser is trying to do is find out what IP address is connected to the domain `ignition.htb`. But we already know the IP, so in order to solve this connection issue, we just have to tell the browser.
 
-It looks like this host is isolated. Which means there are no DNS servers referring to it.
-
-What the browser is trying to do is find out what IP address is connected to the domain `ignition.htb`. 
-
-But we already know the IP, so in order to solve this connection issue, we just have to tell the browser.
-
-To confirm, we can make a request with curl.
+Before we do that we can confirm with a simple `curl` request.
 
 ```
 ┌──(kali㉿kali)-[~]
-└─$ curl -v 10.129.94.130       
-*   Trying 10.129.94.130:80...
-* Connected to 10.129.94.130 (10.129.94.130) port 80 (#0)
+└─$ curl -v 10.129.1.27  
+*   Trying 10.129.1.27:80...
+* Connected to 10.129.1.27 (10.129.1.27) port 80 (#0)
 > GET / HTTP/1.1
-> Host: 10.129.94.130
+> Host: 10.129.1.27
 > User-Agent: curl/7.82.0
 > Accept: */*
 > 
 * Mark bundle as not supporting multiuse
 < HTTP/1.1 302 Found
 < Server: nginx/1.14.2
-< Date: Fri, 15 Apr 2022 15:30:50 GMT
+< Date: Fri, 15 Apr 2022 18:40:09 GMT
 < Content-Type: text/html; charset=UTF-8
 < Transfer-Encoding: chunked
 < Connection: keep-alive
+< Set-Cookie: PHPSESSID=l8d8f1j49hbirs1ms2hj1062id; expires=Fri, 15-Apr-2022 19:40:09 GMT; Max-Age=3600; path=/; domain=10.129.1.27; HttpOnly; SameSite=Lax
+< Location: http://ignition.htb/
+< Pragma: no-cache
+< Cache-Control: max-age=0, must-revalidate, no-cache, no-store
+< Expires: Thu, 15 Apr 2021 18:40:09 GMT
+
 ```
 
-In order to make the browser create the connection between IP and domain name, we need to make an entry into our local DNS file located at `/etc/hosts`. This can be done with a simple command.
+As expected, we can see that the host field is the IP and the location is the domain, it should have been the other way around.  
 
-BASH: `echo "10.129.13.133 unika.htb" | sudo tee -a /etc/hosts`
+In order to make the browser create the connection between IP and domain name, we need to make an entry into our local DNS file located in `/etc/hosts`. This can be done with a simple command.
+
+Command:
+
+`echo "10.129.94.130 ignition.htb" | sudo tee -a /etc/hosts`
+
 `echo`: Print this "x".
+
 `|`: Take the output from cmd 1 and give it to cmd 2.
+
 `tee`: Duplicate the output. Print one output in the console and in this case, append the other.
+
 `-a`: Append the input into file.
 
 ```console
@@ -146,13 +154,13 @@ We found `/admin`, it's probably a login page for the administration portal.
 
 A Magento site. We can't brute force it, since Magento has anti-bruteforce measures implemented.
 
-All we can do from here is manually trying random usernames and passwords. This sounds impossible, but by combining the [10 currently most used passwords](https://cybernews.com/best-password-managers/most-common-passwords/) with the most commonly used username "admin", we can greatly improve our chances of a lucky match.
+All we can do from here is manually trying random usernames and passwords. This sounds like a huge amount of work, but by combining the [10 currently most used passwords](https://cybernews.com/best-password-managers/most-common-passwords/) with the default username "admin", we can greatly improve our chances and maybe get a lucky match.
  
  ![](Pasted%20image%2020220415185952.png)
  
 User:pass `admin:qwerty123`
 
-We got in, and the flag is in pain sight.
+We got in, and the flag is in plain sight.
 
 **Flag:** `797d6c988d9dc5865e010b9410f247e0`
 

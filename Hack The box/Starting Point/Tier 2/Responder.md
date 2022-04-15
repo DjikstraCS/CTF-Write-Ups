@@ -33,7 +33,7 @@
 
 ---
 ## Flag:
-Find the flag on the server:
+nmap:
 
 ```console
 ┌──(kali㉿kali)-[~]
@@ -62,7 +62,19 @@ A web portal, let's have a look.
 
 ![](./attachments/Pasted%20image%2020220413115527.png)
 
-We get redirected to `unika.htb`, but Firefox can't find the page. This is likely because 'name-based virtual hosting' is used to host multiple domains on one server. To access the site, we need to provide the server with both IP and Domain. We have both, so we just need to make Firefox make the connection. We can do this by adding the two values to `/etc/hosts`.
+We get redirected to `unika.htb`, but Firefox can't find the page. This is likely because 'name-based virtual hosting' is used to host multiple domains on one server. To access the site, we need to provide the server with both IP and Domain. We have both, so we just need to make Firefox make the connection.
+
+In order to do that, we need to make an entry into our local DNS file located at `/etc/hosts`. This can be done with a simple command.
+
+BASH: `echo "10.129.13.133 unika.htb" | sudo tee -a /etc/hosts`  
+
+`echo`: Print this "x".  
+
+`|`: Take the output from cmd 1 and give it to cmd 2.  
+
+`tee`: Duplicate the output. Print one output in the console and in this case, append the other.  
+
+`-a`: Append the input into file.
 
 ```console
 ┌──(kali㉿kali)-[~]
