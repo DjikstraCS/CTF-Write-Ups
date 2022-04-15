@@ -30,9 +30,13 @@
 First, we need to scan the target with `nmap`.
 
 Command:
+
 `nmap -n -sC -sV 10.129.92.232`
+
 `-n`: No DNS look up (Good [OPSEC](https://en.wikipedia.org/wiki/Operations_security)).
+
 `-sC`: Run scripts during scan.
+
 `-sV`: Try to detect the version of running services.
 
 ```console
@@ -75,9 +79,13 @@ Nmap done: 1 IP address (1 host up) scanned in 22.03 seconds
 We can use [xfreerdp](https://linux.die.net/man/1/xfreerdp) to connect to the host.
 
 Command:
+
 `xfreerdp /v:10.129.92.232 /u:Administrator /cert:ignore`
+
 `/v:`: The host we want to connect to.
+
 `/u:`: The user we want to log in as.
+
 `/cert:`: Ignore all kind of certificates.
 
 ```console

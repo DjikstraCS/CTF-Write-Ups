@@ -30,9 +30,13 @@
 First, we need to scan the target with `nmap`.
 
 Command:
+
 `nmap -n -sC -sV 10.129.80.87`
+
 `-n`: No DNS look up (Good [OPSEC](https://en.wikipedia.org/wiki/Operations_security)).
+
 `-sC`: Run scripts during scan.
+
 `-sV`: Try to detect the version of running services.
 
 ```console

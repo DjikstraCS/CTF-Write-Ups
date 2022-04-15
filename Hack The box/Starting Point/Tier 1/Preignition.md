@@ -30,9 +30,13 @@
 First, we need to scan the target with `nmap`.
 
 Command:
+
 `nmap -n -sC -sV 10.129.92.154`
+
 `-n`: No DNS look up (Good [OPSEC](https://en.wikipedia.org/wiki/Operations_security)).
+
 `-sC`: Run scripts during scan.
+
 `-sV`: Try to detect the version of running services.
 
 ```console
@@ -59,9 +63,13 @@ Just a page confirming that the web server was installed correctly, so no intera
 We can use gobuster to find out if there are any more "hidden" directories on this site.
 
 Command:
+
 `gobuster dir \ 10.129.92.154 --wordlist /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -x php,html`
+
 `dir`: That we want to enumerate directories, not DNS ex.
+
 `--wordlist`: List of common directory names.
+
 `-x`: We want to find files in .php and .html format.
 
 ```console
