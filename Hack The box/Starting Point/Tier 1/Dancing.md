@@ -80,8 +80,11 @@ Unable to connect with SMB1 -- no workgroup available
 Awesome, there is a share for us to poke around in. To access it, we need to follow a special syntax.
 
 Command:
+
  `smblient \\\\10.129.229.124\\WorkShares`
+ 
 `\\\\`: Equals to "\\\\" when interpreted, means root of directory.
+
 `\\`: Equals to "\\" when interpreted, means new directory level.
 
 ```
