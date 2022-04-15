@@ -16,7 +16,7 @@ Does this by adding the full file path to **pasted** images.
 1. 'Default location for new attachments' needs to be 'in sub folder under current folder'.
 	- Obsidian Settings -> Files and links -> Default location for new attachments -> In sub folder under current folder -> Subfolder name -> '*attachments*'.
 2. Put the script anywhere in your Obsidian vault 
-	- It will convert current directory plus all subdirectories.
+	- It will convert all files in the current directory plus all subdirectories.
 3. Edit the '*attachments*' folder path in script to local path if necessary.
 4. Execute directly from Obsidian and watch the magic happen.
 
