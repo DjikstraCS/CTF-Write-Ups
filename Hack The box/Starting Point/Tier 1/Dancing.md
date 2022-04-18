@@ -56,9 +56,12 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 Nmap done: 1 IP address (1 host up) scanned in 12.82 seconds
 ```
 
-It's running SMB on port 445. We can use `smbclient` to connect. 
+It's running SMB on port 445. We can use `smbclient` to list te shares. 
 
-Smbclient: `smbclient -L 10.129.229.124`
+Command:
+
+`smbclient -L 10.129.229.124`
+
 `-L`: Get a list of shares available on a host.
 
 ```
