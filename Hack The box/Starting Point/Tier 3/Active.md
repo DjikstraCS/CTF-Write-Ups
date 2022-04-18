@@ -285,7 +285,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 15551 (15K) [text/plain]
 Saving to: ‘alpine.yaml’
 
-alpine.yaml                               100%[===================================================================================>]  15.19K  --.-KB/s    in 0s      
+alpine.yaml           100%[=================>]  15.19K  --.-KB/s    in 0s      
 
 2022-04-18 16:34:52 (37.4 MB/s) - ‘alpine.yaml’ saved [15551/15551]
  
