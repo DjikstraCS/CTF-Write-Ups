@@ -25,7 +25,7 @@
 8. If the root filesystem is mounted at /mnt in the container, where can the root flag be found on the container after the host system is mounted? 
 - **/mnt/root/**
 8. Submit user flag.
-- ****
+- **a56ef91d70cfbf2cdb8f454c006935a1**
 
 
 ---
