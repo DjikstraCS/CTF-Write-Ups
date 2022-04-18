@@ -52,17 +52,17 @@ We have Jetty running on port 8080. Also, nmap found an entry in /robots.txt.
 
 If we open the page, we see a login page.
 
-![](Pasted%20image%2020220417133302.png)
+![](./attachments/Pasted%20image%2020220417133302.png)
 
 The robots.txt file is simply telling search engines not to index the site.
 
-![](Pasted%20image%2020220417133502.png)
+![](./attachments/Pasted%20image%2020220417133502.png)
 
 We can try some default credentials. 
 
 User:pass `root:password`
 
-![](Pasted%20image%2020220417141023.png)
+![](./attachments/Pasted%20image%2020220417141023.png)
 
 We are in.
 
@@ -70,7 +70,7 @@ Looking around, we find a Script console under the Manage Jenkins tab. It interp
 
 All we have to do now is make a Groovy script that can execute a reverse shell on the server, meaning that the server will try to initiate a shell connection back to us.
 
-![](Pasted%20image%2020220417144615.png)
+![](./attachments/Pasted%20image%2020220417144615.png)
 
 Searching for a payload, we find [this](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md#groovy) cheat sheet detailing a reverse shell for Groovy. 
 
@@ -124,7 +124,7 @@ whoami
 root
 ```
 
-![](Pasted%20image%2020220417152724.png)
+![](./attachments/Pasted%20image%2020220417152724.png)
 
 Looking around:
 

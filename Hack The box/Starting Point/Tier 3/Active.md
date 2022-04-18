@@ -50,7 +50,7 @@ Nmap done: 1 IP address (1 host up) scanned in 10.08 seconds
 
 Hosting a webpage.
 
-![](Pasted%20image%2020220417174528.png)
+![](./attachments/Pasted%20image%2020220417174528.png)
 
 Might be vulnerable to LFI (Local File Inclusion).
 
@@ -120,11 +120,11 @@ First we need a PHP reverse shell, we can make one ourselves, or we can find one
 
 Save the file by right-clicking, then 'Save Page As...' and save it as `shell.php`.
 
-![](Pasted%20image%2020220417182958.png)
+![](./attachments/Pasted%20image%2020220417182958.png)
 
 Edit the IP and Port fields in the reverse shell script.
 
-![](Pasted%20image%2020220417183945.png)
+![](./attachments/Pasted%20image%2020220417183945.png)
 
 Now we can upload it to the server using `tftp`.
 
