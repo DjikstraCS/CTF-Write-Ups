@@ -2,7 +2,7 @@
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Lame
 * Topic: [[Metasploit]]
-* Difficulty: Very easy
+* Difficulty: Easy
 * Date: 20-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
