@@ -9,7 +9,7 @@
 ---
 ## Tasks
 1. What nmap scanning switch employs the use of default scripts during a scan? 
- - **nmap**
+ - **-sC**
 2. What service version is found to be running on port 21? 
 - **vsftpd 3.0.3**
 3. What FTP code is returned to us for the "Anonymous FTP login allowed" message? 

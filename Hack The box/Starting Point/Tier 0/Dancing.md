@@ -84,7 +84,7 @@ Awesome, there is a share for us to poke around in. To access it, we need to fol
 
 Command:
 
- `smblient \\\\10.129.229.124\\WorkShares`
+ `smbclient \\\\10.129.229.124\\WorkShares`
  
 `\\\\`: Equals to "\\\\" when interpreted, means root of directory.
 
