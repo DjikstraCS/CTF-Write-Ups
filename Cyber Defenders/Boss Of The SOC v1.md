@@ -30,7 +30,7 @@ In the second scenario, one of your users is greeted by this image on a Windows
 This is a simple question to get you familiar with submitting answers. What is the name of the company that makes the software that you are using for this competition? Just a six-letter word with no punctuation.
 
 #### Solution:
-The software we will be using is made by Splunk this is clear due to the logo of the challenge and the fact that [Splunk Team](https://twitter.com/splunk) is the author.
+The software we will be using is made by Splunk, this is clear due to the logo of the challenge and the fact that [Splunk Team](https://twitter.com/splunk) is the author.
 
 ![](./attachments/Pasted%20image%2020220421175534.png)
 
