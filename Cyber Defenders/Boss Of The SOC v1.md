@@ -27,26 +27,26 @@ In the second scenario, one of your users is greeted by this image on a Windows
 
 ---
 
-#### Question 1:
+### Question 1:
 This is a simple question to get you familiar with submitting answers. What is the name of the company that makes the software that you are using for this competition? Just a six-letter word with no punctuation.
 
-##### Solution:
+#### Solution:
 The software we will be using is made by Splunk this is clear due to the logo of the challenge and the fact that [Splunk Team](https://twitter.com/splunk) is the author.
 
 ![](./attachments/Pasted%20image%2020220421175534.png)
 
 **Answer:** `Splunk`
 
-#### Question 2:
+### Question 2:
 What is the likely IP address of someone from the Po1s0n1vy group scanning imreallynotbatman.com for web application vulnerabilities?
 
-##### Hints:
+#### Hints:
 ```
 1. Start your search with "sourcetype=stream:http" and review the rich data captured in these events.
 2. You'll notice that source and destination IP addresses are stored in fields called src_ip and dest_ip respectively. Determine top-talkers for HTTP by combining : "sourcetype=stream:http | stats count by src_ip, dest_ip | sort -count"
 ```
 
-##### Solution:
+#### Solution:
 First, we can use `sourcetype="stream:http"` to get all the HTTP traffic. Since we are looking for a scanner, we can also try `scan*` to get all derivations of 'scan' e.g. scanner, scanning etc.
 
 **Search Query:**
@@ -60,28 +60,28 @@ In the first result we find a source header containing a browser user-agent whic
 
 **Answer:** `40.80.148.42`
 
-#### Question 3:
+### Question 3:
 What company created the web vulnerability scanner used by Po1s0n1vy? Type the company name. (For example, "Microsoft" or "Oracle")
 
-##### Hints:
+#### Hints:
 ```
 1. Many commercial web vulnerability scanners clearly identify themselves in the headers of the HTTP request. Inspect the HTTP source headers (src_headers) of requests from the IP identified in question 101.
 ```
 
-##### Solution:
+#### Solution:
 This one is free. We already found the answer during our last search query.
 
 Answer: `Acunetix`
 
-#### Question 4:
+### Question 4:
 What content management system is imreallynotbatman.com likely using? (Please do not include punctuation such as . , ! ? in your answer. We are looking for alpha characters only.)
 
-##### Hints:
+#### Hints:
 ```
 1. Look for successful (http status code of 200) GET requests from the scanning IP address (identified previously) and inspect the fields related to URL/URI for clues to the CMS in use.
 ```
 
-##### Solution:
+#### Solution:
 During our last search, we also found that the request made by the attacker was made to a URL containing `/joomla/`. This means that `imreallynotbatman.com` is probably a Joomla! site.
 
 ![](./attachments/Pasted%20image%2020220421191202.png)
@@ -99,17 +99,17 @@ Under the `url` field, we can see that all the top URLs contain `/joomla/`.
 
 Answer: `joomla`
 
-#### Question 5:
+### Question 5:
 What is the name of the file that defaced the imreallynotbatman.com website? Please submit only the name of the file with the extension (For example, "notepad.exe" or "favicon.ico").
 
-##### Hints:
+#### Hints:
 ```
 1. First find the IP address of the web server hosting imreallynotbatman.com. You may have found this IP during the course of answering the previous few questions.
 2. Revealing sourcetypes include stream:http, fgt_utm, and suricata
 3. The key here is searching for events where the IP address of the web server is the source. Because it's a web server, we most often see it as a destination but in this case the intruder took control of the server and pulled the defacement file from an internet site.
 ```
 
-##### Solution:
+#### Solution:
 After taking control of the server, the attacker has most likely made the server download the image file. Therefore, we need to set the `src_ip` to the server's IP address. In the first search we did, we found the IP address of `imreallynotbatman.com` to be `192.168.250.70`.
 
 If the download was made using HTTP, we can see all the packets where `192.168.250.70` is the source by using the following query. Also, we can pipe the input and catch all the URLs in order to quickly get an overview of what files have been downloaded.
@@ -126,30 +126,30 @@ That `.jpeg` file must be the one we are looking for.
 
 Answer: `poisonivy-is-coming-for-you-batman.jpeg`
 
-#### Question 6:
+### Question 6:
 This attack used dynamic DNS to resolve to the malicious IP. What is the fully qualified domain name (FQDN) associated with this attack?
 
-##### Hints:
+#### Hints:
 ```
 1. The fully qualified domain name was recorded by Stream, Suricata, and the FortiGate firewall.
 ```
 
-##### Solution:
+#### Solution:
 We found the answer to this question in the answer to question 5.
 
 ![](./attachments/Pasted%20image%2020220422175307.png)
 
 Answer: `prankglassinebracket.jumpingcrab.com`
 
-#### Question 7:
+### Question 7:
 What IP address has Po1s0n1vy tied to domains that are pre-staged to attack Wayne Enterprises?
 
-##### Hints:
+#### Hints:
 ```
 1. The fully qualified domain name was recorded by Stream, Suricata, and the FortiGate firewall.
 ```
 
-##### Solution:
+#### Solution:
 Since the deface image file was downloaded from `prankglassinebracket.jumpingcrab.com`, that is probably a pre-staged machine. We can use an online tool like [ThreatCrowd](https://www.threatcrowd.org/domain.php?domain=prankglassinebracket.jumpingcrab.com) to help us find connections between IP addresses and domains.
 
 Searching for `prankglassinebracket.jumpingcrab.com` shows us a connection to `po1son1vy.com` which further leads us to the IP address `23.22.63.114`.
@@ -171,31 +171,31 @@ There is no doubt `23.22.63.114` has a connection to the attack. It must be the 
 
 Answer: `23.22.63.114`
 
-#### Question 8:
+### Question 8:
 Based on the data gathered from this attack and common open-source intelligence sources for domain names, what is the email address most likely associated with the Po1s0n1vy APT group?
 
-##### Hints:
+#### Hints:
 ```
 1. Malicious IP addresses, like the one in the last question are examples of attacker infrastructure. Infrastructure is often reused by the same group. Use a service like [www.robtex.com](www.robtex.com) to determine other domains that are or have been associated with this attacker infrastructure (IP address).
 2. Use the whois lookup on domaintools.com to iterate through domains associated with this IP and visually search for suspicious email addresses. Your knowledge of Batman will help you here!
 ```
 
-##### Solution:
+#### Solution:
 If we do a new search for `23.22.63.114` at [ThreatCrowd](https://www.threatcrowd.org/ip.php?ip=23.22.63.114) we find a connection to an email address.
 
 ![](./attachments/Pasted%20image%2020220421210622.png)
 
 Answer: `lillian.rose@po1s0n1vy.com`
 
-#### Question 9:
+### Question 9:
 What IP address is likely attempting a brute force password attack against imreallynotbatman.com?
 
-##### Hints:
+#### Hints:
 ```
 1. Login attempts will use the HTTP POST method, and they will include some obvious fields in the form_data field of stream:http events.
 ```
 
-##### Solution:
+#### Solution:
 Because all login attempts are sent via the HTTP POST method, we can filter everything else away by using `http_method=POST`. Also, we will add the keyword `login`. Using `| stats count` to make a nice human-readable output.
 
 **Search Query:**
@@ -210,16 +210,16 @@ sourcetype="stream:http" http_method=POST login
 
 Answer: `23.22.63.114`
 
-#### Question 10:
+### Question 10:
 What is the name of the executable uploaded by Po1s0n1vy? Please include the file extension. (For example, "notepad.exe" or "favicon.ico")
 
-##### Hints:
+#### Hints:
 ```
 1. File uploads to web forms use the HTTP POST method.
 2. The question mentions and executable. Search for common executable filename extensions on Windows systems.
 ```
 
-##### Solution:
+#### Solution:
 We need to set `dest_ip` to `192.168.250.70` because we are looking for something that was sent to the server. Also, `"*.exe"` will find all strings ending in '.exe'.
 
 **Search Query:**
@@ -233,16 +233,16 @@ Scrolling through the output, this event clearly looks out of place. Also, it co
 
 Answer: `3791.exe`
 
-#### Question 11:
+### Question 11:
 What is the MD5 hash of the executable uploaded?
 
-##### Hints:
+#### Hints:
 ```
 1. Search for the file name in a different data source to find evidence of execution, including file hash values.
 2. This is an ideal use case for Microsoft Sysmon data. Determine the sourcetype for Sysmon events and search them for the executable.
 ```
 
-##### Solution:
+#### Solution:
 
 First off, let's do a search query for the executable and `md5`.
 
@@ -272,16 +272,16 @@ We get a single event and upon inspection we can confirm that this event must co
 
 Answer: `AAE3F5A29935E6ABCC2C2754D12A9AF0`
 
-#### Question 12:
+### Question 12:
 GCPD reported that common TTP (Tactics, Techniques, Procedures) for the Po1s0n1vy APT group, if initial compromise fails, is to send a spear-phishing email with custom malware attached to their intended target. This malware is usually connected to Po1s0n1vy's initial attack infrastructure. Using research techniques, provide the SHA256 hash of this malware.
 
-##### Hints:
+#### Hints:
 ```
 1. You need to pivot outside of Splunk to answer this question. Use the IP address discovered earlier to search for malware that has been associated with it in the past.
 2. Experienced analysts know to use sites like www.threatminer.org to search for malware associated with the malicious IP address, but if all else fails, Google it!
 ```
 
-##### Solution:
+#### Solution:
 Since `23.22.63.114` is clearly part of Po1s0n1vy's attack infrastructure, we will search for it using [VirusTotal](https://www.virustotal.com/gui/ip-address/23.22.63.114/relations). Under relations, we find a few files. `MirandaTateScreensaver.scr.exe` is interesting, it looks like it's pretending to be a screensaver.
 
 ![](./attachments/Pasted%20image%2020220422205310.png)
@@ -292,17 +292,17 @@ If we click on it, we can see it's SHA256 hash under the details tab.
 
 Answer: `9709473ab351387aab9e816eff3910b9f28a7a70202e250ed46dba8f820f34a8`
 
-#### Question 13:
+### Question 13:
 What is the special hex code associated with the customized malware discussed in question 12? (Hint: It's not in Splunk)
 
-##### Hints:
+#### Hints:
 ```
 1. Do some further research on the hash discovered in the last question. Virustotal.com is a good starting place.
 2. malwr.com might lead you astray
 3. The hex codes we are after here will be formatted like this: 49 66 20 79 6f 75 20 64 65 63 6f 64 65 20 74 68 65 20 68 69 6e 74 2c 20 79 6f 75 20 64 6f 6e 27 74 20 6e 65 65 64 20 61 20 68 69 6e 74 21. Submit the hex codes, but decode them on the web for fun!
 ```
 
-##### Solution:
+#### Solution:
 Continuing our search on [VirusTotal](https://www.virustotal.com/gui/file/9709473ab351387aab9e816eff3910b9f28a7a70202e250ed46dba8f820f34a8/community), under the community tab, we find the hex value we are hex value we are looking for.
 
 ![](./attachments/Pasted%20image%2020220422211635.png)
@@ -317,17 +317,17 @@ Giving it to [CyberChef](https://gchq.github.io/CyberChef/) reveals what it mean
 
 Answer: `53 74 65 76 65 20 42 72 61 6e 74 27 73 20 42 65 61 72 64 20 69 73 20 61 20 70 6f 77 65 72 66 75 6c 20 74 68 69 6e 67 2e 20 46 69 6e 64 20 74 68 69 73 20 6d 65 73 73 61 67 65 20 61 6e 64 20 61 73 6b 20 68 69 6d 20 74 6f 20 62 75 79 20 79 6f 75 20 61 20 62 65 65 72 21 21 21`
 
-#### Question 14:
+### Question 14:
 One of Po1s0n1vy's staged domains has some disjointed "unique" whois information. Concatenate the two codes together and submit them as a single answer.
 
-##### Hints:
+#### Hints:
 ```
 1. Use a service like www.threatcrowd.org to determine other domains that are or have been associated with the attacker's infrastructure (IP address).
 2. Use a high quality whois site like https://www.whoxy.com/whois-history/demo.php to perform whois lookups against these domains until you see a hex code where you were expecting text. Warning not all whois sites show you all fields!
 3. Use https://www.whoxy.com/whois-history/demo.php with the "waynecorinc.com" domain. The answer is "31 73 74 32 66 69 6E 64 67 65 74 73 66 72 65 65 62 65 65 72 66 72 6F 6D 72 79 61 6E 66 69 6E 64 68 69 6D 74 6F 67 65 74"
 ```
 
-##### Solution:
+#### Solution:
 Going back to our previous search at [ThreatCrowd](https://www.threatcrowd.org/ip.php?ip=23.22.63.114) we can see all the domains connected to the IP. We need to do a whois lookup on them one at a time until we find the one who has some disjointed whois info. [Whoxy](https://www.whoxy.com/) is a great tool for that.
 
 Due to the age of this challenge, the domains are no longer registered and therefore no whois info is live. We might be able to find some historical records, but they will most likely cost money. Since we are too stingy to pay for that, we pulled the answer from this [writeup](https://cybersecurityfreeresource.wordpress.com/2021/12/31/cyberdefenders-org-boss-of-the-soc-v1-walkthrough/) made by [Cyber Security Free Resource](https://www.youtube.com/channel/UCfNM9pG9eest1iHr9Tl5QdA/featured).
@@ -344,16 +344,16 @@ Feeding it to [CyberChef](https://gchq.github.io/CyberChef/) gives us:
 
 Answer: `31 73 74 32 66 69 6E 64 67 65 74 73 66 72 65 65 62 65 65 72 66 72 6F 6D 72 79 61 6E 66 69 6E 64 68 69 6D 74 6F 67 65 74`
 
-#### Question 15:
+### Question 15:
 What was the first brute force password used?
 
-##### Hints:
+#### Hints:
 ```
 1. Login attempts will use the HTTP POST method, and they will include some obvious fields that you can search for in the form_data field of stream:http events.
 2. By default, Splunk will put the most recent events at the top of the list. You can use the "reverse" SPL command to show you least recent first.
 ```
 
-##### Solution:
+#### Solution:
 We can use the search query from question 9 as a starting point. We need to add the attacker's IP address with `src_ip` and changed the count line into a table containing the username and password along with their time stamp. Lastly, we use `sort _time` to sort the list for earliest first (reverse order).
 
 **Search Query:**
@@ -369,16 +369,16 @@ By clicking `_timeᐞ` once, we will get the earliest event shown as the top res
 
 Answer: `12345678`
 
-#### Question 16:
+### Question 16:
 One of the passwords in the brute force attack is [James Brodsky's](https://twitter.com/james_brodsky) favorite Coldplay song. Hint: we are looking for a six-character word on this one. Which is it?
 
-##### Hints:
+#### Hints:
 ```
 1. If you have not done so already, try to extract the attempted password into a new field using the "rex" SPL command and a regular expression. Having the password attempt in its own field will serve you well for the next several questions!
 2. It's not hard to get a list of songs by the artist. Once you have that, use the "len()" function of the "eval" SPL command. For Splunk style points, use a lookup table to match the password attempts with songs.
 ```
 
-##### Solution:
+#### Solution:
 In order to extract the username and password out of `src_content` we can utilize the `rex` SPL command.
 
 **Search Query:**
@@ -420,15 +420,15 @@ Command:
 
 Answer: `yellow`
 
-#### Question 17:
+### Question 17:
 What was the correct password for admin access to the content management system running "imreallynotbatman.com"?
 
-##### Hints:
+#### Hints:
 ```
 1. From the previous questions, you should know how to extract the password attempts. You should also know what IP is submitting passwords. Are any other IP addresses submitting passwords?
 ```
 
-##### Solution:
+#### Solution:
 We can use the first query from the previous question, we just need to make one change. In this case, we want to find all login attempts from any other IP address than the brute forcer. To do this, we just need to change the `=` operator in `src_ip=23.22.63.114` to `!=`.
 
 **Search Query:**
@@ -446,16 +446,16 @@ The admin password appears to be `batman`.
 
 Answer: `batman`
 
-#### Question 18:
+### Question 18:
 What was the average password length used in the password brute-forcing attempt? (Round to a closest whole integer. For example, "5" not "5.23213")
 
-##### Hints:
+#### Hints:
 ```
 1. Calculate the length of every password attempt and store the result in a new field. Then calulate the average of that new field with a stats command. Use eval to average, or just visually inspect.
 2. Then calulate the average of that new length field with a stats command, and finally use eval to round, or just manually round.
 ```
 
-##### Solution:
+#### Solution:
 We can use the `avg()` and `round()` functions to find the average and round it to an integer value.
 
 **Search Query:**
@@ -474,16 +474,16 @@ The returned value is `6`.
 
 Answer: `6`
 
-#### Question 19:
+### Question 19:
 How many seconds elapsed between the brute force password scan identified the correct password and the compromised login? Round to 2 decimal places.
 
-##### Hints:
+#### Hints:
 ```
 1. You'll note from previous answers that one of the passwords was attempted twice. You need to calculate the duration of time between those two attempts.
 2. Need more help? Write a search that returns only the two events in questions, then use either "| delta _time" or "| transaction <extracted-pword-attempt>" SPL commands.
 ```
 
-##### Solution:
+#### Solution:
 The `transaction` SPL commands calculates and makes the duration variable available.
 
 **Search Query:**
@@ -502,15 +502,15 @@ We get `92.17` seconds in return.
 
 Answer: `92.17`
 
-#### Question 20:
+### Question 20:
 How many unique passwords were attempted in the brute force attempt?
 
-##### Hints:
+#### Hints:
 ```
 1. Be sure you are extracting the password attempts correctly, then use a stats function to count unique (not total) attempts.
 ```
 
-##### Solution:
+#### Solution:
 We can use the `dedup` SPL command to remove all duplicates.
 
 **Search Query:**
@@ -527,15 +527,15 @@ We get `412` in return.
 
 Answer: `412`
 
-#### Question 21:
+### Question 21:
 What was the most likely IP address of we8105desk in 24AUG2016?
 
-##### Hints:
+#### Hints:
 ```
 1. Keep it simple and just search for the hostname provided in the question. Try using the stats command to get a count of events by source ip address to point you in the right direction.
 ```
 
-##### Solution:
+#### Solution:
 We can return the likely IP address of `we8105desk` by counting the number of times different `src_ip` addresses appear in our search results. Because the source IP address of a system will appear every time it communicates, it is likely the IP address with the highest count that is the IP address of the system. We can use `sort - count` to sort the output, so the highest number will de displayed at the top of the list.
 
 **Search Query:**
@@ -551,15 +551,15 @@ We get a list in return, it appears that `192.168.250.100` is likely the IP addr
 
 Answer: ``
 
-#### Question 22:
+### Question 22:
 Amongst the Suricata signatures that detected the Cerber malware, which one alerted the fewest number of times? Submit ONLY the signature ID value as the answer. (No punctuation, just 7 integers.)
 
-##### Hints:
+#### Hints:
 ```
 1. Keep it simple and start your search by looking at only the sourcetype associated with Suricata and maybe even the name of the malware in question. The field containing the signature ID should be obvious. Use stats to create a count by the field containing the signature ID.
 ```
 
-##### Solution:
+#### Solution:
 We will search for `sourcetype=suricata` so we only get Suricata events, combined with the name of the malware `cerber`.
 
 **Search Query:**
@@ -573,16 +573,16 @@ Looking through the fields available after the search, we find `alert.signature_
 
 Answer: `2816763`
 
-#### Question 23:
+### Question 23:
 What fully qualified domain name (FQDN) makes the Cerber ransomware attempt to direct the user to at the end of its encryption phase?
 
-##### Hints:
+#### Hints:
 ```
 1. Search stream:dns data for A queries coming from the infected workstation IP on the date in question. Try and narrow your search period.
 2. Perform a shannon entropy analysis on the query{} field using URL toolbox by adding this to the end of the search: |`ut_shannon(query{})` | stats count by ut_shannon, query{} | sort -ut_shannon
 ```
 
-##### Solution:
+#### Solution:
 We can use `ut_shannon` to order our list after string complexity. This will make it easier to group false positives and filter them out.
 
 In order to make `ut_shannon` work, we need the URL Toolbox app extension. If not already installed, the easiest way to get it is via the in-product app browser (Manage Apps -> Browse More Apps).
@@ -622,10 +622,10 @@ If we compare it with the screenshot, we got from the computer hit by the ransom
 
 Answer: `cerberhhyed5frqa.xmfir0.win`
 
-#### Question 24:
+### Question 24:
 What was the first suspicious domain visited by we8105desk in 24AUG2016?
 
-##### Hints:
+#### Hints:
 ```
 1. Search stream:dns data for A queries coming from the infected workstation IP on the date in question.
 2. Use the "| reverse" SPL command to show oldest events first.
@@ -633,7 +633,7 @@ What was the first suspicious domain visited by we8105desk in 24AUG2016?
 4. Go and git some IOCs on Cerber. Then compare to the DNS Data
 ```
 
-##### Solution:
+#### Solution:
 First, on the right side of the page, we need to set the date to 24AUG2016.
 
 ![](./attachments/Pasted%20image%2020220423143240.png)
@@ -660,15 +660,15 @@ sourcetype=stream:dns src_ip=192.168.250.100 query=*.* NOT .local AND NOT .arpa 
 
 Answer: `solidaritedeproximite.org`
 
-#### Question 25:
+### Question 25:
 During the initial Cerber infection, a VB script is run. The entire script from this execution, pre-pended by the name of the launching .exe, can be found in a field in Splunk. What is the length in characters of the value of this field?
 
-##### Hints:
+#### Hints:
 ```
 1. Keep it simple. Start by looking at Sysmon data for the infected device on the date in question. Calculate the length of the command line using the "len()" function of the "eval" SPL command, and give your eyes a break by using the Splunk table command.
 ```
 
-##### Solution:
+#### Solution:
 Initially, we start with this search query in order to locate the script in question. Since it has been executed, it must be in the `CommandLine` field.
 
 **Search Query:**
@@ -696,15 +696,15 @@ It returns `4490`.
 
 Answer: `4490`
 
-#### Question 26:
+### Question 26:
 What is the name of the USB key inserted by Bob Smith?
 
-##### Hints:
+#### Hints:
 ```
 1. Tough question. Perhaps you should give http://answers.splunk.com a try.
 ```
 
-##### Solution:
+#### Solution:
 When USB devices are plugged in, their name is stored in the `friendlyname` key in Windows registry.
 
 **Search Query:**
@@ -716,15 +716,15 @@ sourcetype=WinRegistry friendlyname
 
 Answer: `MIRANDA_PRI`
 
-#### Question 27:
+### Question 27:
 Bob Smith's workstation (we8105desk) was connected to a file server during the ransomware outbreak. What is the IP address of the file server?
 
-##### Hints:
+#### Hints:
 ```
 1. Search for SMB (Windows file sharing protocol) traffic from the infected device on the date in question. The "stats" SPL command can be used to count the most common destination IP for the SMB protocol.
 ```
 
-##### Solution:
+#### Solution:
 This query will fetch all the SMB events from Bob's workstation (`192.168.250.100`).
 
 **Search Query:**
@@ -739,16 +739,16 @@ It has been connecting to `192.168.250.20`.
 
 Answer: `192.168.250.20`
 
-#### Question 28:
+### Question 28:
 How many distinct PDFs did the ransomware encrypt on the remote file server?
 
-##### Hints:
+#### Hints:
 ```
 1. Don't use SMB this time - it's a trap! Windows event logs are the way to go for this one. Focus on the event types that deal with windows shares and narrow the search by looking for distinct filenames for the extension in question.
 ```
 
-##### Solution:
-First, we need to know which source types contain `*.pdf`.
+#### Solution:
+First, we need to know which sourcetypes contain `*.pdf`.
 
 **Search Query:**
 ```
@@ -798,15 +798,15 @@ We get `257` in return.
 
 Answer: `257`
 
-#### Question 29:
+### Question 29:
 The VBScript found in question 25 launches 121214.tmp. What is the ParentProcessId of this initial launch?
 
-##### Hints:
+#### Hints:
 ```
 1. Embrace your Sysmon data. Search for a command issued by the infected device on the date in question referencing the filename in question, and use the process_id, ParentProcessId, CommandLine, and ParentCommandLine, to track down the parent process id of them all.
 ```
 
-##### Solution:
+#### Solution:
 This is a quick one, we'll simply search for the `121214.tmp` and `*.vbs` file.
 
 **Search Query:**
@@ -820,16 +820,16 @@ In the field's section under `parent_proccess_id` we can see that the ID is `396
 
 Answer: `3968`
 
-#### Question 30:
+### Question 30:
 The Cerber ransomware encrypts files located in Bob Smith's Windows profile. How many .txt files does it encrypt?
 
-##### Hints:
+#### Hints:
 ```
 1. Sysmon to the rescue again. Focus on the infected machine as well as the user profile while searching for the filename extension in question.
 2. In Sysmon events, EventCode=2 indicates file creation time has changed. Watch out for duplicates!
 ```
 
-##### Solution:
+#### Solution:
 Since we know the target is Bob, we can set the `TargetFilename` to be his directory.
 
 **Search Query:**
@@ -844,15 +844,15 @@ We get `406` in return.
 
 Answer: `406`
 
-#### Question 31:
+### Question 31:
 The malware downloads a file that contains the Cerber ransomware crypto code. What is the name of that file?
 
-##### Hints:
+#### Hints:
 ```
 1. When looking for potentially malicious file, start your search with the Suricata data. Narrow your search by focusing on the infected device. Remember malware does not always have to begin as an executable file.
 ```
 
-##### Solution:
+#### Solution:
 Since the malware is installed on `192.168.250.100` that will be the source IP address. The file is probably downloaded from one of the malicious domains we found in question 24.
 
 **Search Query:**
@@ -867,15 +867,15 @@ The malware has downloaded what appears to be an image file from `solidaritedepr
 
 Answer: `mhtr.jpg`
 
-#### Question 32:
+### Question 32:
 Now that you know the name of the ransomware's encryptor file, what obfuscation technique does it likely use?
 
-##### Hints:
+#### Hints:
 ```
 1. The enrcyptor file was an image!
 ```
 
-##### Solution:
+#### Solution:
 When you try to hide the existence of something by encapsulating it in something else, it is called [Steganography](https://en.wikipedia.org/wiki/Steganography). In this case, the executable was made to look like an innocent image.
 
 Answer: `Steganography`
