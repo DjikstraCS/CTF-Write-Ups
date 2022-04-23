@@ -25,7 +25,7 @@ In the second scenario, one of your users is greeted by this image on a Windows
 
 ![](./attachments/Pasted%20image%2020220422134641.png)
 
----
+# Questions:
 ## Question 1:
 This is a simple question to get you familiar with submitting answers. What is the name of the company that makes the software that you are using for this competition? Just a six-letter word with no punctuation.
 
