@@ -149,7 +149,7 @@ What IP address has Po1s0n1vy tied to domains that are pre-staged to attack Wayn
 ```
 
 ### Solution:
-Since the deface image file was downloaded from `prankglassinebracket.jumpingcrab.com`, that is probably a pre-staged machine. We can use an online tool like [ThreatCrowd](https://www.threatcrowd.org/domain.php?domain=prankglassinebracket.jumpingcrab.com) to help us find connections between IP addresses and domains.
+Since the deface image file was downloaded from `prankglassinebracket.jumpingcrab.com`, that is probably a pre-staged machine. We can use an online tool like [Threat Crowd](https://www.threatcrowd.org/domain.php?domain=prankglassinebracket.jumpingcrab.com) to help us find connections between IP addresses and domains.
 
 Searching for `prankglassinebracket.jumpingcrab.com` shows us a connection to `po1son1vy.com` which further leads us to the IP address `23.22.63.114`.
 
@@ -180,7 +180,7 @@ Based on the data gathered from this attack and common open-source intelligence 
 ```
 
 ### Solution:
-If we do a new search for `23.22.63.114` at [ThreatCrowd](https://www.threatcrowd.org/ip.php?ip=23.22.63.114) we find a connection to an email address.
+If we do a new search for `23.22.63.114` at [Threat Crowd](https://www.threatcrowd.org/ip.php?ip=23.22.63.114) we find a connection to an email address.
 
 ![](./attachments/Pasted%20image%2020220421210622.png)
 
@@ -281,7 +281,7 @@ GCPD reported that common TTP (Tactics, Techniques, Procedures) for the Po1s0n1v
 ```
 
 ### Solution:
-Since `23.22.63.114` is clearly part of Po1s0n1vy's attack infrastructure, we will search for it using [VirusTotal](https://www.virustotal.com/gui/ip-address/23.22.63.114/relations). Under relations, we find a few files. `MirandaTateScreensaver.scr.exe` is interesting, it looks like it's pretending to be a screensaver.
+Since `23.22.63.114` is clearly part of Po1s0n1vy's attack infrastructure, we will search for it using [Virus Total](https://www.virustotal.com/gui/ip-address/23.22.63.114/relations). Under relations, we find a few files. `MirandaTateScreensaver.scr.exe` is interesting, it looks like it's pretending to be a screensaver.
 
 ![](./attachments/Pasted%20image%2020220422205310.png)
 
@@ -302,13 +302,13 @@ What is the special hex code associated with the customized malware discussed in
 ```
 
 ### Solution:
-Continuing our search on [VirusTotal](https://www.virustotal.com/gui/file/9709473ab351387aab9e816eff3910b9f28a7a70202e250ed46dba8f820f34a8/community), under the community tab, we find the hex value we are hex value we are looking for.
+Continuing our search on [Virus Total](https://www.virustotal.com/gui/file/9709473ab351387aab9e816eff3910b9f28a7a70202e250ed46dba8f820f34a8/community), under the community tab, we find the hex value we are hex value we are looking for.
 
 ![](./attachments/Pasted%20image%2020220422211635.png)
 
 ![](./attachments/Pasted%20image%2020220422211703.png)
 
-Giving it to [CyberChef](https://gchq.github.io/CyberChef/) reveals what it means in plain English.
+Giving it to [Cyber Chef](https://gchq.github.io/CyberChef/) reveals what it means in plain English.
 
 "`Steve Brant's Beard is a powerful thing. Find this message and ask him to buy you a beer!!!`"
 
@@ -327,7 +327,7 @@ One of Po1s0n1vy's staged domains has some disjointed "unique" whois information
 ```
 
 ### Solution:
-Going back to our previous search at [ThreatCrowd](https://www.threatcrowd.org/ip.php?ip=23.22.63.114) we can see all the domains connected to the IP. We need to do a whois lookup on them one at a time until we find the one who has some disjointed whois info. [Whoxy](https://www.whoxy.com/) is a great tool for that.
+Going back to our previous search at [Threat Crowd](https://www.threatcrowd.org/ip.php?ip=23.22.63.114) we can see all the domains connected to the IP. We need to do a whois lookup on them one at a time until we find the one who has some disjointed whois info. [Whoxy](https://www.whoxy.com/) is a great tool for that.
 
 Due to the age of this challenge, the domains are no longer registered and therefore no whois info is live. We might be able to find some historical records, but they will most likely cost money. Since we are too stingy to pay for that, we pulled the answer from this [writeup](https://cybersecurityfreeresource.wordpress.com/2021/12/31/cyberdefenders-org-boss-of-the-soc-v1-walkthrough/) made by [Cyber Security Free Resource](https://www.youtube.com/channel/UCfNM9pG9eest1iHr9Tl5QdA/featured).
 
@@ -335,7 +335,7 @@ Due to the age of this challenge, the domains are no longer registered and there
 
 ![](./attachments/Pasted%20image%2020220422220102.png)
 
-Feeding it to [CyberChef](https://gchq.github.io/CyberChef/) gives us:
+Feeding it to [Cyber Chef](https://gchq.github.io/CyberChef/) gives us:
 
 "`1st (and) 2(nd) find gets free beer from ryan, find him to get (it)`"
 
