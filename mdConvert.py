@@ -1,6 +1,8 @@
 import os
 
-print('Welcome to mdConvert!')
+print('\nWelcome to mdConvert!')
+
+conversions = 0
 
 for path, dirs, files in os.walk('.\\'):
     for filename in files:
@@ -19,5 +21,14 @@ for path, dirs, files in os.walk('.\\'):
                 with open(os.path.join(path, filename), 'w', encoding='utf8') as f: 
                     f.writelines(lines)
                 print('\nFile converted: ' + path.strip('.') + '\\' + filename)
-if input('\nDone!\n\nPress Enter to exit...'):
+                conversions = conversions + 1
+
+if conversions == 1:
+    print('\n1 file converted.')
+elif conversions > 1:
+    print('\n' + str(conversions) + ' files converted.')
+else:
+    print('\nNo files converted.')
+
+if input('\nPress Enter to exit...'):
     exit(0)
