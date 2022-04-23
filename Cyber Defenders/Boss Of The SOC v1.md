@@ -548,7 +548,7 @@ We get a list in return, it appears that `192.168.250.100` is likely the IP addr
 
 ![](./attachments/Pasted%20image%2020220423104628.png)
 
-Answer: ``
+Answer: `192.168.250.100`
 
 ## Question 22:
 Amongst the Suricata signatures that detected the Cerber malware, which one alerted the fewest number of times? Submit ONLY the signature ID value as the answer. (No punctuation, just 7 integers.)
@@ -878,6 +878,8 @@ Now that you know the name of the ransomware's encryptor file, what obfuscation 
 When you try to hide the existence of something by encapsulating it in something else, it is called [Steganography](https://en.wikipedia.org/wiki/Steganography). In this case, the executable was made to look like an innocent image.
 
 Answer: `Steganography`
+
+![](./attachments/Pasted%20image%2020220423232646.png)
 
 ---
 **Tags:** [[Cyber Defenders]]

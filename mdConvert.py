@@ -1,5 +1,7 @@
 import os
 
+print('Welcome to the mdConvert!')
+
 for path, dirs, files in os.walk('.\\'):
     for filename in files:
         if filename.endswith('.md'):
@@ -17,5 +19,5 @@ for path, dirs, files in os.walk('.\\'):
                 with open(os.path.join(path, filename), 'w', encoding='utf8') as f: 
                     f.writelines(lines)
                 print('\nFile converted: ' + path.strip('.') + '\\' + filename)
-if input('\nPress Enter to exit'):
+if input('\nDone!\n\nPress Enter to exit...'):
     exit(0)
