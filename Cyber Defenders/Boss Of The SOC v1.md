@@ -36,7 +36,6 @@ The software we will be using is made by Splunk, this is clear due to the logo o
 
 **Answer:** `Splunk`
 
----
 ## Question 2:
 What is the likely IP address of someone from the Po1s0n1vy group scanning imreallynotbatman.com for web application vulnerabilities?
 
@@ -60,7 +59,6 @@ In the first result we find a source header containing a browser user-agent whic
 
 **Answer:** `40.80.148.42`
 
----
 ## Question 3:
 What company created the web vulnerability scanner used by Po1s0n1vy? Type the company name. (For example, "Microsoft" or "Oracle")
 
@@ -74,7 +72,6 @@ This one is free. We already found the answer during our last search query.
 
 Answer: `Acunetix`
 
----
 ## Question 4:
 What content management system is imreallynotbatman.com likely using? (Please do not include punctuation such as . , ! ? in your answer. We are looking for alpha characters only.)
 
@@ -101,7 +98,6 @@ Under the `url` field, we can see that all the top URLs contain `/joomla/`.
 
 Answer: `joomla`
 
----
 ## Question 5:
 What is the name of the file that defaced the imreallynotbatman.com website? Please submit only the name of the file with the extension (For example, "notepad.exe" or "favicon.ico").
 
@@ -129,7 +125,6 @@ That `.jpeg` file must be the one we are looking for.
 
 Answer: `poisonivy-is-coming-for-you-batman.jpeg`
 
----
 ## Question 6:
 This attack used dynamic DNS to resolve to the malicious IP. What is the fully qualified domain name (FQDN) associated with this attack?
 
@@ -145,7 +140,6 @@ We found the answer to this question in the answer to question 5.
 
 Answer: `prankglassinebracket.jumpingcrab.com`
 
----
 ## Question 7:
 What IP address has Po1s0n1vy tied to domains that are pre-staged to attack Wayne Enterprises?
 
@@ -176,7 +170,6 @@ There is no doubt `23.22.63.114` has a connection to the attack. It must be the 
 
 Answer: `23.22.63.114`
 
----
 ## Question 8:
 Based on the data gathered from this attack and common open-source intelligence sources for domain names, what is the email address most likely associated with the Po1s0n1vy APT group?
 
@@ -193,7 +186,6 @@ If we do a new search for `23.22.63.114` at [ThreatCrowd](https://www.threatcrow
 
 Answer: `lillian.rose@po1s0n1vy.com`
 
----
 ## Question 9:
 What IP address is likely attempting a brute force password attack against imreallynotbatman.com?
 
@@ -217,7 +209,6 @@ sourcetype="stream:http" http_method=POST login
 
 Answer: `23.22.63.114`
 
----
 ## Question 10:
 What is the name of the executable uploaded by Po1s0n1vy? Please include the file extension. (For example, "notepad.exe" or "favicon.ico")
 
@@ -241,7 +232,6 @@ Scrolling through the output, this event clearly looks out of place. Also, it co
 
 Answer: `3791.exe`
 
----
 ## Question 11:
 What is the MD5 hash of the executable uploaded?
 
@@ -281,7 +271,6 @@ We get a single event and upon inspection we can confirm that this event must co
 
 Answer: `AAE3F5A29935E6ABCC2C2754D12A9AF0`
 
----
 ## Question 12:
 GCPD reported that common TTP (Tactics, Techniques, Procedures) for the Po1s0n1vy APT group, if initial compromise fails, is to send a spear-phishing email with custom malware attached to their intended target. This malware is usually connected to Po1s0n1vy's initial attack infrastructure. Using research techniques, provide the SHA256 hash of this malware.
 
@@ -302,7 +291,6 @@ If we click on it, we can see it's SHA256 hash under the details tab.
 
 Answer: `9709473ab351387aab9e816eff3910b9f28a7a70202e250ed46dba8f820f34a8`
 
----
 ## Question 13:
 What is the special hex code associated with the customized malware discussed in question 12? (Hint: It's not in Splunk)
 
@@ -328,7 +316,6 @@ Giving it to [CyberChef](https://gchq.github.io/CyberChef/) reveals what it mean
 
 Answer: `53 74 65 76 65 20 42 72 61 6e 74 27 73 20 42 65 61 72 64 20 69 73 20 61 20 70 6f 77 65 72 66 75 6c 20 74 68 69 6e 67 2e 20 46 69 6e 64 20 74 68 69 73 20 6d 65 73 73 61 67 65 20 61 6e 64 20 61 73 6b 20 68 69 6d 20 74 6f 20 62 75 79 20 79 6f 75 20 61 20 62 65 65 72 21 21 21`
 
----
 ## Question 14:
 One of Po1s0n1vy's staged domains has some disjointed "unique" whois information. Concatenate the two codes together and submit them as a single answer.
 
@@ -356,7 +343,6 @@ Feeding it to [CyberChef](https://gchq.github.io/CyberChef/) gives us:
 
 Answer: `31 73 74 32 66 69 6E 64 67 65 74 73 66 72 65 65 62 65 65 72 66 72 6F 6D 72 79 61 6E 66 69 6E 64 68 69 6D 74 6F 67 65 74`
 
----
 ## Question 15:
 What was the first brute force password used?
 
@@ -382,7 +368,6 @@ By clicking `_timeᐞ` once, we will get the earliest event shown as the top res
 
 Answer: `12345678`
 
----
 ## Question 16:
 One of the passwords in the brute force attack is [James Brodsky's](https://twitter.com/james_brodsky) favorite Coldplay song. Hint: we are looking for a six-character word on this one. Which is it?
 
@@ -434,7 +419,6 @@ Command:
 
 Answer: `yellow`
 
----
 ## Question 17:
 What was the correct password for admin access to the content management system running "imreallynotbatman.com"?
 
@@ -461,7 +445,6 @@ The admin password appears to be `batman`.
 
 Answer: `batman`
 
----
 ## Question 18:
 What was the average password length used in the password brute-forcing attempt? (Round to a closest whole integer. For example, "5" not "5.23213")
 
@@ -490,7 +473,6 @@ The returned value is `6`.
 
 Answer: `6`
 
----
 ## Question 19:
 How many seconds elapsed between the brute force password scan identified the correct password and the compromised login? Round to 2 decimal places.
 
@@ -519,7 +501,6 @@ We get `92.17` seconds in return.
 
 Answer: `92.17`
 
----
 ## Question 20:
 How many unique passwords were attempted in the brute force attempt?
 
@@ -545,7 +526,6 @@ We get `412` in return.
 
 Answer: `412`
 
----
 ## Question 21:
 What was the most likely IP address of we8105desk in 24AUG2016?
 
@@ -570,7 +550,6 @@ We get a list in return, it appears that `192.168.250.100` is likely the IP addr
 
 Answer: ``
 
----
 ## Question 22:
 Amongst the Suricata signatures that detected the Cerber malware, which one alerted the fewest number of times? Submit ONLY the signature ID value as the answer. (No punctuation, just 7 integers.)
 
@@ -593,7 +572,6 @@ Looking through the fields available after the search, we find `alert.signature_
 
 Answer: `2816763`
 
----
 ## Question 23:
 What fully qualified domain name (FQDN) makes the Cerber ransomware attempt to direct the user to at the end of its encryption phase?
 
@@ -643,7 +621,6 @@ If we compare it with the screenshot, we got from the computer hit by the ransom
 
 Answer: `cerberhhyed5frqa.xmfir0.win`
 
----
 ## Question 24:
 What was the first suspicious domain visited by we8105desk in 24AUG2016?
 
@@ -682,7 +659,6 @@ sourcetype=stream:dns src_ip=192.168.250.100 query=*.* NOT .local AND NOT .arpa 
 
 Answer: `solidaritedeproximite.org`
 
----
 ## Question 25:
 During the initial Cerber infection, a VB script is run. The entire script from this execution, pre-pended by the name of the launching .exe, can be found in a field in Splunk. What is the length in characters of the value of this field?
 
@@ -719,7 +695,6 @@ It returns `4490`.
 
 Answer: `4490`
 
----
 ## Question 26:
 What is the name of the USB key inserted by Bob Smith?
 
@@ -740,7 +715,6 @@ sourcetype=WinRegistry friendlyname
 
 Answer: `MIRANDA_PRI`
 
----
 ## Question 27:
 Bob Smith's workstation (we8105desk) was connected to a file server during the ransomware outbreak. What is the IP address of the file server?
 
@@ -764,7 +738,6 @@ It has been connecting to `192.168.250.20`.
 
 Answer: `192.168.250.20`
 
----
 ## Question 28:
 How many distinct PDFs did the ransomware encrypt on the remote file server?
 
@@ -824,7 +797,6 @@ We get `257` in return.
 
 Answer: `257`
 
----
 ## Question 29:
 The VBScript found in question 25 launches 121214.tmp. What is the ParentProcessId of this initial launch?
 
@@ -847,7 +819,6 @@ In the field's section under `parent_proccess_id` we can see that the ID is `396
 
 Answer: `3968`
 
----
 ## Question 30:
 The Cerber ransomware encrypts files located in Bob Smith's Windows profile. How many .txt files does it encrypt?
 
@@ -872,7 +843,6 @@ We get `406` in return.
 
 Answer: `406`
 
----
 ## Question 31:
 The malware downloads a file that contains the Cerber ransomware crypto code. What is the name of that file?
 
@@ -896,7 +866,6 @@ The malware has downloaded what appears to be an image file from `solidaritedepr
 
 Answer: `mhtr.jpg`
 
----
 ## Question 32:
 Now that you know the name of the ransomware's encryptor file, what obfuscation technique does it likely use?
 
