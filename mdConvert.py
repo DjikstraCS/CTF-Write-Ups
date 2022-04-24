@@ -1,6 +1,9 @@
 import os
 
-print('\nWelcome to mdConvert!')
+print('\n--==≡≡≡___Welcome_to_mdConvert!___≡≡≡==--')
+
+if input('\nStart conversion? (Y/n) ').lower() != 'y':
+    exit(0)
 
 conversions = 0
 
@@ -30,5 +33,5 @@ elif conversions > 1:
 else:
     print('\nNo files converted.')
 
-if input('\nPress Enter to exit...'):
+if input('Press Enter to exit...'):
     exit(0)
