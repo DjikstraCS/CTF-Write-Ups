@@ -5,7 +5,7 @@ A collection of write-ups for CTF challenges I've solved.
 - Hack the Box
 - PicoCTF
 
-If you find any incorrect information in these pages, then please let me know.  
+If you find any incorrect information in these pages, please let me know.  
 
 ---
 ## Python script:
