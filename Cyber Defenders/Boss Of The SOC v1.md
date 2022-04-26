@@ -223,7 +223,7 @@ We need to set `dest_ip` to `192.168.250.70` because we are looking for somethin
 
 **Search Query:**
 ```
-dest_ip="192.168.250.70" "*.exe"
+sourcetype="stream:http" dest_ip="192.168.250.70" *.exe
 ```
 
 Scrolling through the output, this event clearly looks out of place. Also, it contains an '.exe' file which doesn't look like a standard windows process.
@@ -358,7 +358,7 @@ We can use the search query from question 9 as a starting point. We need to add 
 **Search Query:**
 ```
 sourcetype="stream:http" http_method=POST src_ip="23.22.63.114" login
-| table _time, src_content
+| table _time, form_data
 | sort by _time
 ```
 
@@ -736,7 +736,7 @@ It has been connecting to `192.168.250.20`.
 
 ![](./attachments/Pasted%20image%2020220423165316.png)
 
-Answer: `192.168.250.20`
+Answer: `|**`
 
 ## Question 28:
 How many distinct PDFs did the ransomware encrypt on the remote file server?

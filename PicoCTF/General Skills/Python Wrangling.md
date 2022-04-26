@@ -49,4 +49,4 @@ The flag is decrypted!
 **Flag:** `picoCTF{4p0110_1n_7h3_h0us3_192ee2db}`
 
 ---
-**Tags:** [[PicoCTF]] [[bash]] [[Python]] [[wget]] [[cd]] [[ll]]
+**Tags:** [[PicoCTF]] [[Bash]] [[Python]] [[wget]] [[cd]] [[ll]]

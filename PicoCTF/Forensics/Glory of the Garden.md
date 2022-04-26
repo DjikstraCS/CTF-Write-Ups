@@ -30,4 +30,4 @@ Easy!
 **Flag:** `picoCTF{more_than_m33ts_the_3y3657BaB2C}`
 
 ---
-**Tags:** [[PicoCTF]] [[bash]] [[cat]] [[|]] [[grep]]
+**Tags:** [[PicoCTF]] [[Bash]] [[cat]] [[|]] [[grep]]

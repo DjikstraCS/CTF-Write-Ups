@@ -41,4 +41,4 @@ There we go!
 **Flag:** `picoCTF{the_m3tadata_1s_modified}`
 
 ---
-**Tags:** [[PicoCTF]] [[bash]] [[cat]] [[grep]] [[|]] [[less]] [[Base64]]
+**Tags:** [[PicoCTF]] [[Bash]] [[cat]] [[grep]] [[|]] [[less]] [[Base64]]

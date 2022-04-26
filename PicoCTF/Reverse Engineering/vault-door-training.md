@@ -32,4 +32,4 @@ And there we have it!
 **Flag:** `picoCTF{w4rm1ng_Up_w1tH_jAv4_eec0716b713}`
 
 ---
-**Tags:** [[PicoCTF]] [[bash]] [[cat]] [[|]] [[grep]] [[gedit]]
+**Tags:** [[PicoCTF]] [[Bash]] [[cat]] [[|]] [[grep]] [[gedit]]

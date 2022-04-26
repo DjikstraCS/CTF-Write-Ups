@@ -40,4 +40,4 @@ That's better, we got the flag.
 **Flag:** `picoCTF{l3arn_th3_r0p35}`
 
 ---
-**Tags:** [[PicoCTF]] [[Base64]] [[Base32]] [[echo]] [[bash]] [[|]]
+**Tags:** [[PicoCTF]] [[Base64]] [[Base32]] [[echo]] [[Bash]] [[|]]

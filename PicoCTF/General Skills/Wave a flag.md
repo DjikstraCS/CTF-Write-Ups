@@ -42,4 +42,4 @@ We got the flag!
 **Flag:** `picoCTF{b1scu1ts_4nd_gr4vy_616f7182}`
 
 ---
-**Tags:** [[PicoCTF]] [[bash]] [[chmod]]
+**Tags:** [[PicoCTF]] [[Bash]] [[chmod]]

@@ -35,4 +35,4 @@ And there it is.
 
 
 ---
-**Tags:** [[PicoCTF]] [[bash]] [[cat]] [[cd]] [[ll]]
+**Tags:** [[PicoCTF]] [[Bash]] [[cat]] [[cd]] [[ll]]

@@ -51,4 +51,4 @@ And there is the last part of the flag!
 **Flag:** `picoCTF{xxsh_0ut_0f_\/\/4t3r_3ca613a1}`
 
 ---
-**Tags:** [[PicoCTF]] [[ll]] [[ls]] [[cat]] [[ssh]] [[bash]] [[cd]]
+**Tags:** [[PicoCTF]] [[ll]] [[ls]] [[cat]] [[ssh]] [[Bash]] [[cd]]
