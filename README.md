@@ -18,7 +18,7 @@ Works really well in combination with [LightShot](https://app.prntscr.com/en/ind
 ### Install:
 1. Put the script in the root of the Obsidian file structure you want to make Git compatible.
 	- It will convert all files in the current directory plus all subdirectories.
-2. Obsidian Wikilinks needs to be turned off.
+2. Obsidian \[\[Wikilinks]] needs to be turned off.
 	- Obsidian Settings -> Files and links -> Use \[\[Wikilinks]] -> `OFF`
 3. In order to view and execute directly from Obsidian, 'Detect all file extensions' needs to be turned on.
 	- Obsidian Settings -> Files and links -> Detect all file extensions -> `ON`
