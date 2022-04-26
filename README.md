@@ -9,7 +9,7 @@ If you find any incorrect information in these pages, then please let me know.
 
 ---
 ## Python script:
-The Python script is converting all .md files in Obsidian to GitHub compatible Markdown.
+The Python script converts all .md files in Obsidian to GitHub compatible Markdown.
 
 Does this by adding the full file path to **pasted** images.
 
