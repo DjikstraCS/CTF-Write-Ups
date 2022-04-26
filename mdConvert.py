@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import os
 
 print('\n--==≡≡≡___Welcome_to_mdConvert!___≡≡≡==--')
