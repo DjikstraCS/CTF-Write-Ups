@@ -13,7 +13,7 @@ The Python script is converting all .md files in Obsidian to GitHub compatible M
 
 Does this by adding the full file path to **pasted** images.
 
-Works really well in cambination with [LightShot](https://app.prntscr.com/en/index.html).
+Works really well in combination with [LightShot](https://app.prntscr.com/en/index.html).
 
 ### Install:
 1. Obsidian Wikilinks needs to be turned off.
