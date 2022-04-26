@@ -16,7 +16,7 @@ Does this by adding the full file path to **pasted** images.
 Works really well in combination with [LightShot](https://app.prntscr.com/en/index.html).
 
 ### Install:
-1. Put the script in the root of the file strucre you want to make Git compatible.
+1. Put the script in the root of the Obsidian file structure you want to make Git compatible.
 	- It will convert all files in the current directory plus all subdirectories.
 2. Obsidian Wikilinks needs to be turned off.
 	- Obsidian Settings -> Files and links -> Use \[\[Wikilinks]] -> `OFF`
