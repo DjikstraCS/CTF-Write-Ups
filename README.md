@@ -16,14 +16,14 @@ Does this by adding the full file path to **pasted** images.
 Works really well in combination with [LightShot](https://app.prntscr.com/en/index.html).
 
 ### Install:
-1. Obsidian Wikilinks needs to be turned off.
-	- Obsidian Settings -> Files and links -> Use \[\[Wikilinks]] -> `OFF`
-2. 'Default location for new attachments' needs to be 'in sub folder under current folder'.
-	- Obsidian Settings -> Files and links -> Default location for new attachments -> In sub folder under current folder -> Subfolder name -> '*attachments*'.
-3. Put the script anywhere in your Obsidian vault 
+1. Put the script anywhere in your Obsidian vault 
 	- It will convert all files in the current directory plus all subdirectories.
-4. Edit the '*attachments*' folder path in script to local path if necessary.
-5. In order to view and execute directly from Obsidian, 'Detect all file extensions' needs to be turned on.
+2. Obsidian Wikilinks needs to be turned off.
+	- Obsidian Settings -> Files and links -> Use \[\[Wikilinks]] -> `OFF`
+3. In order to view and execute directly from Obsidian, 'Detect all file extensions' needs to be turned on.
 	- Obsidian Settings -> Files and links -> Detect all file extensions -> `ON`
+4. 'Default location for new attachments' needs to be 'in sub folder under current folder'.
+	- Obsidian Settings -> Files and links -> Default location for new attachments -> In sub folder under current folder -> Subfolder name -> '*attachments*'.
+5. (Optional) Edit the '*attachments*' folder path in script to local path if necessary.
 
 ---
