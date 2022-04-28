@@ -24,6 +24,6 @@ Combine it with [LightShot](https://app.prntscr.com/en/index.html) and you got y
 	- Obsidian Settings -> Files and links -> Detect all file extensions -> `ON`
 4. 'Default location for new attachments' needs to be 'in sub folder under current folder'.
 	- Obsidian Settings -> Files and links -> Default location for new attachments -> In sub folder under current folder -> Subfolder name -> `attachments`.
-	- (Optional) Edit the `./attachments/` folder name in script to local path if necessary.
+	- Edit the `./attachments/` folder name in script to local path if necessary.
 
 ---
