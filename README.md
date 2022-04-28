@@ -13,7 +13,7 @@ The Python script converts all .md files in Obsidian to GitHub compatible Markdo
 
 Does this by adding the full file path to **pasted** images.
 
-Combine it with [LightShot](https://app.prntscr.com/en/index.html) and you got yourself a super efficient documentation workflow.
+Combine it with [LightShot](https://app.prntscr.com/en/index.html) and you got yourself a super efficient Git compatible documentation workflow.
 
 ### Install:
 1. Put the script in the root of the Obsidian file structure you want to make GitHub compatible.
