@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 #Author: DjikstraCS
-
 import os
 
-print('\n-=≡| Welcome to mdConvert! |≡=-')
+print('\n-=≡| Welcome to mdConvert |≡=-')
 
 if input('\nStart conversion? (Y/n) ').lower().strip() != 'y':
     exit(0)
