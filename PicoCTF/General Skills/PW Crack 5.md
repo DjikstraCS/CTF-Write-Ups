@@ -40,7 +40,7 @@ Please enter correct password for flag: 1234
 That password is incorrect
 ```
 
-We need to find the password. If we open the script in a code friendly editor like `gedit` to have a closer look at how it validates the password, we can see that the password is checked against a hash. We also get a list of 7 possible passwords.
+We need to find the password. If we open the script in a code friendly editor like `gedit` to have a closer look at how it validates the password, we can see that the password is checked against a hash. We also get a list of 7 possible passwords in a text file called `dictionary.txt`.
 
 ```py
 flag_enc = open('level5.flag.txt.enc', 'rb').read()
@@ -79,7 +79,7 @@ with open('dictionary.txt', 'r') as f: # Open file.
 
 ![](./attachments/Pasted%20image%2020220410134134.png)
 
-Now all we need to do is run the script and type in the password.
+Now all we need to do is run the script and type the password.
 
 ```console
 ┌──(kali㉿kali)-[~/Downloads]
@@ -90,9 +90,6 @@ Please enter correct password for flag: 9581
 Welcome back... your flag, user:
 picoCTF{h45h_sl1ng1ng_36e992a6}
 ```
-
-
-And we get the flag!
 
 **Flag:** `picoCTF{m45h_fl1ng1ng_cd6ed2eb}`
 
