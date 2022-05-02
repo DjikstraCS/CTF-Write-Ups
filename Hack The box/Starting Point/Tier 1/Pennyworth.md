@@ -142,4 +142,4 @@ We got the final flag.
 **Flag:** `9cdfb439c7876e703e307864c9167a15`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]

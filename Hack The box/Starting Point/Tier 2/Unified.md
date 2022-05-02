@@ -133,7 +133,7 @@ listening on tun0, link-type RAW (Raw IP), snapshot length 262144 bytes
 05:37:11.888642 IP 10.10.14.15.ldap > 10.129.28.168.42178: Flags [R.], seq 0, ack 3210065073, win 0, length 0
 ```
 
-We need three things in order to make this exploit work, first [[Java]] and [[Maven]].
+We need three things in order to make this exploit work, first Java and Maven.
 
 ```console 
 ┌──(kali㉿kali)-[~]
@@ -161,7 +161,7 @@ Default locale: en_US, platform encoding: UTF-8
 OS name: "linux", version: "5.16.0-kali7-amd64", arch: "amd64", family: "unix"
 ```
 
-Lastly, we need to get [Rogue JNDI](https://github.com/veracode-research/rogue-jndi) and use [[Maven]] to build it.
+Lastly, we need to get [Rogue JNDI](https://github.com/veracode-research/rogue-jndi) and use Maven to build it.
 
 ```console 
 ┌──(kali㉿kali)-[~/Downloads]
@@ -366,4 +366,4 @@ We got root!
 **Flag:** `e50bc93c75b634e4b272d2f771c33681`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]

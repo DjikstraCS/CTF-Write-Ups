@@ -152,4 +152,4 @@ Answer can be found here: [nvd.nist.gov](https://nvd.nist.gov/vuln/detail/cve-20
 **Answer:** `9.3`
 
 ---
-**Tags:** [[HackTheBox]] [[Academy]]
+**Tags:** [[Hack The Box Academy]]

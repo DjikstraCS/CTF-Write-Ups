@@ -233,4 +233,4 @@ And we got the flag!
 **Flag:** `ea81b7afddd03efaa0945333ed147fac`
 
 ---
-**Tags:** [[HackTheBox]] [[tee]]
+**Tags:** [[Hack The Box]]

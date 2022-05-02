@@ -108,4 +108,4 @@ We got the flag!
 **Flag:** `6483bee07c1c1d57f14e5b0717503c73`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]

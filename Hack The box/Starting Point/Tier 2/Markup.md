@@ -309,4 +309,4 @@ The final flag.
 **Flag:** `f574a3e7650cebd8c39784299cb570f8`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]

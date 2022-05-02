@@ -165,4 +165,4 @@ We got in, and the flag is in plain sight.
 **Flag:** `797d6c988d9dc5865e010b9410f247e0`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]

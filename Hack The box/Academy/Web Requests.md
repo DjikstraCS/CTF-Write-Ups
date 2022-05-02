@@ -240,4 +240,4 @@ Search for flag.
 **Answer:** `HTB{crud_4p!_m4n!pul4t0r}`
 
 ---
-**Tags:** [[HackTheBox]] [[Academy]]
+**Tags:** [[Hack The Box Academy]]

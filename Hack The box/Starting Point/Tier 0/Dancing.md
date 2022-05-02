@@ -142,4 +142,4 @@ Now that we have the file, we just need to `cat` it.
 **Flag:** `5f61c10dffbc77a704d76016a22f1664`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]

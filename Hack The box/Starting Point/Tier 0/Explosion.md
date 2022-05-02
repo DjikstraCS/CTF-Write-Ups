@@ -111,4 +111,4 @@ The flag is visible on the desktop.
 **Flag:** `951fa96d7830c451b536be5a6be008a0`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]

@@ -181,4 +181,4 @@ Did it.
 **Flag:** `6b258d726d287462d60c103d0142a81c`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]

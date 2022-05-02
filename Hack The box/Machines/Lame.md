@@ -1,7 +1,7 @@
 # Lame
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Lame
-* Topic: [[Metasploit]]
+* Topic: Metasploit
 * Difficulty: Easy
 * Date: 20-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
@@ -202,4 +202,4 @@ root@lame:/root# cat root.txt
 **Flag:** `5d55abdf8bdbd1ab2fad37ae48573605`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]

@@ -143,4 +143,4 @@ And we got the flag!
 **Flag:** `7b4bec00d1a39e3dd4e021ec3d915da8`
 
 ---
-**Tags:** [[HackTheBox]] [[MariaDB]]
+**Tags:** [[Hack The Box]]

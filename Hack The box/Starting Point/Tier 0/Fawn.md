@@ -110,4 +110,4 @@ To see what a file contains we can use `cat`.
 **Flag:** `035db21c881520061c53e0536e44f815`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]

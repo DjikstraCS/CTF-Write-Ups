@@ -46,4 +46,4 @@ Password: `1`
 **Flag:** `e3d0796d002a446c0e622226f42e9672`
 
 ---
-**Tags:** [[HackTheBox]] [[gobuster]] [[SQL]] [[SQLi]] [[MariaDB]]
+**Tags:** [[Hack The Box]]

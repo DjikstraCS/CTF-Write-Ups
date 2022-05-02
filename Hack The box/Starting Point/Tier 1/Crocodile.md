@@ -179,4 +179,4 @@ The flag.
 **Flag:** `c7110277ac44d78b6a9fff2232434d16`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]

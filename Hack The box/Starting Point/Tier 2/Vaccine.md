@@ -479,4 +479,4 @@ We got root and found the flag!
 **Flag:** `dd6e058e814260bc70e9bbdef2715849`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]

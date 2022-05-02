@@ -389,4 +389,4 @@ c693d9c7499d9f572ee375d4c14c7bcf
 **Flag:** `c693d9c7499d9f572ee375d4c14c7bcf`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]

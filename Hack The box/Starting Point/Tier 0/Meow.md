@@ -118,4 +118,4 @@ b40abdfe23665f766f9c61ecba8a4c19
 **Flag:** `b40abdfe23665f766f9c61ecba8a4c19`
 
 ---
-**Tags:** [[HackTheBox]]
+**Tags:** [[Hack The Box]]
