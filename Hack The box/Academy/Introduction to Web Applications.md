@@ -2,7 +2,7 @@
 * Source: [Hack the Box: Academy](https://academy.hackthebox.com/)
 * Module: Introduction to Web Applications
 * Tier: 0
-* Difficulty: Very easy
+* Difficulty: Fundamental
 * Topic: General
 * Time estimate: 3 hours
 * Date: 02-05-2022

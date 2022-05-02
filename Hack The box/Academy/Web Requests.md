@@ -2,7 +2,7 @@
 * Source: [Hack the Box: Academy](https://academy.hackthebox.com/)
 * Module: Web Requests
 * Tier: 0
-* Difficulty: Very easy
+* Difficulty: Fundamental
 * Topic: General
 * Time estimate: 4 hours
 * Date: 02-05-2022
