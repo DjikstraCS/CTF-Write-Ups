@@ -125,8 +125,7 @@ In Firefox, insert path and query string:
 
 ![](./attachments/Pasted%20image%2020220502145814.png)
 
-
-**Answer:** ``
+**Answer:** `superadmin`
 
 ---
 ## Common Web Vulnerabilities
