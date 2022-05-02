@@ -1,7 +1,7 @@
 # Explosion
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Explosion
-* Topic: [[Account Misconfiguration]] [[xfreerdp]]
+* Topic: Account Misconfiguration, xfreerdp
 * Difficulty: Very easy
 * Date: 15-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

@@ -1,7 +1,7 @@
 # Responder
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Responder
-* Topic: [[SMB]] [[Responder]] [[john]] [[evil-winrm]]
+* Topic: SMB, Responder, john, evil-winrm
 * Difficulty: Very easy
 * Date: 13-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

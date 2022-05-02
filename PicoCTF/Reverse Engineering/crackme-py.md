@@ -81,4 +81,4 @@ And we get the flag!
 **Flag:** `picoCTF{1|\/|_4_p34|\|ut_502b984b}`
 
 ---
-**Tags:** [[PicoCTF]] [[Pyhton]]
+**Tags:** [[PicoCTF]]

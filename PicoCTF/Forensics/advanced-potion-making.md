@@ -44,4 +44,4 @@ Nice!
  **Flag:** `picoCTF{w1z4rdry}`
 
 ---
-**Tags:** [[PicoCTF]] [[hexeditor]] [[StegSolve]] [[PNG Header]]
+**Tags:** [[PicoCTF]]

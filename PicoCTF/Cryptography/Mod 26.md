@@ -28,4 +28,4 @@ Here we will just solve it quickly, giving it to [CyberChef](https://gchq.github
 **Flag:** `picoCTF{next_time_I'll_try_2_rounds_of_rot13_wqWOSBKW}`
 
 ---
-**Tags:** [[PicoCTF]] [[CyberChef]] [[ROT13]]
+**Tags:** [[PicoCTF]]

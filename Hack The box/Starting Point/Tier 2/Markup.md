@@ -1,7 +1,7 @@
 # Markup
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Markup
-* Topic: [[XXE]]
+* Topic: XXE
 * Difficulty: Very easy
 * Date: 18-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

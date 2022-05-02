@@ -32,4 +32,4 @@ Alternatively, we can use [Universal Cyrillic decoder](https://2cyr.com/decode/?
 **Flag:** `picoCTF{16_bits_inst34d_of_8_75d4898b}`
 
 ---
-**Tags:** [[PicoCTF]] [[Universal Cyrillic decoder]] [[CyberChef]]
+**Tags:** [[PicoCTF]]

@@ -1,7 +1,7 @@
 # Vaccine
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Vaccine
-* Topic: [[FTP]] [[SQL]] [[SUID]]
+* Topic: FTP, SQL, SUID
 * Difficulty: Very easy
 * Date: 14-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

@@ -1,7 +1,7 @@
 # Pennyworth
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Pennyworth
-* Topic: [[Java]] [[CVE]]
+* Topic: Java, CVE
 * Difficulty: Very easy
 * Date: 17-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

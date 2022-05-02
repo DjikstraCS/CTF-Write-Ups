@@ -46,4 +46,4 @@ We got the flag!
 **Flag:** `picoCTF{run_s4n1ty_run}`
 
 ---
-**Tags:** [[PicoCTF]] [[Python]]
+**Tags:** [[PicoCTF]]

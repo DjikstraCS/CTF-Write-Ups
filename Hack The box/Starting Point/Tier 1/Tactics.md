@@ -1,7 +1,7 @@
 # Tactics
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Tactics
-* Topic: [[SMB]]
+* Topic: SMB
 * Difficulty: Very easy
 * Date: 17-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

@@ -81,4 +81,4 @@ And we get the flag.
 **Flag:** `picoCTF{}`
 
 ---
-**Tags:** [[PicoCTF]] [[MD5]] [[echo]]
+**Tags:** [[PicoCTF]]

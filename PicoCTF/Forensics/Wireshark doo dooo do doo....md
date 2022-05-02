@@ -42,4 +42,4 @@ Correct! We got the flag.
 **Flag:** `picoCTF{p33kab00_1_s33_u_deadbeef}`
 
 ---
-**Tags:** [[PicoCTF]] [[Wireshark]] [[ROT-13]]
+**Tags:** [[PicoCTF]]

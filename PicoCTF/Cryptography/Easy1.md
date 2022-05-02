@@ -49,4 +49,4 @@ I have no idea what the table is for, if you know, please let me know.
 **Flag:** `picoCTF{CRYPTOISFUN}`
 
 ---
-**Tags:** [[PicoCTF]] [[One-time pad]] [[Vigenère]] [[mod26]]
+**Tags:** [[PicoCTF]]

@@ -50,4 +50,4 @@ The 1337 flag is ours!
 **Flag:** `picoCTF{m0n3y_bag5_9c5fac9b}`
 
 ---
-**Tags:** [[PicoCTF]] [[overflow]] [[netcat]]
+**Tags:** [[PicoCTF]]

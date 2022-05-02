@@ -1,7 +1,7 @@
 # Preignition
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Preignition
-* Topic: [[PHP]] [[Default Credentials]] [[gobuster]]
+* Topic: PHP, Default Credentials, gobuster
 * Difficulty: Very easy
 * Date: 15-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

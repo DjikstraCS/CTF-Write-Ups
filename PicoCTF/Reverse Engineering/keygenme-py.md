@@ -173,4 +173,4 @@ Now when we run the program we get the flag/license printed, right when we need 
 **Flag:** `picoCTF{1n_7h3_|<3y_of_e584b363}`
 
 ---
-**Tags:** [[PicoCTF]] [[Python]] [[SHA-2]]
+**Tags:** [[PicoCTF]]

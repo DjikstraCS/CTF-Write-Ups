@@ -1,7 +1,7 @@
 # Oopsie
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Oopsie
-* Topic: [[PHP]] [[SUID]]
+* Topic: PHP, SUID
 * Difficulty: Very easy
 * Date: 13-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

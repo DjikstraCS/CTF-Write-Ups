@@ -1,7 +1,7 @@
 # Appointment
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Appointment
-* Topic: [[SQL Injection]]
+* Topic: SQL injection
 * Difficulty: Very easy
 * Date: 12-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

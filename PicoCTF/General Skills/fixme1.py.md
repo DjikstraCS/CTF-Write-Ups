@@ -55,4 +55,4 @@ And we get the flag!
 **Flag:** `picoCTF{1nd3nt1ty_cr1515_09ee727a}`
 
 ---
-**Tags:** [[PicoCTF]] [[nano]]
+**Tags:** [[PicoCTF]]

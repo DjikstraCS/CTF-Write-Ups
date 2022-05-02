@@ -42,4 +42,4 @@ And we got the flag!
 **Flag:** `picoCTF{gl17ch_m3_n07_a4392d2e}`
 
 ---
-**Tags:** [[PicoCTF]] [[netcat]] [[Python]]
+**Tags:** [[PicoCTF]]

@@ -53,4 +53,4 @@ And we get the flag!
 **Flag:** `picoCTF{3qu4l1ty_n0t_4551gnm3nt_f6a5aefc}`
 
 ---
-**Tags:** [[PicoCTF]] [[Python]] [[nano]]
+**Tags:** [[PicoCTF]]

@@ -28,4 +28,4 @@ And the flag is ours!
 **Flag:** `picoCTF{nEtCat_Mast3ry_284be8f7}`
 
 ---
-**Tags:** [[PicoCTF]] [[netcat]]
+**Tags:** [[PicoCTF]]

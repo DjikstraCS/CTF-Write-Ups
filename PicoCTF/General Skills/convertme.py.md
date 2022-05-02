@@ -50,4 +50,4 @@ And we are presented with a flag.
 **Flag:** `picoCTF{4ll_y0ur_b4535_762f748e}`
 
 ---
-**Tags:** [[PicoCTF]] [[CyberChef]]
+**Tags:** [[PicoCTF]]

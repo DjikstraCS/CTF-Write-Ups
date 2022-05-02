@@ -1,7 +1,7 @@
 # Active
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Active
-* Topic: [[FTP]] [[Java]] [[PHP]] [[LFI]]
+* Topic: FTP, Java, PHP, LFI
 * Difficulty: Very easy
 * Date: 19-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

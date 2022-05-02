@@ -143,4 +143,4 @@ Finally, the flag!
 **Flag:** `picoCTF{4cf7ac000c3fb0fa96fb92722ffb2a32}`
 
 ---
-**Tags:** [[PicoCTF]] [[Binwalk]]
+**Tags:** [[PicoCTF]]

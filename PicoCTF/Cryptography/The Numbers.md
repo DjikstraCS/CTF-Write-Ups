@@ -30,4 +30,4 @@ It's encrypted in a number substitution cipher. The number correlate to that let
 **Flag:** `PICOCTF{thenumbersmason}`
 
 ---
-**Tags:** [[PicoCTF]] [[number substitution]]
+**Tags:** [[PicoCTF]]

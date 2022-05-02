@@ -94,4 +94,4 @@ picoCTF{h45h_sl1ng1ng_36e992a6}
 **Flag:** `picoCTF{m45h_fl1ng1ng_cd6ed2eb}`
 
 ---
-**Tags:** [[PicoCTF]] [[Python]]
+**Tags:** [[PicoCTF]]

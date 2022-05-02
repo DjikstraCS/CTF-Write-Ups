@@ -1,7 +1,7 @@
 # Fawn
 * Source:  [Hack the Box](https://hackthebox.com/)
 * Challenge: Dancing
-* Topic: [[FTP]]
+* Topic: FTP
 * Difficulty: Very easy
 * Date: 12-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

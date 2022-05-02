@@ -1,7 +1,7 @@
 # Unified
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Unified
-* Topic: [[CVE]] [[java]] [[maven]]
+* Topic: CVE, java, maven
 * Difficulty: Very easy
 * Date: 15-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

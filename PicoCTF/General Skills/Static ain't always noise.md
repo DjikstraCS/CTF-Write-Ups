@@ -58,4 +58,4 @@ Using `cat` to output the content of the file, `|` to pipe the output to grep an
 **Flag:** `picoCTF{d15a5m_t34s3r_f5aeda17}`
 
 ---
-**Tags:** [[PicoCTF]] [[Bash]] [[CyberChef]] [[disassembly]] [[|]]  [[grep]] [[strings]] [[hex]]  [[cat]]
+**Tags:** [[PicoCTF]]

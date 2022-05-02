@@ -1,7 +1,7 @@
 # Meow
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Meow
-* Topic: [[Telnet]]
+* Topic: Telnet
 * Difficulty: Very easy
 * Date: 12-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

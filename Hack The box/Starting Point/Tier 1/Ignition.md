@@ -1,7 +1,7 @@
 # Ignition
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Ignition
-* Topic: [[PHP]] [[Web Fussing]] [[DNS]]
+* Topic: PHP, Web Fussing, DNS
 * Difficulty: Very easy
 * Date: 15-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

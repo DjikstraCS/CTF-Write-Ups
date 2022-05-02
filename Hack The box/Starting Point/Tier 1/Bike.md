@@ -1,7 +1,7 @@
 # Bike
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Bike 
-* Topic: [[SMB]] [[Javascript]] [[SSTI]]
+* Topic: SMB, Javascript, SSTI
 * Difficulty: Very easy
 * Date: 16-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

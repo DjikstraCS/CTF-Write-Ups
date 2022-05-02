@@ -77,4 +77,4 @@ And there we have it, the decrypted message containing our flag.
 [RsaCtfTool](https://github.com/Ganapati/RsaCtfTool) is a helpful tool that can solve this problem instantly.
 
 ---
-**Tags:** [[PicoCTF]] [[Aplertron]] [[WolframAlpha]] [[factordb]] [[RSA]] [[Python]]
+**Tags:** [[PicoCTF]]

@@ -37,4 +37,4 @@ We got the flag!
 **Flag:** `picoCTF{c0d3b00k_455157_7d102d7a}`
 
 ---
-**Tags:** [[PicoCTF]] [[ll]] [[Python]]
+**Tags:** [[PicoCTF]]

@@ -1,7 +1,7 @@
 # Crocodile
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Crocodile
-* Topic: [[PHP]] [[FTP]] [[gobuster]]
+* Topic: PHP, FTP, gobuster
 * Difficulty: Very easy
 * Date: 13-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

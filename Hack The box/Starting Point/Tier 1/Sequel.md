@@ -1,7 +1,7 @@
 # Sequel
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Sequel
-* Topic: [[SQL]]
+* Topic: SQL
 * Difficulty: Very easy
 * Date: 12-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)

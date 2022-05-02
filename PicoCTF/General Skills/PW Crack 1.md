@@ -60,4 +60,4 @@ And we get the flag!
 **Flag:** `picoCTF{545h_r1ng1ng_56891419}`
 
 ---
-**Tags:** [[PicoCTF]] [[Python]]
+**Tags:** [[PicoCTF]]

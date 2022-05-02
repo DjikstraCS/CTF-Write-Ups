@@ -1,7 +1,7 @@
 # Archetype
 * Source: [Hack the Box](https://hackthebox.com/)
 * Challenge: Archetype
-* Topic: [[SMB]] [[SQL]][[impacket]] [[winPEAS]] [[Priviledge]]
+* Topic: SMB, SQL, impacket, winPEAS, Priviledge
 * Difficulty: Very easy
 * Date: 13-04-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
