@@ -10,10 +10,10 @@
 
 ---
 ## HypeText Transfer Protocol (HTTP)
-![](url_structure.png)
+![](./attachments/url_structure.png)
 
 ### Question:
-![](Pasted%20image%2020220502124757.png)
+![](./attachments/Pasted%20image%2020220502124757.png)
 
 Using curl to connect.
 
@@ -28,18 +28,18 @@ HTB{64$!c_cURL_u$3r}
 ---
 ## HTTP Requests and Responses
 ### Question 1:
-![](Pasted%20image%2020220502102001.png)
+![](./attachments/Pasted%20image%2020220502102001.png)
 
 *Hint: The request method is mentioned at the beginning of the HTTP request*
 
 Open the page in Firefox and open DevTools/Inspector. In `Network` section we can see the requests. 
 
-![](Pasted%20image%2020220502094923.png)
+![](./attachments/Pasted%20image%2020220502094923.png)
 
 **Answer:** `GET`
 
 ### Question 2:
-![](Pasted%20image%2020220502102147.png)
+![](./attachments/Pasted%20image%2020220502102147.png)
 
 *Hint: The version is shown in the 'Server' response header*
 
@@ -67,17 +67,17 @@ Using curl to send a GET request, `-v` flag is used to get more information abou
 ## HTTP Headers
 
 ### Question:
-![](Pasted%20image%2020220502102920.png)
+![](./attachments/Pasted%20image%2020220502102920.png)
 
 *Hint: Look for a request to a file called 'flag_...'. If you can't find it, refresh the page and monitor new requests.*
 
 In the Network tab, we can see that a request for a `.txt` file is made.
 
-![](Pasted%20image%2020220502100059.png)
+![](./attachments/Pasted%20image%2020220502100059.png)
 
 Let's check it out.
 
-![](Pasted%20image%2020220502100307.png)
+![](./attachments/Pasted%20image%2020220502100307.png)
 
 **Answer:** `HTB{p493_r3qu3$t$_m0n!t0r}`
 
@@ -85,7 +85,7 @@ Let's check it out.
 ## GET
 
 ### Question:
-![](Pasted%20image%2020220502103054.png)
+![](./attachments/Pasted%20image%2020220502103054.png)
 
 *Hint: Don't forget to set the user credentials when you send the 'search' request*
 
@@ -93,11 +93,11 @@ Open the page in Firefox and a login box pops up.
 
 User:pass `admin:admin`
 
-![](Pasted%20image%2020220502103324.png)
+![](./attachments/Pasted%20image%2020220502103324.png)
 
 A page with a search box, if we search for "flag" we can see the request in DevTools.
 
-![](Pasted%20image%2020220502103713.png)
+![](./attachments/Pasted%20image%2020220502103713.png)
 
 With that knowledge, we can use curl to get the answer.
 
@@ -113,7 +113,7 @@ flag: HTB{curl_g3773r}
 ---
 ## POST
 ### Question:
-![](Pasted%20image%2020220502104631.png)
+![](./attachments/Pasted%20image%2020220502104631.png)
 
 *Hint: You may login through a browser and collect the cookie from the Storage tab. You may also use the '-i' or '-v' flags with cURL to view the response header and get the cookie.*
 
@@ -121,19 +121,19 @@ Login like last time.
 
 User:pass `admin:admin`
 
-![](Pasted%20image%2020220502112718.png)
+![](./attachments/Pasted%20image%2020220502112718.png)
 
 It's a page containing a search box.
 
-![](Pasted%20image%2020220502112605.png)
+![](./attachments/Pasted%20image%2020220502112605.png)
 
 In the network section, we find the raw input.
 
-![](Pasted%20image%2020220502112846.png)
+![](./attachments/Pasted%20image%2020220502112846.png)
 
 Likewise, if we do a search, we can get the URL and raw data from that request.
 
-![](Pasted%20image%2020220502121005.png)
+![](./attachments/Pasted%20image%2020220502121005.png)
 
 Now we can recreate everything using cURL.
 
@@ -181,7 +181,7 @@ Now we can search for `flag` via cURL, using the HTTP POST Method.
 ---
 ## CRUD API
 ### Question:
-![](Pasted%20image%2020220502125859.png)
+![](./attachments/Pasted%20image%2020220502125859.png)
 
 *Make sure that the number of cities is less than when you started. If you added any new cities, you should delete them as well.*
 
