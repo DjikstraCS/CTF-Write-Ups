@@ -3,7 +3,7 @@
 * Module: Introduction to Web Applications
 * Tier: 0
 * Difficulty: Fundamental
-* Topic: General
+* Category: General
 * Time estimate: 3 hours
 * Date: 02-05-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
@@ -24,7 +24,7 @@
 ### Question:
 ![](./attachments/Pasted%20image%2020220502135738.png)
 
-*Hint: Don't forget the semi-colon ';'*
+*Hint: Don't forget the semicolon ';'*
 
 **Answer:** `text-align: left;`
 
@@ -33,7 +33,7 @@
 ### Question:
 ![](./attachments/Pasted%20image%2020220502140922.png)
 
-*Hint: Use ctrl+u to show source in Firefox, or right click > View Page Source*
+*Hint: Use Ctrl+u to show source in Firefox, or right click > View Page Source*
 
 The page contains a login screen. 
 
@@ -91,7 +91,7 @@ Injection: `#"><img src=/ onerror=alert(document.cookie)>`
 **Answer:** `Windows`
 
 ---
-## # Web Servers
+## Web Servers
 ![](./attachments/Pasted%20image%2020220502144447.png)
 
 ### Question:
@@ -113,7 +113,7 @@ Answer is found here: [HTTP Response Codes](https://developer.mozilla.org/en-US/
 **Answer:** `NoSQL`
 
 ---
-## # Development Frameworks & APIs
+## Development Frameworks & APIs
 ### Question:
 ![](./attachments/Pasted%20image%2020220502145414.png)
 

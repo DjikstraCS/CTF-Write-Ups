@@ -3,7 +3,7 @@
 * Module: Web Requests
 * Tier: 0
 * Difficulty: Fundamental
-* Topic: General
+* Category: General
 * Time estimate: 4 hours
 * Date: 02-05-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
@@ -17,7 +17,7 @@
 
 Using curl to connect.
 
-```
+```bash
 ┌──(kali㉿kali)-[~]
 └─$ curl 157.245.42.82:31023/download.php   
 HTB{64$!c_cURL_u$3r} 
@@ -185,14 +185,11 @@ Now we can search for `flag` via cURL, using the HTTP POST Method.
 
 *Make sure that the number of cities is less than when you started. If you added any new cities, you should delete them as well.*
 
-First confirm connection, we can use `jq` to show the output in JSON format and `-s` to remove the irrelevant data. 
+First confirm connection, we can use`-s` to remove the irrelevant data and pipe to `jq` to show the output in JSON format.
 
 ```bash
 ┌──(kali㉿kali)-[~]
-└─$ curl http://157.245.42.82:30154/api.php/city/london | jq
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100    46  100    46    0     0    546      0 --:--:-- --:--:-- --:--:--   547
+└─$ curl -s http://157.245.42.82:30154/api.php/city/london | jq
 [
   {
     "city_name": "London",

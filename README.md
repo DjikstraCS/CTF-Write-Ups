@@ -5,7 +5,7 @@ A collection of write-ups for CTF challenges I've solved.
 - Hack the Box
 - PicoCTF
 
-If you find any incorrect information in these pages, please let me know.  
+If you find any errors or incorrect information in these pages, please let me know.  
 
 ---
 ## Python script:
@@ -20,7 +20,7 @@ Combine it with [LightShot](https://app.prntscr.com/en/index.html) and you got y
 	- It will convert all files in its root directory, plus all subdirectories.
 2. Obsidian \[\[Wikilinks]] needs to be turned off.
 	- Obsidian Settings -> Files and links -> Use \[\[Wikilinks]] -> `OFF`
-3. In order to view and execute directly from Obsidian 'Detect all file extensions' needs to be turned on.
+3. In order to view and execute directly from Obsidian, 'Detect all file extensions' needs to be turned on.
 	- Obsidian Settings -> Files and links -> Detect all file extensions -> `ON`
 4. 'Default location for new attachments' needs to be 'in sub folder under current folder'.
 	- Obsidian Settings -> Files and links -> Default location for new attachments -> In sub folder under current folder -> Subfolder name -> `attachments`.
