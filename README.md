@@ -14,7 +14,7 @@ The Python script converts all .md files in Obsidian to GitHub compatible Markdo
 
 Does this by adding the full file path to **pasted** images.
 
-![](./attachments/Pasted%20image%2020220509041143.png)
+![](./attachments/Pasted%20image%2020220509043017.png)
 
 Combine it with [LightShot](https://app.prntscr.com/en/index.html) and you got yourself a super efficient Git compatible documentation workflow.
 
