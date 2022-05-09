@@ -2,7 +2,16 @@
 #Author: DjikstraCS
 import os
 
-print('\n-=≡| Welcome to mdConvert |≡=-')
+print('\nWelcome to...')
+print('\n 8888b   d8888 8888888b.')
+print(' 88888b d88888 888   Y88b')
+print(' 888Y88888P888 888    888')
+print(' 888 Y888P 888 888    888')
+print(' 888 _Y8P_ 888 888  .d88P')
+print(' 888 ____/_888 888888P\' _____  _____/ /')
+print('  / /   / __ \/ __ \ | / / _ \/ ___/ __/')
+print(' / /___/ /_/ / / / / |/ /  __/ /  / /')
+print(' \____/\____/_/ /_/|___/\___/_/   \__/')
 
 if input('\nStart conversion? (Y/n) ').lower().strip() != 'y':
     exit(0)
@@ -25,7 +34,7 @@ for path, dirs, files in os.walk('.'):
             if file_edit:          
                 with open(os.path.join(path, filename), 'w', encoding='utf8') as f: 
                     f.writelines(lines)
-                print('\nFile converted: ' + path.strip('.') + '\\' + filename)
+                print('\nFile converted: ' + path.strip('.')[1:] + '\\' + filename)
                 conversions = conversions + 1
 
 if conversions == 1:
