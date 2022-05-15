@@ -548,7 +548,7 @@ And the outdated MD5 hash function.
 
 
 ### Docker:
-There is a lot of vulnerabilities here. We assume this is because Apache/PHP/Docker has not been updated for a while.
+There are a lot of vulnerabilities here. We assume this is because Apache/PHP/Docker has not been updated for a while.
 
 ![](./attachments/Pasted%20image%2020220515154940.png)
 
