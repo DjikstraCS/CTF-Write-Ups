@@ -440,6 +440,7 @@ There is reflections on the site, delivered with JavaScript.
 ![](./attachments/Pasted%20image%2020220513165821.png)
 
 XSStrike:
+
 ```bash
 ┌──(kali㉿kali)-[~/XSStrike]
 └─$ python xsstrike.py -u "http://localhost:8000/api/API.php?API_KEY=Flight+booker+1.2+plus+edition&action=get&items=airport&search=" 
@@ -457,7 +458,7 @@ XSStrike:
 [-] No reflection found 
 ```
 
-Is unable to find any reflections, probably due to them being displayed with JavaScript and not statically(?) on the page with HTML.
+Is unable to find any reflections, probably due to them being displayed with JavaScript.
 
 During manual testing of the input fields, we found a way to make XXS reflections that show up in the static HTML page.
 
@@ -471,7 +472,7 @@ Payload: `<script>alert(window.origin)</script>,2,3`
 
 ![](./attachments/Pasted%20image%2020220514155639.png)
 
-This is just a reflected XSS, but if we can somehow store a malicious payload in the the `bookings` database we might be able to steal a session cookie from an employee of the airline. When he opens the booking table in the backend admin portal, the injected code will be executed and send hos cookie to us.
+This is just a reflected XSS, but if we can somehow store a malicious payload in the the `bookings` database we might be able to steal a session cookie from an employee at the airline. When he opens the booking table in the backend admin portal, the injected code will be executed and his browser cookie will be sent to us.
 
 This can be done by injecting a payload into the booking request.
 
@@ -527,7 +528,7 @@ Introducing a space gives us problems.
 
 ![](./attachments/Pasted%20image%2020220515143250.png)
 
-Fuzzing the input results in a lot of successful command injections, none of them are executing either though. It looks like there is a problem with URL encoding.
+Fuzzing the input results in a lot of successful command injections, none of them are executing though. It looks like there is a problem with URL encoding.
 
 ![](./attachments/Pasted%20image%2020220515142649.png)
 
@@ -558,7 +559,9 @@ There is a lot of vulnerabilities here. We assume this is because Apache/PHP/Doc
 ![](./attachments/Pasted%20image%2020220515155146.png)
 
 ## Embold scanner:
-Scans the `desktop-app` Java files, opposite the other scanners. There are many dublicates in the output.
+Scans the `desktop-app` Java files, opposite to the other scanners. 
+
+There are many dublicates in the output.
 
 ![](./attachments/Pasted%20image%2020220515155923.png)
 
