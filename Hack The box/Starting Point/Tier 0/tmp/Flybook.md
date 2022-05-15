@@ -429,7 +429,7 @@ We cracked the password:
 
 User:pass `bob@its.dk:bob-1234`
 
-Passwords are not salted(?) and hashed with the insecure MD5 function.
+Passwords are not salted and hashed with the insecure MD5 function.
 
 ---
 ## XXS
