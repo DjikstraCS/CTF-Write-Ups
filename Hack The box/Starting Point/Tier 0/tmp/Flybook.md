@@ -59,7 +59,6 @@ In the bottom of the `/book.html` page, there is a footer which has been comment
     <!--</footer>-->
 ```
 
----
 ### Desktop:
 We looked through the java code manually, but were not able to determine any vulnerabilities.
 
@@ -89,13 +88,13 @@ Though we did notice that it is build with the secure MVC (Model-View-Controller
 2 directories, 14 files
 ```
 
+---
 ## ZAP Scanner
 Mapping the site:
-
 ![](./attachments/Pasted%20image%2020220513150340.png)
 
-#### Vulnerabilities:
-
+### Vulnerabilities:
+#### High alert:
 ![](./attachments/Pasted%20image%2020220513164306.png)
 
 SQL Injection:
@@ -129,7 +128,7 @@ Payload: `";`
 
 ![](./attachments/Pasted%20image%2020220513172151.png)
 
----
+#### Medium alerts:
 ![](./attachments/Pasted%20image%2020220514145412.png)
 
 Absence of Anti-CSRF Tokens:
@@ -152,10 +151,8 @@ Architecture and Design Use a vetted library or framework that does not allow th
 Reference: 	
 * http://projects.webappsec.org/Cross-Site-Request-Forgery
 * http://cwe.mitre.org/data/definitions/352.html
-
 ```
  
----
 ![](./attachments/Pasted%20image%2020220514145438.png)
 
 Content Security Policy (CSP) Header Not Set:
@@ -179,9 +176,7 @@ Reference:
 * http://www.html5rocks.com/en/tutorials/security/content-security-policy/
 * http://caniuse.com/#feat=contentsecuritypolicy
 * http://content-security-policy.com/
-
 ```
----
 
 ![](./attachments/Pasted%20image%2020220514145528.png)
 
@@ -202,8 +197,8 @@ Reference:
 * https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
 ```
 
----
-Plus three additional low level vulnerabilities:
+#### Low alerts:
+Three additional low level vulnerabilities:
 
 ![](./attachments/Pasted%20image%2020220514150940.png)
 
@@ -532,8 +527,8 @@ Fuzzing the input results in a lot of successful command injections, none of the
 
 ![](./attachments/Pasted%20image%2020220515142649.png)
 
+---
 ## SNYK scanner:
-
 ![](./attachments/Pasted%20image%2020220515154623.png)
 
 ### Code analysis:
@@ -546,7 +541,7 @@ And the outdated MD5 hash function.
 
 ![](./attachments/Pasted%20image%2020220515155155.png)
 
-
+---
 ### Docker:
 There are a lot of vulnerabilities here. We assume this is because Apache/PHP/Docker has not been updated for a while.
 
@@ -558,6 +553,7 @@ There are a lot of vulnerabilities here. We assume this is because Apache/PHP/Do
 
 ![](./attachments/Pasted%20image%2020220515155146.png)
 
+---
 ## Embold scanner:
 Scans the `desktop-app` Java files, opposite to the other scanners. 
 
