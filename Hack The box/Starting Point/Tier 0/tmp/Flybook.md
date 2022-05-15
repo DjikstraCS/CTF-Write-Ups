@@ -479,7 +479,7 @@ Sadly we get an error, the database does not accept the input.
 
 ---
 ## Pen-testing login page:
-We replay the request with ZAP manual request editor in order to see the responses from the server when the login is correct and incorrect.
+We replay the request with ZAP Manual Request Editor in order to see the responses from the server when the login is correct and incorrect.
 
 Incorrect login:
 
@@ -511,7 +511,7 @@ Using OWASP ZAP to Fuzz the login form with Seclists `Generic-SQLi.txt`, similar
 ## Command Injection
 ![](./attachments/Pasted%20image%2020220515143436.png)
 
-Upon visiting the `service.html` page, and grabbing the request with ZAP, we notice that requests are sent continually.
+Upon visiting the `service.html` page and looking a the history tab in ZAP, we notice that requests are sent continually.
 
 ![](./attachments/Pasted%20image%2020220515140141.png)
 
