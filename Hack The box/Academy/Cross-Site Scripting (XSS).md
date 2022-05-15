@@ -310,5 +310,4 @@ We got the cookie!
 **Answer:** `HTB{cr055_5173_5cr1p71n6_n1nj4}`
 
 ---
-
 **Tags:** [[Hack The Box Academy]]
