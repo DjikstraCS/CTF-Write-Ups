@@ -1,22 +1,22 @@
 
-# Exam
+# Flybook
 ## Manual Code Review:
 ### Web:
 
 The password seems to be hard-coded into the login form.
 
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220513160909.png)
+![](./attachments/Pasted%20image%2020220513160909.png)
 
 We can get the password by changing `type` to `show`, or we can simply read it from the `value` field.
 
 User:pass `alice@its.dk:alice-1234`
 
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220513161136.png)
+![](./attachments/Pasted%20image%2020220513161136.png)
 
 ---
 In the bottom of the `/book.html` page, there is a footer which has been commented out:
 
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220514151221.png)
+![](./attachments/Pasted%20image%2020220514151221.png)
 
 ```html
 	<!--<footer class="pt-4 my-md-5 pt-md-5 border-top">-->
@@ -92,11 +92,11 @@ We noticed that it is build with the secure MVC (Model-View-Controller) design p
 ## ZAP Scanner
 Mapping the site:
 
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220513150340.png)
+![](./attachments/Pasted%20image%2020220513150340.png)
 
 #### Vulnerabilities:
 
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220513164306.png)
+![](./attachments/Pasted%20image%2020220513164306.png)
 
 SQL Injection:
 ```
@@ -121,16 +121,16 @@ Reference:
 
 It is dumping the `airports` database:
 
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220513164553.png)
+![](./attachments/Pasted%20image%2020220513164553.png)
 
 During manual testing, we reach this very simple payload.
 
 Payload: `";`
 
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220513172151.png)
+![](./attachments/Pasted%20image%2020220513172151.png)
 
 ---
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220514145412.png)
+![](./attachments/Pasted%20image%2020220514145412.png)
 
 Absence of Anti-CSRF Tokens:
 
@@ -156,7 +156,7 @@ Reference:
 ```
  
 ---
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220514145438.png)
+![](./attachments/Pasted%20image%2020220514145438.png)
 
 Content Security Policy (CSP) Header Not Set:
 
@@ -183,7 +183,7 @@ Reference:
 ```
 ---
 
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220514145528.png)
+![](./attachments/Pasted%20image%2020220514145528.png)
 
 Missing Anti-clickjacking Header:
 
@@ -205,7 +205,7 @@ Reference:
 ---
 Plus three additional low level vulnerabilities:
 
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220514150940.png)
+![](./attachments/Pasted%20image%2020220514150940.png)
 
 ---
 ### SQL Map:
@@ -437,7 +437,7 @@ XXS Reflections:
 
 There is reflections on the site, delivered with JavaScript.
 
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220513165821.png)
+![](./attachments/Pasted%20image%2020220513165821.png)
 
 XSStrike:
 ```bash
@@ -463,13 +463,13 @@ During manual testing of the input fields, we found a way to make XXS reflection
 
 Payload: `Haxx,2,3`
 
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220514154110.png)
+![](./attachments/Pasted%20image%2020220514154110.png)
 
 Testing for SQL injection vulnerability:
 
 Payload: `<script>alert(window.origin)</script>,2,3`
 
-![](CTF-Write-Ups/Hack%20The%20box/Starting%20Point/Tier%200/tmp/attachments/Pasted%20image%2020220514155639.png)
+![](./attachments/Pasted%20image%2020220514155639.png)
 
 This is just a reflected XSS, but if we can somehow store a malicious payload in the the `bookings` database we might be able to steal a session cookie from an employee of the airline. When he opens the booking table in the backend admin portal, the injected code will be executed and send hos cookie to us.
 

