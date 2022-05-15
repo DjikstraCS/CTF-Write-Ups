@@ -61,9 +61,9 @@ In the bottom of the `/book.html` page, there is a footer which has been comment
 
 ---
 ### Desktop:
-We looked through the java code manually but was not able to determine any vulnerabilities.
+We looked through the java code manually, but were not able to determine any vulnerabilities.
 
-We noticed that it is build with the secure MVC (Model-View-Controller) design pattern.
+Though we did notice that it is build with the secure MVC (Model-View-Controller) design pattern.
 
 ```bash
 ┌──(kali㉿kali)-[~/…/desktop-app/src/dk/kea]
