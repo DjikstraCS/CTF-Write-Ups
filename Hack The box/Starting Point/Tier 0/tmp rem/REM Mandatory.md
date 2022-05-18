@@ -68,7 +68,7 @@ Testing `43` as the password:
 
 
 ## Part 2
-### Static analysis / Manual code review
+### Static analysis
 Upon opening the `corona.exe` in `x32dbg` we first check imports.
 
 We can see that the executable is able to edit registry vales.
@@ -90,6 +90,8 @@ Netcat will be able to call home, thus making a backdoor into our system.
 On the last line we see a message.
 
 ![](./attachments/Pasted%20image%2020220509160730.png)
+
+### Manual code review
 
 Now that we have a rough idea about what the program is doing, we will have a closer look at the assembly code.
 
@@ -236,6 +238,33 @@ The network analysis confirms our assumption about netcat being downloaded and s
 # Spørgsmål:
 Hvor meget er der vægt på de små programmer vs IDA og dbg?
 
+Hvad er Statisk analyse vs manuel kode analyse og er der en bestemt rækkefølge?
+
+LIFO, hvad betyder det helt præcist?
+
+Gennemgå stack function calls igen?
+
 
 # Mangler:
 Forstå stack, fx push.
+Læs sider igen
+
+![](Pasted%20image%2020220518151211.png)
+
+![](Pasted%20image%2020220518151547.png)
+
+![](Pasted%20image%2020220518152059.png)
+
+![](Pasted%20image%2020220518152111.png)
+
+![](Pasted%20image%2020220518152938.png)
+
+![](Pasted%20image%2020220518154203.png)
+
+![](Pasted%20image%2020220518154537.png)
+
+![](Pasted%20image%2020220518155212.png)
+
+https://www.youtube.com/watch?v=7ZBAVsRQk-o
+
+https://www.youtube.com/watch?v=A5lB3nEazc0
