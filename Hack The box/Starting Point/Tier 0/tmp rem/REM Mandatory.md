@@ -249,21 +249,21 @@ Gennemgå stack function calls igen?
 Forstå stack, fx push.
 Læs sider igen
 
-![](Pasted%20image%2020220518151211.png)
+![](./attachments/Pasted%20image%2020220518151211.png)
 
-![](Pasted%20image%2020220518151547.png)
+![](./attachments/Pasted%20image%2020220518151547.png)
 
-![](Pasted%20image%2020220518152059.png)
+![](./attachments/Pasted%20image%2020220518152059.png)
 
-![](Pasted%20image%2020220518152111.png)
+![](./attachments/Pasted%20image%2020220518152111.png)
 
-![](Pasted%20image%2020220518152938.png)
+![](./attachments/Pasted%20image%2020220518152938.png)
 
-![](Pasted%20image%2020220518154203.png)
+![](./attachments/Pasted%20image%2020220518154203.png)
 
-![](Pasted%20image%2020220518154537.png)
+![](./attachments/Pasted%20image%2020220518154537.png)
 
-![](Pasted%20image%2020220518155212.png)
+![](./attachments/Pasted%20image%2020220518155212.png)
 
 https://www.youtube.com/watch?v=7ZBAVsRQk-o
 
