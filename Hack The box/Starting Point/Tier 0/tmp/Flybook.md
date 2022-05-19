@@ -511,7 +511,7 @@ Using OWASP ZAP to Fuzz the login form with Seclists `Generic-SQLi.txt`, similar
 ## Command Injection
 ![](./attachments/Pasted%20image%2020220515143436.png)
 
-Upon visiting the `service.html` page and looking a the history tab in ZAP, we notice that requests are sent continually.
+Upon visiting the `service.html` page and looking at the history tab in ZAP, we notice that requests are sent continually.
 
 ![](./attachments/Pasted%20image%2020220515140141.png)
 
@@ -572,3 +572,24 @@ Generic expression:
 Other CWE's found:
 
 ![](./attachments/Pasted%20image%2020220515160101.png)
+
+## Exceptions:
+All the exception handling in the Java application is printed directly to the user. This is NOT secure as it can reveal a lot of sensitive information about the system. To solve this problem, the stack trace needs to be sent to an external log server where developers later can collect it in order to fix the problems.
+
+Furthermore, a lot of the exceptions are 'general exceptions' which catch **everything**. Best practice is to specify the exact exception which is expected. This is because, if there is an unexpected exception, the program will continue running at the code (We will not detect the error). Also, the code made in the catch will only work on the exception we expected, if an unexpected exception occurs the code will not be able to handle it.
+
+This will print the stack trace to the user:
+
+```
+catch (SQLException e){ 
+	e.printStackTrace();
+}
+```
+
+This will save the error to the log:
+
+```
+catch (SQLException e){ 
+	logger.log(Level.ERROR, "error executing sql query", e); 
+}
+```
