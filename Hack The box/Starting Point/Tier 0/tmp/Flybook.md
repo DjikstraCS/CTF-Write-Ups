@@ -576,7 +576,7 @@ Other CWE's found:
 ## Exceptions:
 All the exception handling in the Java application is printed directly to the user. This is NOT secure as it can reveal a lot of sensitive information about the system. To solve this problem, the stack trace needs to be sent to an external log server where developers later can collect it in order to fix the problems.
 
-Furthermore, a lot of the exceptions are 'general exceptions' which catch **everything**. Best practice is to specify the exact exception which is expected. This is because, if there is an unexpected exception, the program will continue running at the code (We will not detect the error). Also, the code made in the catch will only work on the exception we expected, if an unexpected exception occurs the code will not be able to handle it.
+Furthermore, a lot of the exceptions are 'general exceptions' which catch **everything**. Best practice is to specify the exact exception which is expected. This is because, if there is an unexpected exception, the program will continue running the code (We will not detect the error). Also, the code made in the catch will only work on the exception we expected, if an unexpected exception occurs the code will not be able to handle it.
 
 This will print the stack trace to the user:
 
