@@ -23,10 +23,10 @@ Combine it with [LightShot](https://app.prntscr.com/en/index.html) and you got y
 	- It will convert all files in its root directory, plus all subdirectories.
 2. Obsidian \[\[Wikilinks]] needs to be turned off.
 	- Obsidian Settings -> Files and links -> Use \[\[Wikilinks]] -> `OFF`
-3. In order to view and execute directly from Obsidian, 'Detect all file extensions' needs to be turned on.
-	- Obsidian Settings -> Files and links -> Detect all file extensions -> `ON`
-4. 'Default location for new attachments' needs to be 'in sub folder under current folder'.
+3. 'Default location for new attachments' needs to be 'in sub folder under current folder'.
 	- Obsidian Settings -> Files and links -> Default location for new attachments -> In sub folder under current folder -> Subfolder name -> `attachments`.
-	- Edit the `./attachments/` folder name in script to local path if necessary.
+	- (Optinal) Edit the `./attachments/` folder name in script to local path if necessary.
+4. In order to view and execute the script directly from Obsidian, 'Detect all file extensions' needs to be turned on.
+	- Obsidian Settings -> Files and links -> Detect all file extensions -> `ON`
 
 ---
