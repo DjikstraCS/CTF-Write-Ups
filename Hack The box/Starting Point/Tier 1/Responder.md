@@ -171,6 +171,8 @@ Use the "--show --format=netntlmv2" options to display all of the cracked passwo
 Session completed. 
 ```
 
+*Hint: to clear john cache run `rm ~/.john/john.pot`*
+
 We cracked the password. Now we just need to utilize it, since Linux doesn't support PowerShell out of the box, we'll use 'Evil-WinRM' to connect to the server.
 
 Command:

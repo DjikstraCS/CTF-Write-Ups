@@ -351,6 +351,14 @@ HTTP Headers:
 cat facebook_aquatone.txt | aquatone -out ./aquatone -screenshot-timeout 1000
 ```
 
+```bash
+┌──(kali㉿kali)-[~]
+└─$ curl -I app.inlanefreight.local
+HTTP/1.1 200 OK
+Date: Thu, 30 Jun 2022 11:51:17 GMT
+Server: Apache/2.4.41 (Ubuntu)
+```
+
 **Answer:** `2.4.41`
 
 ### Question 2:
@@ -372,198 +380,294 @@ The answer was collected in the previous question.
 ### Question 1:
 ![](./attachments/Pasted%20image%2020220509235251.png)
 
-Zone Transfer:
-
-[hackertarget.com](https://hackertarget.com/zone-transfer/)
 
 Manual zone transfer:
+```
+┌──(kali㉿kali)-[~]
+└─$ nslookup -query=NS inlanefreight.htb 10.129.158.69
+Server:         10.129.158.69
+Address:        10.129.158.69#53
 
-```bash
-DjikstraCS@htb[/htb]$ nslookup -type=NS zonetransfer.me
-
-Server:		10.100.0.1
-Address:	10.100.0.1#53
-
-Non-authoritative answer:
-zonetransfer.me	nameserver = nsztm2.digi.ninja.
-zonetransfer.me	nameserver = nsztm1.digi.ninja.
+inlanefreight.htb       nameserver = ns.inlanefreight.htb.
 ```
 
-```bash
-DjikstraCS@htb[/htb]$ nslookup -type=any -query=AXFR zonetransfer.me nsztm1.digi.ninja
+```                                                
+┌──(kali㉿kali)-[~]
+└─$ dig ns inlanefreight.htb @10.129.158.69 
 
-Server:		nsztm1.digi.ninja
-Address:	81.4.108.41#53
+; <<>> DiG 9.18.1-1-Debian <<>> ns inlanefreight.htb @10.129.158.69
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 45091
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 2
+;; WARNING: recursion requested but not available
 
-zonetransfer.me
-	origin = nsztm1.digi.ninja
-	mail addr = robin.digi.ninja
-	serial = 2019100801
-	refresh = 172800
-	retry = 900
-	expire = 1209600
-	minimum = 3600
-zonetransfer.me	hinfo = "Casio fx-700G" "Windows XP"
-zonetransfer.me	text = "google-site-verification=tyP28J7JAUHA9fw2sHXMgcCC0I6XBmmoVi04VlMewxA"
-zonetransfer.me	mail exchanger = 0 ASPMX.L.GOOGLE.COM.
-zonetransfer.me	mail exchanger = 10 ALT1.ASPMX.L.GOOGLE.COM.
-zonetransfer.me	mail exchanger = 10 ALT2.ASPMX.L.GOOGLE.COM.
-zonetransfer.me	mail exchanger = 20 ASPMX2.GOOGLEMAIL.COM.
-zonetransfer.me	mail exchanger = 20 ASPMX3.GOOGLEMAIL.COM.
-zonetransfer.me	mail exchanger = 20 ASPMX4.GOOGLEMAIL.COM.
-zonetransfer.me	mail exchanger = 20 ASPMX5.GOOGLEMAIL.COM.
-Name:	zonetransfer.me
-Address: 5.196.105.14
-zonetransfer.me	nameserver = nsztm1.digi.ninja.
-zonetransfer.me	nameserver = nsztm2.digi.ninja.
-_acme-challenge.zonetransfer.me	text = "6Oa05hbUJ9xSsvYy7pApQvwCUSSGgxvrbdizjePEsZI"
-_sip._tcp.zonetransfer.me	service = 0 0 5060 www.zonetransfer.me.
-14.105.196.5.IN-ADDR.ARPA.zonetransfer.me	name = www.zonetransfer.me.
-asfdbauthdns.zonetransfer.me	afsdb = 1 asfdbbox.zonetransfer.me.
-Name:	asfdbbox.zonetransfer.me
-Address: 127.0.0.1
-asfdbvolume.zonetransfer.me	afsdb = 1 asfdbbox.zonetransfer.me.
-Name:	canberra-office.zonetransfer.me
-Address: 202.14.81.230
-cmdexec.zonetransfer.me	text = "; ls"
-contact.zonetransfer.me	text = "Remember to call or email Pippa on +44 123 4567890 or pippa@zonetransfer.me when making DNS changes"
-Name:	dc-office.zonetransfer.me
-Address: 143.228.181.132
-Name:	deadbeef.zonetransfer.me
-Address: dead:beaf::
-dr.zonetransfer.me	loc = 53 20 56.558 N 1 38 33.526 W 0.00m 1m 10000m 10m
-DZC.zonetransfer.me	text = "AbCdEfG"
-email.zonetransfer.me	naptr = 1 1 "P" "E2U+email" "" email.zonetransfer.me.zonetransfer.me.
-Name:	email.zonetransfer.me
-Address: 74.125.206.26
-Hello.zonetransfer.me	text = "Hi to Josh and all his class"
-Name:	home.zonetransfer.me
-Address: 127.0.0.1
-Info.zonetransfer.me	text = "ZoneTransfer.me service provided by Robin Wood - robin@digi.ninja. See http://digi.ninja/projects/zonetransferme.php for more information."
-internal.zonetransfer.me	nameserver = intns1.zonetransfer.me.
-internal.zonetransfer.me	nameserver = intns2.zonetransfer.me.
-Name:	intns1.zonetransfer.me
-Address: 81.4.108.41
-Name:	intns2.zonetransfer.me
-Address: 167.88.42.94
-Name:	office.zonetransfer.me
-Address: 4.23.39.254
-Name:	ipv6actnow.org.zonetransfer.me
-Address: 2001:67c:2e8:11::c100:1332
-Name:	owa.zonetransfer.me
-Address: 207.46.197.32
-robinwood.zonetransfer.me	text = "Robin Wood"
-rp.zonetransfer.me	rp = robin.zonetransfer.me. robinwood.zonetransfer.me.
-sip.zonetransfer.me	naptr = 2 3 "P" "E2U+sip" "!^.*$!sip:customer-service@zonetransfer.me!" .
-sqli.zonetransfer.me	text = "' or 1=1 --"
-sshock.zonetransfer.me	text = "() { :]}; echo ShellShocked"
-staging.zonetransfer.me	canonical name = www.sydneyoperahouse.com.
-Name:	alltcpportsopen.firewall.test.zonetransfer.me
-Address: 127.0.0.1
-testing.zonetransfer.me	canonical name = www.zonetransfer.me.
-Name:	vpn.zonetransfer.me
-Address: 174.36.59.154
-Name:	www.zonetransfer.me
-Address: 5.196.105.14
-xss.zonetransfer.me	text = "'><script>alert('Boo')</script>"
-zonetransfer.me
-	origin = nsztm1.digi.ninja
-	mail addr = robin.digi.ninja
-	serial = 2019100801
-	refresh = 172800
-	retry = 900
-	expire = 1209600
-	minimum = 3600
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: 8e5057a54a858e9c0100000062beb92e2c06292e4fb836e1 (good)
+;; QUESTION SECTION:
+;inlanefreight.htb.             IN      NS
+
+;; ANSWER SECTION:
+inlanefreight.htb.      604800  IN      NS      ns.inlanefreight.htb.
+
+;; ADDITIONAL SECTION:
+ns.inlanefreight.htb.   604800  IN      A       127.0.0.1
+
+;; Query time: 39 msec
+;; SERVER: 10.129.158.69#53(10.129.158.69) (UDP)
+;; WHEN: Fri Jul 01 05:06:54 EDT 2022
+;; MSG SIZE  rcvd: 107
 ```
 
-**Answer:** ``
-
-# TO BE CONTINUED...
+**Answer:** `ns.inlanefreight.htb`
 
 ### Question 2:
 ![](./attachments/Pasted%20image%2020220509235308.png)
 
 *Hint: If the DNS is misconfigured and allows zone transfer, the individual zones for domains and subdomains can be queried accordingly.*
 
+```
+┌──(kali㉿kali)-[~]
+└─$ nslookup -type=any -query=AXFR inlanefreight.htb 10.129.158.69       
+Server:         10.129.158.69
+Address:        10.129.158.69#53
+
+inlanefreight.htb
+        origin = inlanefreight.htb
+        mail addr = root.inlanefreight.htb
+        serial = 2
+        refresh = 604800
+        retry = 86400
+        expire = 2419200
+        minimum = 604800
+inlanefreight.htb       nameserver = ns.inlanefreight.htb.
+Name:   admin.inlanefreight.htb
+Address: 10.10.34.2
+Name:   ftp.admin.inlanefreight.htb
+Address: 10.10.34.2
+Name:   careers.inlanefreight.htb
+Address: 10.10.34.50
+Name:   dc1.inlanefreight.htb
+Address: 10.10.34.16
+Name:   dc2.inlanefreight.htb
+Address: 10.10.34.11
+Name:   internal.inlanefreight.htb
+Address: 127.0.0.1
+Name:   admin.internal.inlanefreight.htb
+Address: 10.10.1.11
+Name:   wsus.internal.inlanefreight.htb
+Address: 10.10.1.240
+Name:   ir.inlanefreight.htb
+Address: 10.10.45.5
+Name:   dev.ir.inlanefreight.htb
+Address: 10.10.45.6
+Name:   ns.inlanefreight.htb
+Address: 127.0.0.1
+Name:   resources.inlanefreight.htb
+Address: 10.10.34.100
+Name:   securemessaging.inlanefreight.htb
+Address: 10.10.34.52
+Name:   test1.inlanefreight.htb
+Address: 10.10.34.101
+Name:   us.inlanefreight.htb
+Address: 10.10.200.5
+Name:   cluster14.us.inlanefreight.htb
+Address: 10.10.200.14
+Name:   messagecenter.us.inlanefreight.htb
+Address: 10.10.200.10
+Name:   ww02.inlanefreight.htb
+Address: 10.10.34.112
+Name:   www1.inlanefreight.htb
+Address: 10.10.34.111
+inlanefreight.htb
+        origin = inlanefreight.htb
+        mail addr = root.inlanefreight.htb
+        serial = 2
+        refresh = 604800
+        retry = 86400
+        expire = 2419200
+        minimum = 604800
+```
+
+```
+┌──(kali㉿kali)-[~]
+└─$ dig AXFR inlanefreight.htb @10.129.158.69
+
+; <<>> DiG 9.18.1-1-Debian <<>> AXFR inlanefreight.htb @10.129.158.69
+;; global options: +cmd
+inlanefreight.htb.      604800  IN      SOA     inlanefreight.htb. root.inlanefreight.htb. 2 604800 86400 2419200 604800
+inlanefreight.htb.      604800  IN      NS      ns.inlanefreight.htb.
+admin.inlanefreight.htb. 604800 IN      A       10.10.34.2
+ftp.admin.inlanefreight.htb. 604800 IN  A       10.10.34.2
+careers.inlanefreight.htb. 604800 IN    A       10.10.34.50
+dc1.inlanefreight.htb.  604800  IN      A       10.10.34.16
+dc2.inlanefreight.htb.  604800  IN      A       10.10.34.11
+internal.inlanefreight.htb. 604800 IN   A       127.0.0.1
+admin.internal.inlanefreight.htb. 604800 IN A   10.10.1.11
+wsus.internal.inlanefreight.htb. 604800 IN A    10.10.1.240
+ir.inlanefreight.htb.   604800  IN      A       10.10.45.5
+dev.ir.inlanefreight.htb. 604800 IN     A       10.10.45.6
+ns.inlanefreight.htb.   604800  IN      A       127.0.0.1
+resources.inlanefreight.htb. 604800 IN  A       10.10.34.100
+securemessaging.inlanefreight.htb. 604800 IN A  10.10.34.52
+test1.inlanefreight.htb. 604800 IN      A       10.10.34.101
+us.inlanefreight.htb.   604800  IN      A       10.10.200.5
+cluster14.us.inlanefreight.htb. 604800 IN A     10.10.200.14
+messagecenter.us.inlanefreight.htb. 604800 IN A 10.10.200.10
+ww02.inlanefreight.htb. 604800  IN      A       10.10.34.112
+www1.inlanefreight.htb. 604800  IN      A       10.10.34.111
+inlanefreight.htb.      604800  IN      SOA     inlanefreight.htb. root.inlanefreight.htb. 2 604800 86400 2419200 604800
+;; Query time: 40 msec
+;; SERVER: 10.129.158.69#53(10.129.158.69) (TCP)
+;; WHEN: Fri Jul 01 05:12:54 EDT 2022
+;; XFR size: 22 records (messages 1, bytes 594)
+```
 
 
-**Answer:** ``
+**Answer:** `2`
 
 ### Question 3:
 ![](./attachments/Pasted%20image%2020220509235319.png)
 
 *Hint: One of the existing zones contains a TXT record.*
 
+```
+┌──(kali㉿kali)-[~]
+└─$ dig axfr internal.inlanefreight.htb @10.129.158.69      
+
+; <<>> DiG 9.18.1-1-Debian <<>> axfr internal.inlanefreight.htb @10.129.158.69
+;; global options: +cmd
+internal.inlanefreight.htb. 604800 IN   SOA     inlanefreight.htb. root.inlanefreight.htb. 2 604800 86400 2419200 604800
+internal.inlanefreight.htb. 604800 IN   TXT     "ZONE_TRANSFER{87o2z3cno7zsoiedznxoi82z3o47xzhoi}"
+internal.inlanefreight.htb. 604800 IN   NS      ns.inlanefreight.htb.
+dev.admin.internal.inlanefreight.htb. 604800 IN A 10.10.1.2
+panel.admin.internal.inlanefreight.htb. 604800 IN A 10.10.1.2
+printer.admin.internal.inlanefreight.htb. 604800 IN A 10.10.1.3
+dc3.internal.inlanefreight.htb. 604800 IN A     10.10.1.5
+ns.internal.inlanefreight.htb. 604800 IN A      127.0.0.1
+ns2.internal.inlanefreight.htb. 604800 IN A     10.10.34.136
+ws1.internal.inlanefreight.htb. 604800 IN A     10.10.2.11
+ws2.internal.inlanefreight.htb. 604800 IN A     10.10.3.12
+internal.inlanefreight.htb. 604800 IN   SOA     inlanefreight.htb. root.inlanefreight.htb. 2 604800 86400 2419200 604800
+;; Query time: 36 msec
+;; SERVER: 10.129.158.69#53(10.129.158.69) (TCP)
+;; WHEN: Fri Jul 01 05:59:41 EDT 2022
+;; XFR size: 12 records (messages 1, bytes 435)
+```
 
 
-**Answer:** ``
+**Answer:** `ZONE_TRANSFER{87o2z3cno7zsoiedznxoi82z3o47xzhoi}`
 
 ### Question 4:
 ![](./attachments/Pasted%20image%2020220509235340.png)
 
+The answer is under question 3.
 
-
-**Answer:** ``
+**Answer:** `ns2.internal.inlanefreight.htb`
 
 ### Question 5:
 ![](./attachments/Pasted%20image%2020220509235351.png)
 
+The answer is under question 3.
 
-
-**Answer:** ``
+**Answer:** `dc3.internal.inlanefreight.htb`
 
 ### Question 6:
 ![](./attachments/Pasted%20image%2020220509235402.png)
 
+The answer is under question 2.
 
-
-**Answer:** ``
+**Answer:** `10.10.200.5`
 
 ### Question 7:
 ![](./attachments/Pasted%20image%2020220509235415.png)
 
 *Hint: There are several zones.*
 
+Adding the number of A records from question 2 and 3 together.
 
-
-**Answer:** ``
+**Answer:** `27`
 
 ---
 ## Virtual Hosts
 ### Question 1:
 ![](./attachments/Pasted%20image%2020220509235436.png)
 
+Using FFuF to enumerate virtual hosts with Fuzzing.
 
+```
+┌──(kali㉿kali)-[~]
+└─$ ffuf -w /usr/share/seclists/Discovery/DNS/namelist.txt -u http://10.129.165.231 -H "HOST: FUZZ.inlanefreight.htb" -fs 10918
 
-**Answer:** ``
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://10.129.165.231
+ :: Wordlist         : FUZZ: /usr/share/seclists/Discovery/DNS/namelist.txt
+ :: Header           : Host: FUZZ.inlanefreight.htb
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+ :: Filter           : Response size: 10918
+________________________________________________
+
+ap                      [Status: 200, Size: 102, Words: 3, Lines: 6, Duration: 74ms]
+app                     [Status: 200, Size: 103, Words: 3, Lines: 6, Duration: 46ms]
+citrix                  [Status: 200, Size: 100, Words: 3, Lines: 6, Duration: 118ms]
+customers               [Status: 200, Size: 94, Words: 3, Lines: 6, Duration: 69ms]
+dmz                     [Status: 200, Size: 95, Words: 2, Lines: 6, Duration: 60ms]
+www2                    [Status: 200, Size: 96, Words: 2, Lines: 6, Duration: 50ms]
+:: Progress: [151265/151265] :: Job [1/1] :: 725 req/sec :: Duration: [0:04:27] :: Errors: 0 ::
+```
+
+Adding the pages to the `/etc/hosts` file.
+
+![](./attachments/Pasted%20image%2020220701141121.png)
+
+Opening the pages one by one in the browser:
+
+![](./attachments/Pasted%20image%2020220701141422.png)
+
+**Answer:** `HTB{h8973hrpiusnzjoie7zrou23i4zhmsxi8732zjso}`
 
 ### Question 2:
 ![](./attachments/Pasted%20image%2020220509235445.png)
 
+![](./attachments/Pasted%20image%2020220701141359.png)
 
-
-**Answer:** ``
+**Answer:** `HTB{u23i4zhmsxi872z3rn98h7nh2sxnbgriusd32zjso}`
 
 ### Question 3:
 ![](./attachments/Pasted%20image%2020220509235455.png)
 
+![](./attachments/Pasted%20image%2020220701141336.png)
 
-
-**Answer:** ``
+**Answer:** `HTB{Fl4gF0uR_o8763tznb4xou7zhgsniud7gfi734}`
 
 ### Question 4:
 ![](./attachments/Pasted%20image%2020220509235507.png)
 
+![](./attachments/Pasted%20image%2020220701141321.png)
 
-
-**Answer:** ``
+**Answer:** `HTB{bzghi7tghin2u76x3ghdni62higz7x3s}`
 
 ### Question 5:
 ![](./attachments/Pasted%20image%2020220509235516.png)
 
+![](./attachments/Pasted%20image%2020220701141302.png)
 
-
-**Answer:** ``
+**Answer:** `HTB{7zbnr4i3n7zhrxn347zhh3dnrz4dh7zdjfbgn6d}`
 
 ---
 ## Skills Assessment
