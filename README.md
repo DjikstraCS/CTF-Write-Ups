@@ -16,7 +16,7 @@ Does this by adding the full file path to **pasted** images.
 
 ![](./attachments/Pasted%20image%2020220509043017.png)
 
-Combine it with [LightShot](https://app.prntscr.com/en/index.html) and you got yourself a super efficient Git compatible documentation workflow.
+Combine it with [LightShot](https://app.prntscr.com/en/index.html) and you got yourself a super efficient GitHub compatible documentation workflow.
 
 ### Install:
 1. Put the script in the root of the Obsidian file structure you want to make GitHub compatible.
