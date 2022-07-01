@@ -2,13 +2,14 @@
 #Author: DjikstraCS
 
 import os
+conversions = 0
 
 print('\n Welcome to...\n\n  8888b   d8888 8888888.\n  88888b d88888 888  \'88b\n  888Y88888P888 888   888\n  888 Y888P 888 888   888\n  888 _Y8P_ 888 888  d88P            __\n  888 ____/_888 888888P\' _____  ____/ /_\n   / /   / __ \/ __ \ | / / _ \/ __/ __/\n  / /___/ /_/ / / / / |/ /  __/ / / /_\n  \____/\____/_/ /_/|___/\___/_/  \__/')
 
-if input('\n\n Start conversion? (Y/n) ').lower().strip() or 'y' != 'y':
-    exit(0)
-
-conversions = 0
+user_input = input('\n\n Start conversion? (Y/n) ').lower().strip()
+if user_input: 
+    if user_input != 'y':
+        exit(0)
 
 for path, dirs, files in os.walk('.'):
     for filename in files:
