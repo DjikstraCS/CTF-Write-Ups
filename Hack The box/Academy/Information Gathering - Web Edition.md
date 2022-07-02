@@ -5,7 +5,7 @@
 * Difficulty: Easy
 * Category: Offensive
 * Time estimate: 7 hours
-* Date: 09-05-2022
+* Date: 01-05-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
 ---
@@ -674,34 +674,124 @@ Opening the pages one by one in the browser:
 ### Question 1:
 ![](./attachments/Pasted%20image%2020220509235537.png)
 
+```bash
+┌──(kali㉿kali)-[~]
+└─$ whois githubapp.com
+   Domain Name: GITHUBAPP.COM
+   Registry Domain ID: 1671607560_DOMAIN_COM-VRSN
+   Registrar WHOIS Server: whois.markmonitor.com
+   Registrar URL: http://www.markmonitor.com
+   Updated Date: 2021-07-10T09:18:01Z
+   Creation Date: 2011-08-11T23:30:52Z
+   Registry Expiry Date: 2023-08-11T23:30:52Z
+   Registrar: MarkMonitor Inc.
+   Registrar IANA ID: 292
+   Registrar Abuse Contact Email: abusecomplaints@markmonitor.com
+   Registrar Abuse Contact Phone: +1.2086851750
+```
 
 
-**Answer:** ``
+**Answer:** `292`
 
 ### Question 2:
 ![](./attachments/Pasted%20image%2020220509235547.png)
 
 *Hint: There is a 5 in the FQDN*
 
+```
+┌──(kali㉿kali)-[~]
+└─$ dig mx githubapp.com
+
+; <<>> DiG 9.18.1-1-Debian <<>> mx githubapp.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 31423
+;; flags: qr rd ra; QUERY: 1, ANSWER: 7, AUTHORITY: 8, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; MBZ: 0x0005, udp: 4096
+; COOKIE: 8e89f4e9980120f985357c5d62c0082ebf04c931f9dbf8f9 (good)
+;; QUESTION SECTION:
+;githubapp.com.                 IN      MX
+
+;; ANSWER SECTION:
+githubapp.com.          5       IN      MX      20 alt1.aspmx.l.google.com.
+githubapp.com.          5       IN      MX      30 aspmx4.googlemail.com.
+githubapp.com.          5       IN      MX      10 aspmx.l.google.com.
+githubapp.com.          5       IN      MX      20 alt2.aspmx.l.google.com.
+githubapp.com.          5       IN      MX      30 aspmx3.googlemail.com.
+githubapp.com.          5       IN      MX      30 aspmx2.googlemail.com.
+githubapp.com.          5       IN      MX      30 aspmx5.googlemail.com.
+```
 
 
-**Answer:** ``
+**Answer:** `aspmx5.googlemail.com`
 
 ### Question 3:
 ![](./attachments/Pasted%20image%2020220509235559.png)
 
+```
+┌──(kali㉿kali)-[~]
+└─$ curl -I i.imgur.com                                                                                                       
+HTTP/1.1 301 Moved Permanently
+Retry-After: 0
+Location: https://i.imgur.com/
+Content-Length: 0
+Accept-Ranges: bytes
+Date: Sat, 02 Jul 2022 08:37:33 GMT
+Connection: close
+X-Served-By: cache-bma1656-BMA
+X-Cache: HIT
+X-Cache-Hits: 0
+X-Timer: S1656751054.536075,VS0,VE0
+Strict-Transport-Security: max-age=300
+Access-Control-Allow-Methods: GET, OPTIONS
+Access-Control-Allow-Origin: *
+Server: cat factory 1.0
+```
 
-
-**Answer:** ``
+**Answer:** `cat factory 1.0`
 
 ### Question 4:
 ![](./attachments/Pasted%20image%2020220509235613.png)
 
 *Hint: Try to use a tool like 'sublist3r'*
 
+```
+┌──(kali㉿kali)-[~]
+└─$ sublist3r -d githubapp.com
+                 ____        _     _ _     _   _____  
+                / ___| _   _| |__ | (_)___| |_|___ / _ __
+                \___ \| | | | '_ \| | / __| __| |_ \| '__|
+                 ___) | |_| | |_) | | \__ \ |_ ___) | |                                   
+                |____/ \__,_|_.__/|_|_|___/\__|____/|_|
+				
+                # Coded By Ahmed Aboul-Ela - @aboul3la
 
+[-] Enumerating subdomains now for githubapp.com 
+[-] Searching now in Baidu..
+[-] Searching now in Yahoo..
+[-] Searching now in Google..
+[-] Searching now in Bing..
+[-] Searching now in Ask..
+[-] Searching now in Netcraft..
+[-] Searching now in DNSdumpster..
+[-] Searching now in Virustotal..
+[-] Searching now in ThreatCrowd..
+[-] Searching now in SSL Certificates..
+[-] Searching now in PassiveDNS..
+[!] Error: Virustotal probably now is blocking our requests
+[-] Total Unique Subdomains Found: 365
+www.githubapp.com
+ahoy.githubapp.com
+airflow.githubapp.com
 
-**Answer:** ``
+(...)
+
+fastly-elephants.githubapp.com
+```
+
+**Answer:** `fastly-elephants.githubapp.com`
 
 ---
 **Tags:** [[Hack The Box Academy]]
