@@ -469,14 +469,85 @@ ________________________________________________
 
 *Hint: Don't forget to try out both parameter fuzzing methods we learned! Also, don't forget to set the appropriate header flags for 'ffuf'.*
 
-**Answer:** ``
+GET method:
+```
+┌──(kali㉿kali)-[~]
+└─$ ffuf -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://faculty.academy.htb:30666/courses/linux-security.php7?FUZZ=key -fs 774
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://faculty.academy.htb:30666/courses/linux-security.php7?FUZZ=key
+ :: Wordlist         : FUZZ: /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+ :: Filter           : Response size: 774
+________________________________________________
+
+user                    [Status: 200, Size: 780, Words: 223, Lines: 53, Duration: 61ms]
+:: Progress: [6453/6453] :: Job [1/1] :: 618 req/sec :: Duration: [0:00:10] :: Errors: 0 ::
+```
+
+POST method:
+```
+┌──(kali㉿kali)-[~]
+└─$ ffuf -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://faculty.academy.htb:30666/courses/linux-security.php7 -X POST -d 'FUZZ=key' -H 'Content-Type: application/x-www-form-urlencoded' -fs 774
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : POST
+ :: URL              : http://faculty.academy.htb:30666/courses/linux-security.php7
+ :: Wordlist         : FUZZ: /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt
+ :: Header           : Content-Type: application/x-www-form-urlencoded
+ :: Data             : FUZZ=key
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+ :: Filter           : Response size: 774
+________________________________________________
+
+user                    [Status: 200, Size: 780, Words: 223, Lines: 53, Duration: 64ms]
+username                [Status: 200, Size: 781, Words: 223, Lines: 53, Duration: 66ms]
+:: Progress: [6453/6453] :: Job [1/1] :: 622 req/sec :: Duration: [0:00:10] :: Errors: 0 ::
+```
+
+**Answer:** `user username`
 
 ### Question 5:
 ![](./attachments/Pasted%20image%2020220702113035.png)
 
 *Hint: Try to find a good wordlist from 'seclists'. Once you find a working value, use 'curl' to send a POST request with the value to get the flag.*
 
-**Answer:** ``
+```
+┌──(kali㉿kali)-[~]
+└─$ curl http://faculty.academy.htb:30666/courses/linux-security.php7 -X POST -d 'username=harry' -H 'Content-Type: application/x-www-form-urlencoded'
+<div class='center'><p>HTB{w3b_fuzz1n6_m4573r}</p></div>
+<html>
+(...)
+```
+
+**Answer:** `HTB{w3b_fuzz1n6_m4573r}`
 
 ---
 **Tags:** [[Hack The Box Academy]]
