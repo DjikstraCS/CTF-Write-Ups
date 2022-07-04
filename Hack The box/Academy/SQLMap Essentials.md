@@ -267,7 +267,7 @@ Table: flag7
 
 *Hint: To be more efficient, try to specify the database and table name for sqlmap.*
 
-First we crack the database.
+First, we crack the database.
 
 ```
 ┌──(kali㉿kali)-[~]
