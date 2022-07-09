@@ -15,15 +15,41 @@
 
 *Hint: You may use the 'system()' PHP function to execute system commands*
 
-**Answer:** ``
+The page:
+
+![](./attachments/Pasted%20image%2020220705133533.png)
+
+Making a .php file which executes `hostname` command.
+
+```
+┌──(kali㉿kali)-[~]
+└─$ echo "<?php system('hostname');?>" > test.php
+```
+
+Upload the file.
+
+![](./attachments/Pasted%20image%2020220705133407.png)
+
+Click 'Download File' to open the file in the browser.
+
+![](./attachments/Pasted%20image%2020220705133428.png)
+
+**Answer:** `fileuploadsabsentverification`
 
 ---
 ## Upload Exploitation
 ### Question:
 ![](./attachments/Pasted%20image%2020220705125814.png)
 
+Same page as previous question.
 
-**Answer:** ``
+We will use [phpbash](https://github.com/Arrexel/phpbash) as the payload.
+
+After upload and subsequent download, we get a web shell:
+
+![](./attachments/Pasted%20image%2020220706113517.png)
+
+**Answer:** `HTB{g07_my_f1r57_w3b_5h3ll}`
 
 ---
 ## Client-Side Validation
@@ -32,16 +58,68 @@
 
 *Hint: Try to locate the function responsible for validating the input type, then try to remove it without breaking the upload functionality*
 
-**Answer:** ``
+Make and upload dummy `.png` file to catch POST request.
+
+```
+┌──(kali㉿kali)-[~]
+└─$ echo "image" > test.png
+```
+
+The POST request.
+
+![](./attachments/Pasted%20image%2020220706123244.png)
+
+We need to insert our `phpbash.php` payload here.
+
+![](./attachments/Pasted%20image%2020220706123652.png)
+
+The file is uploaded, we can now see the file in the source code in the browser after refreshing.
+
+![](./attachments/Pasted%20image%2020220706121701.png)
+
+Upon visiting the URL:
+
+![](./attachments/Pasted%20image%2020220706121925.png)
+
+
+Disabling front-end validation:
+
+![](./attachments/Pasted%20image%2020220706121226.png)
+
+Edit the page source code.
+
+![](./attachments/Pasted%20image%2020220706121357.png)
+
+Now we can upload [phpbash](https://github.com/Arrexel/phpbash).
+
+![](./attachments/Pasted%20image%2020220706121701.png)
+
+Our uploaded file is now visible as the source of the image.
+
+![](./attachments/Pasted%20image%2020220706121925.png)
+
+**Answer:** `HTB{cl13n7_51d3_v4l1d4710n_w0n7_570p_m3}`
 
 ---
 ## Blacklist Filters
 ### Question:
 ![](./attachments/Pasted%20image%2020220705125935.png)
 
-*Hint: When you fuzz for allowed extensions, change the content to a PHP 'hello world' script. Then, when you you check the uploaded file, you would know whether it can execute PHP code.*
+*Hint: When you fuzz for allowed extensions, change the content to a PHP 'hello world' script. Then, when you check the uploaded file, you would know whether it can execute PHP code.*
 
-**Answer:** ``
+Fuzzing reveals the blacklisted extensions.
+
+![](./attachments/Pasted%20image%2020220709174921.png)
+
+Trying `.phar` from [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Upload%20Insecure%20Files/Extension%20PHP/extensions.lst) PHP list.
+
+![](./attachments/Pasted%20image%2020220709175244.png)
+
+The page:
+
+![](./attachments/Pasted%20image%2020220709175132.png)
+
+**Answer:** `HTB{1_c4n_n3v3r_b3_bl4ckl1573d}`
 
 ---
 ## Whitelist Filters
