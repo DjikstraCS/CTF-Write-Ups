@@ -15,7 +15,13 @@
 
 *Hint: Look at the page title, and find the relevant list.*
 
-**Answer:** ``
+![](./attachments/Pasted%20image%2020220724134517.png)
+
+Google search for `webaccess hmi/scada software default credentials`.
+
+![](./attachments/Pasted%20image%2020220724134636.png)
+
+**Answer:** `advantech`
 
 ---
 ## 

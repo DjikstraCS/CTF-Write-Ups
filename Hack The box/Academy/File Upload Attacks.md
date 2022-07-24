@@ -187,7 +187,12 @@ Fuzzing for that reveals a few successful uploads, we will have to try them one 
 
 *Hint: Try to fuzz for non-blacklisted extensions, and for allowed content-type headers. If you are unable to locate the uploaded files, try to read the source code to find the uploads directory and the naming scheme.*
 
-**Answer:** ``
+![](./attachments/Pasted%20image%2020220724133206.png)
+
+![](./attachments/Pasted%20image%2020220724133212.png)
+
+
+**Answer:** `HTB{m4573r1ng_upl04d_3xpl0174710n}`
 
 ---
 **Tags:** [[Hack The Box Academy]]
