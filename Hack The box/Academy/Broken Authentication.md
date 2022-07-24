@@ -37,7 +37,9 @@ Google search for `webaccess hmi/scada software default credentials`.
 
 *Hint: This web server doesn't trust your IP!*
 
-**Answer:** ``
+![](Pasted%20image%2020220724155629.png)
+
+**Answer:** `HTB{127001>31337}`
 
 ---
 ## Bruteforcing Usernames
