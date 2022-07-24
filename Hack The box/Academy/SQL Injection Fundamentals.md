@@ -1,4 +1,3 @@
-
 # SQL Injection Fundamentals
 * Source: [Hack the Box: Academy](https://academy.hackthebox.com/)
 * Module: SQL Injection Fundamentals

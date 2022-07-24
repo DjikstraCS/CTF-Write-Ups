@@ -5,7 +5,7 @@
 * Difficulty: Medium
 * Category: Offensive
 * Time estimate: 8 hours
-* Date: DD-MM-YYYY
+* Date: 11-07-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
 ---
@@ -128,7 +128,16 @@ The page:
 
 *Hint: You may use either of the last two techniques. If one extension is blocked, try another one that can execute PHP code.*
 
-**Answer:** ``
+First fuzz file extensions. [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Upload%20Insecure%20Files/Extension%20PHP/extensions.lst) PHP list point us in the direction of a reverse double extension.
+
+Fuzzing for that reveals a few successful uploads, we will have to try them one by one until we find the one that executes.
+
+![](./attachments/Pasted%20image%2020220710111701.png)
+
+![](./attachments/Pasted%20image%2020220710111959.png)
+
+
+**Answer:** `HTB{1_wh173l157_my53lf}`
 
 ---
 ## Type Filters
@@ -137,7 +146,13 @@ The page:
 
 *Hint: Start with a request that can be uploaded (e.g. jpg image), then try to find an allowed PHP extension that doesn't get blocked, then utilize one of the whitelist filter bypasses to bypass both extension filters.*
 
-**Answer:** ``
+[File Magick Numbers](https://en.wikipedia.org/wiki/List_of_file_signatures)
+
+![](./attachments/Pasted%20image%2020220710174834.png)
+
+![](./attachments/Pasted%20image%2020220710174711.png)
+
+**Answer:** `HTB{m461c4l_c0n73n7_3xpl0174710n}`
 
 ---
 ## Limited File Uploads
@@ -146,14 +161,24 @@ The page:
 
 *Hint: Use an attack that can read files, and don't forget to check the page source!*
 
-**Answer:** ``
+![](./attachments/Pasted%20image%2020220711111707.png)
+
+![](./attachments/Pasted%20image%2020220711111929.png)
+
+**Answer:** `HTB{my_1m4635_4r3_l37h4l}`
 
 ### Question 2:
 ![](./attachments/Pasted%20image%2020220705130403.png)
 
 *Hint: Use a different payload to read source code*
 
-**Answer:** ``
+![](./attachments/Pasted%20image%2020220711112735.png)
+
+![](./attachments/Pasted%20image%2020220711112841.png)
+
+![](./attachments/Pasted%20image%2020220711112920.png)
+
+**Answer:** `./images/`
 
 ---
 ## Skills Assessment
