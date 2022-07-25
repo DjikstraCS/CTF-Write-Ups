@@ -414,7 +414,7 @@ ________________________________________________
 ```
 
 
-**Answer:** ``
+**Answer:** `.php .phps .php7`
 
 ### Question 3:
 ![](./attachments/Pasted%20image%2020220702112950.png)

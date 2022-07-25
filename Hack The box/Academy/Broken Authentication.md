@@ -48,28 +48,28 @@ Google search for `webaccess hmi/scada software default credentials`.
 
 *Hint: Try a short username wordlist from a resource covered in this section.*
 
-**Answer:** ``
+**Answer:** `puppet`
 
 ### Question 2:
 ![](./attachments/Pasted%20image%2020220714095158.png)
 
 *Hint: Read the source of every response.*
 
-**Answer:** ``
+**Answer:** `ansible`
 
 ### Question 3:
 ![](./attachments/Pasted%20image%2020220714095208.png)
 
 *Hint: The timing.py script is a good starting point!*
 
-**Answer:** ``
+**Answer:** `vagrant`
 
 ### Question 4:
 ![](./attachments/Pasted%20image%2020220714095221.png)
 
 *Hint: Remember that registration forms have differences from login ones.*
 
-**Answer:** ``
+**Answer:** `user`
 
 ---
 ## Bruteforcing Passwords
