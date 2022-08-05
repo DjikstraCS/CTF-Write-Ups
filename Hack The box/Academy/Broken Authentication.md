@@ -298,7 +298,7 @@ Password: `Mustang#firebird1995`
 
 Cookie part:
 
-![](Pasted%20image%2020220805184304.png)
+![](./attachments/Pasted%20image%2020220805184304.png)
 
 ```bash
 ┌──(kali㉿kali)-[~/Downloads]
@@ -328,7 +328,7 @@ NWUyZGVhMjBlZGViNWRlNzg4OTY5YmQ5ZDQ0MWFhYTk6MjEyMzJmMjk3YTU3YTVhNzQzODk0YTBlNGE4
 
 Final cookie: `NWUyZGVhMjBlZGViNWRlNzg4OTY5YmQ5ZDQ0MWFhYTk6MjEyMzJmMjk3YTU3YTVhNzQzODk0YTBlNGE4MDFmYzM%3D`
 
-![](Pasted%20image%2020220805190101.png)
+![](./attachments/Pasted%20image%2020220805190101.png)
 
 **Answer:** `HTB{1_br0k3_4uth_4_br34kf4st}`
 
