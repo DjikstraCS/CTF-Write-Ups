@@ -187,16 +187,16 @@ token_list.txt		reset_token_time_list.py
 
 Fuzz with ZAP.
 
-![](Pasted%20image%2020220728105416.png)
+![](./attachments/Pasted%20image%2020220728105416.png)
 
 After inserting it in the page:
 
-![](Pasted%20image%2020220728105504.png)
+![](./attachments/Pasted%20image%2020220728105504.png)
 
 **Answer:** `HTB{uns4f3t0k3ns4r3uns4f3}`
 
 ### Question 2:
-![](Pasted%20image%2020220728110513.png)
+![](./attachments/Pasted%20image%2020220728110513.png)
 
 ```
 ┌──(kali㉿kali)-[~/Downloads]
@@ -204,13 +204,13 @@ After inserting it in the page:
 687462757365723a687462757365724061636164656d792e6861636b746865626f782e65753a756e627265616b61626c65
 ```
 
-![](Pasted%20image%2020220728110700.png)
+![](./attachments/Pasted%20image%2020220728110700.png)
 
-![](Pasted%20image%2020220728110752.png)
+![](./attachments/Pasted%20image%2020220728110752.png)
 
 User:pass `htbadmin:Njg3NDYyNjE2NDZkNjk2ZTNhNjg3NDYyNjE2NDZkNjk2ZTQwNjE2MzYxNjQ2NTZkNzkyZTY4NjE2MzZiNzQ2ODY1NjI2Zjc4MmU2NTc1M2E3NTZlNjI3MjY1NjE2YjYxNjI2YzY1`
 
-![](Pasted%20image%2020220728110449.png)
+![](./attachments/Pasted%20image%2020220728110449.png)
 
 **Answer:** `HTB{4lw4y5ch3ck3nc0d1ng}`
 
@@ -225,7 +225,7 @@ User:pass `htbadmin:Njg3NDYyNjE2NDZkNjk2ZTNhNjg3NDYyNjE2NDZkNjk2ZTQwNjE2MzYxNjQ2
 
 Fuzz answer with ZAP.
 
-![](Pasted%20image%2020220728114522.png)
+![](./attachments/Pasted%20image%2020220728114522.png)
 
 **Answer:** `HTB{gu3ss4bl3_4n5w3r5_4r3_gu3ss4bl3}`
 
@@ -238,11 +238,11 @@ Fuzz answer with ZAP.
 
 Catch password reset request and insert `&userid=htbadmin`.
 
-![](Pasted%20image%2020220728120901.png)
+![](./attachments/Pasted%20image%2020220728120901.png)
 
 Now log in as `htbadmin` with the new password.
 
-![](Pasted%20image%2020220728121012.png)
+![](./attachments/Pasted%20image%2020220728121012.png)
 
 **Answer:** `HTB{us3rn4m3_1nj3ct3d}`
 
@@ -251,13 +251,13 @@ Now log in as `htbadmin` with the new password.
 ### Question 1:
 ![](./attachments/Pasted%20image%2020220714095910.png)
 
-![](Pasted%20image%2020220728123014.png)
+![](./attachments/Pasted%20image%2020220728123014.png)
 
-![](Pasted%20image%2020220728122902.png)
+![](./attachments/Pasted%20image%2020220728122902.png)
 
-![](Pasted%20image%2020220728123244.png)
+![](./attachments/Pasted%20image%2020220728123244.png)
 
-![](Pasted%20image%2020220728123340.png)
+![](./attachments/Pasted%20image%2020220728123340.png)
 
 **Answer:** `HTB{mu1tist3p_3nc0d1ng_15_uns4f3}`
 
@@ -270,7 +270,7 @@ Now log in as `htbadmin` with the new password.
 
 [New token](https://gchq.github.io/CyberChef/#recipe=Zlib_Deflate('Dynamic%20Huffman%20Coding')To_Base64('A-Za-z0-9%2B/%3D')URL_Encode(true)URL_Encode(true)&input=dXNlcjpodGJ1c2VyO3JvbGU6c3VwZXI7dGltZToxNjU5MDA1OTU2)
 
-![](Pasted%20image%2020220728131957.png)
+![](./attachments/Pasted%20image%2020220728131957.png)
 
 **Answer:** `HTB{r3m3mb3r_r3m3mb3r}`
 
@@ -281,7 +281,28 @@ Now log in as `htbadmin` with the new password.
 
 Pass: ADn68LQfkavmHLfALDIR@1
 
-![](Pasted%20image%2020220728135855.png)
+![](./attachments/Pasted%20image%2020220728135855.png)
+
+```
+┌──(kali㉿kali)-[~]
+└─$ grep -x '.\{20,200\}' seclists/Passwords/Leaked-Databases/rockyou.txt | grep '[$#@]' | grep '[0-9]$' | grep '[[:lower:]]' | grep '^[[:upper:]]' > custom_rockyou.txt
+```
+
+![](./attachments/Pasted%20image%2020220730225744.png)
+
+Username `support.us`
+
+![](./attachments/Pasted%20image%2020220730230346.png)
+
+Password: `Mustang#firebird1995`
+
+Cookie part:
+
+![](./attachments/Pasted%20image%2020220804112444.png)
+
+![](./attachments/Pasted%20image%2020220804112509.png)
+
+User:role `support.us:support`
 
 **Answer:** ``
 

