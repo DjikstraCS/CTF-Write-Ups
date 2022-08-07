@@ -4,6 +4,7 @@ A collection of write-ups for CTF challenges I've solved.
 - Cyber Defenders
 - Hack the Box
 - PicoCTF
+- PortSwigger
 
 If you find any errors or incorrect information in these pages, please let me know.  
 
