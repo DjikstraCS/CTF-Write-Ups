@@ -1,7 +1,7 @@
 # SQL injections
 * Source: [PortSwigger](https://portswigger.net)
 * Number of labs: 16
-* Completion date:  DD-MM-YYYY
+* Completion date:  DD-MM-YYYY (**IN PROGRESS...**)
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
 ---
@@ -9,7 +9,7 @@
 * Difficulty: Appretice
 
 ### Question:
- This lab contains an SQL injection vulnerability in the product category filter. When the user selects a category, the application carries out an SQL query like the following:
+ This lab contains an [SQL injection](https://portswigger.net/web-security/sql-injection) vulnerability in the product category filter. When the user selects a category, the application carries out an SQL query like the following:
  
 ```
 SELECT * FROM products WHERE category = 'Gifts' AND released = 1
@@ -17,6 +17,7 @@ SELECT * FROM products WHERE category = 'Gifts' AND released = 1
 
 To solve the lab, perform an SQL injection attack that causes the application to display details of all products in any category, both released and unreleased. 
 
+### Solution:
 A webshop:
 
 ![](./attachments/Pasted%20image%2020220807102652.png)
@@ -38,9 +39,11 @@ SELECT * FROM products WHERE category = 'Pets' OR 1=1--
 * Difficulty: Appretice
 
 ### Question:
-This lab contains an SQL injection vulnerability in the login function.
+This lab contains an [SQL injection](https://portswigger.net/web-security/sql-injection) vulnerability in the login function.
 
 To solve the lab, perform an SQL injection attack that logs in to the application as the `administrator` user. 
+
+### Solution:
 
 Find the login form and inject `' OR 1=1--` after the username `administrator`.
 
@@ -59,8 +62,9 @@ Log in.
 ### Question:
  This lab contains an SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. The first step of such an attack is to determine the number of columns that are being returned by the query. You will then use this technique in subsequent labs to construct the full attack.
 
-To solve the lab, determine the number of columns returned by the query by performing an SQL injection UNION attack that returns an additional row containing null values. 
+To solve the lab, determine the number of columns returned by the query by performing an [SQL injection UNION](https://portswigger.net/web-security/sql-injection/union-attacks) attack that returns an additional row containing null values. 
 
+### Solution:
 The Page:
 
 ![](./attachments/Pasted%20image%2020220807110244.png)
@@ -79,6 +83,7 @@ Payload `' UNION SELECT NULL,NULL,NULL--` returns no errors along with additiona
 
 ### Question:
 
+### Solution:
 
 **Answer:** ``
 
@@ -88,6 +93,7 @@ Payload `' UNION SELECT NULL,NULL,NULL--` returns no errors along with additiona
 
 ### Question:
 
+### Solution:
 
 **Answer:** ``
 
@@ -97,8 +103,9 @@ Payload `' UNION SELECT NULL,NULL,NULL--` returns no errors along with additiona
 
 ### Question:
 
+### Solution:
 
 **Answer:** ``
 
 ---
-**Tags:** [[Hack The Box Academy]]
+**Tags:** [[PortSwigger Web Security Academy]]
