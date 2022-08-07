@@ -19,13 +19,13 @@ To solve the lab, perform an SQL injection attack that causes the application to
 
 A webshop:
 
-![](Pasted%20image%2020220807102652.png)
+![](./attachments/Pasted%20image%2020220807102652.png)
 
 Click on 'Gifts'.
 
 Inject `' OR 1=1--` after the parameter value on each page in order to retrieve hidden data.
 
-![](Pasted%20image%2020220807102752.png)
+![](./attachments/Pasted%20image%2020220807102752.png)
 
 Final executed query:
 
@@ -46,11 +46,11 @@ Find the login form and inject `' OR 1=1--` after the username `administrator`.
 
 A dummy character is inserted in the password field, in this case `a`.
 
-![](Pasted%20image%2020220807103809.png)
+![](./attachments/Pasted%20image%2020220807103809.png)
 
 Log in.
 
-![](Pasted%20image%2020220807104200.png)
+![](./attachments/Pasted%20image%2020220807104200.png)
 
 ---
 ## SQL injection UNION attack, determining the number of columns returned by the query
@@ -63,7 +63,7 @@ To solve the lab, determine the number of columns returned by the query by perfo
 
 The Page:
 
-![](Pasted%20image%2020220807110244.png)
+![](./attachments/Pasted%20image%2020220807110244.png)
 
 Change the category's parameter value to `'+UNION+SELECT+NULL--` in order to try and determine how many collums are being returned by the query.
 
@@ -71,7 +71,7 @@ Insert additional `NULL` values untill the query executes without errors.
 
 Payload `' UNION SELECT NULL,NULL,NULL--` returns no errors along with additional output.
 
-![](Pasted%20image%2020220807111010.png)
+![](./attachments/Pasted%20image%2020220807111010.png)
 
 ---
 ## 
