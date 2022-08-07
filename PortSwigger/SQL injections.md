@@ -65,7 +65,7 @@ The Page:
 
 ![](./attachments/Pasted%20image%2020220807110244.png)
 
-Change the category's parameter value to `'+UNION+SELECT+NULL--` in order to try and determine how many collums are being returned by the query.
+Change the category's parameter value `Accessories` to `'+UNION+SELECT+NULL--` in order to try and determine how many collums are being returned by the query.
 
 Insert additional `NULL` values untill the query executes without errors.
 
