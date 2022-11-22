@@ -371,7 +371,7 @@ The answer was collected in the previous question.
 ### Question 3:
 ![](./attachments/Pasted%20image%2020220509234610.png)
 
-The answer was collected in the previous question.
+The answer was collected in the previous questions.
 
 **Answer:** `Ubuntu`
 
