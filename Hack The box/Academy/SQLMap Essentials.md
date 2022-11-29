@@ -258,7 +258,7 @@ Table: flag7
 +----+-----------------------+
 ```
 
-**Answer:** ``
+**Answer:** `HTB{un173_7h3_un173d}`
 
 ---
 ## Database Enumeration

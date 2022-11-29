@@ -71,7 +71,7 @@ Payload 3: `%0A${IFS}ls${IFS}-la`
 
 ![](./attachments/Pasted%20image%2020220513121427.png)
 
-**Answer:** `1813`
+**Answer:** `1613`
 
 ---
 ## Bypassing Other Blacklisted Characters

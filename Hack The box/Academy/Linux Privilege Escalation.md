@@ -22,11 +22,16 @@
 
 ```
 ┌──(kali㉿kali)-[/etc]
+└─$ screen -v
+
+Screen version 4.05.00 (GNU) 10-Dec-16
+```
+
+
+
+```
+┌──(kali㉿kali)-[/etc]
 └─$ ssh htb-student@10.129.93.127   
-htb-student@10.129.93.127's password: 
-Permission denied, please try again.
-htb-student@10.129.93.127's password: 
-Permission denied, please try again.
 htb-student@10.129.93.127's password: 
 Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-116-generic x86_64)
 
