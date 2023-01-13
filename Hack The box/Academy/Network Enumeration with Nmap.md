@@ -13,9 +13,9 @@
 ### Question:
 ![](./attachments/Pasted%20image%2020221107111839.png)
 
-*Hint: The information that gives us such an indication is Time-To-Live (TTL). There exist a lot of different overviews with different protocols giving us an overview of which systems work specific TTL values.*
+*Hint: The information that gives us such an indication is Time-To-Live (TTL). There exist a lot of different overviews with different protocols, giving us an overview of which systems work specific TTL values.*
 
-Different opearting systems have different TTL's hardcoded intor their protocol, a list of TTL's can be found [here](https://ostechnix.com/identify-operating-system-ttl-ping/). In this case the TTL is 128 and our target is therefore likely a Windows machine.
+Different operating systems have different TTL's hardcoded into their protocol, a list of TTL's can be found [here](https://ostechnix.com/identify-operating-system-ttl-ping/). In this case the TTL is 128 and our target is therefore likely a Windows machine.
 
 **Answer:** `Windows`
 
@@ -116,7 +116,7 @@ Nmap done: 1 IP address (1 host up) scanned in 0.88 seconds
 ![](./attachments/Pasted%20image%2020221107111221.png)
 *Hint: Remember that Nmap does not always recognize all information by default.*
 
-Connecting to the last service on port 31337 reveals the flag. nmap and tcpdump are not able to catch it.
+Connecting to the last service on port 31337 reveals the flag. Nmap and tcpdump are not able to catch it.
 
 ```
 ┌──(kali㉿kali)-[~]
@@ -133,7 +133,7 @@ Connecting to the last service on port 31337 reveals the flag. nmap and tcpdump 
 ![](./attachments/Pasted%20image%2020221108133824.png)
 *Hint: Web servers are among the most attacked services because they are made accessible to users and present a high attack potential.*
 
-The `http-enum` script returns the presence a robot.txt file.
+The `http-enum` script returns the presence of a robot.txt file.
 
 ```
 ┌──(kali㉿kali)-[~]
@@ -193,7 +193,7 @@ Nmap done: 1 IP address (1 host up) scanned in 0.54 seconds
 ![](./attachments/Pasted%20image%2020221111112028.png)
 *Hint: During the meeting, the administrators talked about the host we tested as a publicly accessible server that was not mentioned before.*
 
-Script fundt [here](https://nmap.org/nsedoc/scripts/dns-nsid.html).
+Script fund [here](https://nmap.org/nsedoc/scripts/dns-nsid.html).
 
 ```
 ┌──(kali㉿kali)-[~]

