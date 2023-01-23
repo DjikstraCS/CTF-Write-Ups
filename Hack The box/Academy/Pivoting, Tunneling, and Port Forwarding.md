@@ -11,7 +11,7 @@
 ---
 ## The Networking Behind Pivoting
 ### Question 1:
-![](Pasted%20image%2020221124112751.png)
+![](./attachments/Pasted%20image%2020221124112751.png)
 
 ```shell-session
 DjikstraCS@htb[/htb]$ ifconfig
@@ -32,7 +32,7 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 **Answer:** `eth0`
 
 ### Question 2:
-![](Pasted%20image%2020221124112801.png)
+![](./attachments/Pasted%20image%2020221124112801.png)
 *Hint: Consider how a routing table is used to make routing decisions. Destination IP address is very important.*
 
 ```shell-session
@@ -53,7 +53,7 @@ default         178.62.64.1     0.0.0.0         UG        0 0          0 eth0
 **Answer:** `tun0`
 
 ### Question 3:
-![](Pasted%20image%2020221124112809.png)
+![](./attachments/Pasted%20image%2020221124112809.png)
 *Hint: Consider how a routing table is used if the destination IP network is not listed in the routing table.*
 
 ```shell-session
@@ -76,7 +76,7 @@ The default gateway has IP address `178.62.64.1`.
 ---
 ## Dynamic Port Forwarding with SSH and SOCKS Tunneling
 ### Question 1:
-![](Pasted%20image%2020221124115924.png)
+![](./attachments/Pasted%20image%2020221124115924.png)
 *Hint: Submit that answer as a digit.*
 
 ```
@@ -155,7 +155,7 @@ There are three interfaces, incuding the loopback interface.
 **Answer:** `3`
 
 ### Question 2:
-![](Pasted%20image%2020221124115933.png)
+![](./attachments/Pasted%20image%2020221124115933.png)
 *Hint: Make sure your pivot is working successfully from your Attack host to the pivot host.*
 
 ```
@@ -367,7 +367,7 @@ msf6 auxiliary(scanner/rdp/rdp_scanner) > run
 
 And a RDP window opens. The flag is located on the desktop.
 
-![](Pasted%20image%2020221124131349.png)
+![](./attachments/Pasted%20image%2020221124131349.png)
 
 **Answer:** `N1c3Piv0t`
 

