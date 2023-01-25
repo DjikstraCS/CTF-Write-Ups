@@ -5,7 +5,7 @@
 * Difficulty: Easy
 * Category: Offensive
 * Time estimate: 6 hours
-* Date: DD-MM-YYYY
+* Date: 01-08-2022
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
 ---

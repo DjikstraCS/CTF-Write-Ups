@@ -5,7 +5,7 @@
 * Difficulty: Fundamental
 * Category: Offensive
 * Time estimate: 8 hours
-* Date: DD-MM-YYYY
+* Date: 23-01-2023
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
 ---
