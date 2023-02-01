@@ -5,7 +5,7 @@
 * Difficulty: Medium
 * Category: Offensive
 * Time estimate: 3 hours
-* Date: DD-MM-YYYY
+* Date: 30-01-2023
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
 ---
@@ -89,17 +89,92 @@ f458303ea783c224c6b4e7ef7f17eb9d
 
 ---
 ## Linux File Transfer Methods
-### Question:
+### Question 1:
+![](./attachments/Pasted%20image%2020230130110116.png)
+
+```
+┌──(kali㉿kali)-[~/HTB]
+└─$ curl 10.129.219.107/flag.txt                         
+5d21cf3da9c0ccb94f709e2559f3ea50
+```
+
+**Answer:** `5d21cf3da9c0ccb94f709e2559f3ea50`
+
+### Question 2:
+![](./attachments/Pasted%20image%2020230130110207.png)
+*Hint: You can use gunzip to extract the file with the command: gunzip -S .zip upload_nix.zip*
 
 
-**Answer:** ``
+```
+┌──(kali㉿kali)-[~/HTB/FileTransfers/linFileTransferMethods]
+└─$ scp upload_nix.zip htb-student@10.129.219.107:/home/htb-student/
+The authenticity of host '10.129.219.107 (10.129.219.107)' can't be established.
+ED25519 key fingerprint is SHA256:z4rcb3qcf0IdRnoTBNEJ4i8TlDystDA4uOJFxVcb41E.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.129.219.107' (ED25519) to the list of known hosts.
+htb-student@10.129.219.107's password: 
+upload_nix.zip                                                                                                                      100%  194     6.4KB/s   00:00    
+```
 
----
-## 
-### Question:
+File uploadet.
+
+```
+┌──(kali㉿kali)-[~/HTB/FileTransfers/linFileTransferMethods]
+└─$ sudo ssh htb-student@10.129.219.107                             
+[sudo] password for kali: 
+The authenticity of host '10.129.219.107 (10.129.219.107)' can't be established.
+ED25519 key fingerprint is SHA256:z4rcb3qcf0IdRnoTBNEJ4i8TlDystDA4uOJFxVcb41E.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.129.219.107' (ED25519) to the list of known hosts.
+htb-student@10.129.219.107's password: 
+Welcome to Ubuntu 20.04 LTS (GNU/Linux 5.4.0-47-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon 30 Jan 2023 10:12:14 AM UTC
+
+  System load:             0.0
+  Usage of /:              26.5% of 15.68GB
+  Memory usage:            10%
+  Swap usage:              0%
+  Processes:               141
+  Users logged in:         0
+  IPv4 address for ens192: 10.129.219.107
+  IPv6 address for ens192: dead:beef::250:56ff:feb9:b572
 
 
-**Answer:** ``
+74 updates can be installed immediately.
+0 of these updates are security updates.
+To see these additional updates run: apt list --upgradable
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+Last login: Wed Sep  9 22:42:43 2020 from 10.10.14.4
+htb-student@nix04:~$ ls
+upload_nix.zip
+htb-student@nix04:~$ unzip upload_nix.zip 
+
+Command 'unzip' not found, but can be installed with:
+
+apt install unzip
+Please ask your administrator.
+
+htb-student@nix04:~$ gunzip -S .zip upload_nix.zip
+htb-student@nix04:~$ ls
+upload_nix
+htb-student@nix04:~$ hasher upload_nix
+159cfe5c65054bbadb2761cfa359c8b0
+```
+
+**Answer:** `159cfe5c65054bbadb2761cfa359c8b0`
 
 ---
 ## 
