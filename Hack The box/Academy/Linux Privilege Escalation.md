@@ -27,8 +27,6 @@
 Screen version 4.05.00 (GNU) 10-Dec-16
 ```
 
-
-
 ```
 ┌──(kali㉿kali)-[/etc]
 └─$ ssh htb-student@10.129.93.127   
