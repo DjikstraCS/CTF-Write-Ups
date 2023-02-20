@@ -5,7 +5,7 @@
 * Difficulty: Medium
 * Category: Offensive
 * Time estimate: 8 hours
-* Date: DD-MM-YYYY
+* Date: 20-02-2023
 * Author: [DjikstraCS](https://github.com/DjikstraCS)
 
 ---
